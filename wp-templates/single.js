@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client';
 import { useFaustQuery } from '@faustwp/core';
 import {
-  Container,
   ContentWrapper,
   EntryHeader,
   FeaturedImage,
@@ -89,9 +88,7 @@ export default function Component(props) {
             date={date}
             author={author?.node?.name}
           />
-          <Container>
             <ContentWrapper content={content} />
-          </Container>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />

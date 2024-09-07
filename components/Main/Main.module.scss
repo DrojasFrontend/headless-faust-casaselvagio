@@ -1,4 +1,6 @@
-.component {
-	color: var(--wpe--main--color);
-	background-color: var(--wpe--main--background-color);
+@import 'styles/breakpoints';
+@import 'styles/mixin';
+
+.show {
+	transform: translate3d(0, 0, 0);
 }

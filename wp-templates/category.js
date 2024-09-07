@@ -5,7 +5,6 @@ import {
   Header,
   Footer,
   Main,
-  Container,
   EntryHeader,
   NavigationMenu,
   Post,
@@ -31,7 +30,6 @@ export default function Component(props) {
       <Main>
         <>
           <EntryHeader title={`Category: ${name}`} />
-          <Container>
             {posts.edges.map((post) => (
               <Post
                 title={post.node.title}
@@ -42,7 +40,6 @@ export default function Component(props) {
                 featuredImage={post.node.featuredImage?.node}
               />
             ))}
-          </Container>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />

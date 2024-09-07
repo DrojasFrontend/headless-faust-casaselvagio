@@ -1,0 +1,22 @@
+@import "styles/breakpoints";
+@import "styles/mixin";
+
+.grid {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: rem(80);
+}
+
+.nav-toggle {
+	font-family: inherit;
+	display: flex;
+	align-items: center;
+	column-gap: rem(6);
+	padding: 0;
+	font-size: rem(13);
+	font-weight: 700;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}

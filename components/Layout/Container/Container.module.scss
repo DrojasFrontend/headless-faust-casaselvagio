@@ -1,0 +1,21 @@
+@import "styles/mixin";
+
+.component {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 rem(20);
+
+	@media only screen and (min-width: 1024px) {
+		max-width: rem(1248);
+	}
+
+	&--slick {
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+
+		@media only screen and (min-width: 1024px) {
+			max-width: rem(1240);
+		}
+	}
+}
