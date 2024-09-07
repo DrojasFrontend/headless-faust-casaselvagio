@@ -1,0 +1,78 @@
+.heading {
+	&--20,
+	&--24,
+	&--32,
+	&--44,
+	&--68 {
+		font-style: normal;
+		font-weight: 700;
+		line-height: 110%;
+	}
+
+	&--13,
+	&--16 {
+		font-style: normal;
+		font-weight: 400;
+		line-height: 150%;
+	}
+
+	&--13 {
+		font-size: rem(13);
+	}
+
+	&--16 {
+		font-size: rem(16);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(16);
+		}
+	}
+
+	&--18 {
+		font-size: rem(18);
+		font-style: normal;
+		font-weight: 700;
+		line-height: 110%;
+	}
+
+	&--20 {
+		font-size: rem(20);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(20);
+		}
+	}
+
+	&--24 {
+		font-size: rem(24);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(24);
+		}
+	}
+
+	&--32 {
+		font-size: rem(32);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(32);
+		}
+	}
+
+	&--40 {
+		font-size: rem(40);
+		font-style: normal;
+		font-weight: 700;
+		line-height: 110%;
+	}
+
+	&--44 {
+		font-size: rem(24);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(44);
+		}
+	}
+
+	&--68 {
+		font-size: rem(32);
+		@media only screen and (min-width: 1024px) {
+			font-size: rem(68);
+		}
+	}
+}

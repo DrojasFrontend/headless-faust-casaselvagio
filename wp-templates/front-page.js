@@ -6,6 +6,7 @@ import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { Footer, Main, NavigationMenu, Hero, SEO } from "../components";
 
 import { Header } from "../components/UI/Header";
+import { HeroImage } from "../components/UI/Heros/HeroImage";
 
 export default function Component() {
 	const { data } = useQuery(Component.query, {
@@ -33,7 +34,7 @@ export default function Component() {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<Hero title={"Casaselvaggio."} />
+				<HeroImage />
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>

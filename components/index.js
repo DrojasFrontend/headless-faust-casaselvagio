@@ -3,6 +3,11 @@ export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
 export { Container } from "./Layout/Container";
 
+//Heros
+// export { HeroCarusel } from "./UI/Heros/HeroCarusel";
+export { HeroImage } from "./UI/Heros/HeroImage";
+// export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
+
 export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";
 export { FeaturedImage } from "./FeaturedImage";
