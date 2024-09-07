@@ -1,4 +1,4 @@
-export { Header } from "./UI/Header/Header";
+export { Header } from "./UI/Header";
 export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
 export { Container } from "./Layout/Container";
