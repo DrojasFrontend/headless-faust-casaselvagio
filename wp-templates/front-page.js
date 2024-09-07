@@ -31,7 +31,7 @@ export default function Component() {
       />
       <Main>
         <Container>
-          <Hero title={'Casaselvaggio'} />
+          <Hero title={'Casaselvaggio.'} />
         </Container>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
