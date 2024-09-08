@@ -55,7 +55,7 @@ const CardGrid = ({ data }) => {
 						<h2 className={cx(["heading", "heading--44", "color--primary"])}>
 							{titulo}
 						</h2>
-						<p className="heading--16 color--gray">{descripcion}</p>
+						<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
 					</div>
 				</Container>
 				<div className="container--slick">
@@ -73,8 +73,8 @@ const CardGrid = ({ data }) => {
 									title={targeta?.imagen?.title}
 								/>
 								<div className={cx(["copy"])}>
-									<h3 className="heading--24 color--white">{targeta.titulo}</h3>
-									<p className="heading--16 color--white">{targeta.detalle}</p>
+									<h3 className="heading--24 color--white">{targeta?.titulo}</h3>
+									<p className="heading--16 color--white" dangerouslySetInnerHTML={{ __html: targeta?.detalle }} />
 								</div>
 							</div>
 						))}

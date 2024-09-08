@@ -399,6 +399,22 @@ a {
 		.slick {
 			&-dots {
 				bottom: rem(50);
+
+				button {
+					&:before {
+						font-size: rem(12);
+						opacity: 1;
+						color: var(--color-white);
+					}
+				}
+			}
+
+			&-active {
+				button {
+					&:before {
+						color: var(--color-secondary) !important;
+					}
+				}
 			}
 
 			&-track {

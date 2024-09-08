@@ -24,9 +24,7 @@ const CardsBigSmall = ({ data }) => {
 							<h2 className={cx(["heading--44", "color--primary"])}>
 								{titulo}
 							</h2>
-							<p className="heading--16 color--gray">
-								{descripcion}
-							</p>
+							<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
 						</div>
 						<div className={cx("grid")}>
 							{targetas.map((targeta, index) => (
