@@ -3,7 +3,6 @@ import Image from "next/image";
 import className from "classnames/bind";
 import styles from "./HeroImage.module.scss";
 let cx = className.bind(styles);
-import Hero from "/public/img/hero.jpg";
 
 const HeroImage = ({data}) => {
 	const {titulo, imagen } = data;
@@ -16,7 +15,6 @@ const HeroImage = ({data}) => {
 					layout="fill"
 					quality={100}
 					priority={true}
-					style={{objectFit: "cover"}}
 					alt={imagen.altText}
 					title={imagen.title}
 				/>

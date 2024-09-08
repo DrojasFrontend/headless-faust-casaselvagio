@@ -19,7 +19,7 @@ export default function Header({
 			<Container>
 				<div className={cx(["grid"])}>
 					<div className={cx(["logo"])}>
-						<Image src={Logo} alt={title} />
+						<Image src={Logo} alt={title} title="logo" />
 					</div>
 					<button
 						type="button"

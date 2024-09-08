@@ -1,76 +1,74 @@
-@import "../../../../styles/mixin";
+@import "/styles/mixin";
 
 .component {
-  padding: rem(40) 0 0;
+	padding: rem(40) 0 0;
 
-  @media only screen and (min-width: 1024px) {
-    padding: rem(80) 0 0;
-  }
+	@media only screen and (min-width: 1024px) {
+		padding: rem(60) 0 0;
+	}
 }
 
 .title {
-  display: grid;
-  row-gap: rem(12);
-  max-width: rem(460);
-  padding-bottom: rem(24);
+	display: grid;
+	row-gap: rem(12);
+	max-width: rem(460);
+	padding-bottom: rem(24);
 }
 
 .grid {
-  display: grid;
-  row-gap: rem(20);
-  
-  @media only screen and (min-width: 1024px) {
-    grid-template-columns: 65.6% 30.8%;
-    column-gap: rem(42);
-    
-  }
+	display: grid;
+	row-gap: rem(20);
+
+	@media only screen and (min-width: 1024px) {
+		grid-template-columns: 65.6% 30.8%;
+		column-gap: rem(42);
+	}
 }
 
 .card {
-  position: relative;
-  border-radius: rem(24) rem(6);
-  overflow: hidden;
+	position: relative;
+	min-height: 480px;
+	border-radius: rem(24) rem(6);
+	overflow: hidden;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
-    z-index: 1;
-  }
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.7) 100%
+		);
+		z-index: 1;
+	}
 
-  &:hover {
-    img {
-      transform-origin: center;
-      transform: translate(0%, 0%) rotate(3deg) scale(1.1);
-    }
-  }
+	&:hover {
+		img {
+			transform-origin: center;
+			transform: translate(0%, 0%) rotate(3deg) scale(1.1);
+		}
+	}
 
-  img {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s ease-in-out;
-  }
+	img {
+		transition: transform 0.4s ease-in-out;
+	}
 }
 
 .copy {
-  display: grid;
-  row-gap: rem(6);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0 rem(24) rem(24);
-  z-index: 2;
+	display: grid;
+	row-gap: rem(6);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0 rem(24) rem(24);
+	z-index: 2;
 }
 
 .heading {
-  max-width: rem(215);
+	max-width: rem(215);
 }

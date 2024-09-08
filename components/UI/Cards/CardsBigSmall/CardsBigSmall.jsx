@@ -6,61 +6,57 @@ import className from "classnames/bind";
 import styles from "./CardsBigSmall.module.scss";
 let cx = className.bind(styles);
 
-import ImageLeft from "/public/images/posts/nuestras-habitaciones.webp";
-import ImageRight from "/public/images/posts/nuestras-habitaciones-2.webp";
+import { Container } from "../../../Layout/Container";
 
-const CardsBigSmall = () => {
+const CardsBigSmall = ({ data }) => {
+	const { titulo, descripcion, targetas } = data;
+
+	if (!targetas.length === 0) {
+		return <p>No hay tarjetas disponibles.</p>;
+	}
+
 	return (
 		<section className="CardsBigSmall">
-			<div className={cx("component")}>
-				<div className="container">
-					<div className={cx(["title"])}>
-						<h2 className={cx(["heading--44", "color--primary"])}>
-							Nuestras Habitaciones
-						</h2>
-						<p className="heading--16 color--gray">
-							Disfruta de la comodidad y el lujo en nuestras habitaciones
-							diseñadas para ofrecerte una estancia inolvidable.
-						</p>
-					</div>
-					<div className={cx("grid")}>
-						<div className={cx("card")}>
-							
-							<Image
-								src={ImageLeft}
-								quality={100}
-								fill
-								sizes="100vw"
-								style={{
-									objectFit: "cover",
-								}}
-							/>
-							<div className={cx(["copy"])}>
-								<h3 className={cx(["heading", "heading--24", "color--white"])}>
-									Casa Selvaggio Habitación 01
-								</h3>
-								<Link href="#">
-									<a className="button button--white">Reservar</a>
-								</Link>
-							</div>
+			<div className={cx(["component"])}>
+				<Container>
+					<div className="container">
+						<div className={cx(["title"])}>
+							<h2 className={cx(["heading--44", "color--primary"])}>
+								{titulo}
+							</h2>
+							<p className="heading--16 color--gray">
+								{descripcion}
+							</p>
 						</div>
-						<div className={cx("card")}>
-							<Image
-								layout="fill"
-								src={ImageRight}
-								alt="Image"
-							/>
-							<div className={cx(["copy"])}>
-								<h3 className={cx(["heading", "heading--24", "color--white"])}>
-									Casa Selvaggio Habitación 01
-								</h3>
-								<Link href="/">
-									<a className="button button--white">Reservar</a>
-								</Link>
-							</div>
+						<div className={cx("grid")}>
+							{targetas.map((targeta, index) => (
+								<div key={index} className={cx("card")}>
+									<Image
+									layout="fill"
+										src={targeta?.imagen?.mediaItemUrl}
+										quality={100}
+										priority={true}
+										sizes="100vw"
+										objectFit="cover"
+										alt={targeta?.imagen?.altText}
+										title={targeta?.imagen?.title}
+									/>
+
+									<div className={cx(["copy"])}>
+										<h3
+											className={cx(["heading", "heading--24", "color--white"])}
+										>
+											{targeta?.titulo}
+										</h3>
+										<Link href={targeta?.cta?.url}>
+											<a className="button button--white">{targeta?.cta?.title}</a>
+										</Link>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
-				</div>
+				</Container>
 			</div>
 		</section>
 	);

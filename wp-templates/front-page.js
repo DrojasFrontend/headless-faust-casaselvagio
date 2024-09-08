@@ -7,6 +7,8 @@ import { Footer, Main, NavigationMenu, SEO } from "../components";
 import { Header } from "../components/UI/Header";
 import { HeroImage } from "../components/UI/Heros/HeroImage";
 import { CardsGrid } from "../components/UI/Cards/CardsGrid";
+import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
+import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
 
 export default function Component(props) {
 	const { data } = useQuery(Component.query, {
@@ -19,10 +21,13 @@ export default function Component(props) {
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
 	const grupoHero = props?.data?.pageBy?.paginaInicio?.grupoHero ?? [];
-	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.grupoRefugio ?? [];
+	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.gruporefugio ?? [];
+	const grupohabitaciones =
+		props?.data?.pageBy?.paginaInicio?.grupohabitaciones ?? [];
+	const grupoexperiencias =
+		props?.data?.pageBy?.paginaInicio?.grupoexperiencias ?? [];
 
 	const [isNavShown, setIsNavShown] = useState(false);
-
 
 	return (
 		<>
@@ -38,8 +43,10 @@ export default function Component(props) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<HeroImage data={grupoHero}/>
-				<CardsGrid data={grupoRefugio}/>
+				<HeroImage data={grupoHero} />
+				<CardsGrid data={grupoRefugio} />
+				<CardsBigSmall data={grupohabitaciones} />
+				<CardsGridThreeCarusel data={grupoexperiencias} />
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -73,10 +80,10 @@ Component.query = gql`
 					imagen {
 						mediaItemUrl
 						altText
-          	title
+						title
 					}
 				}
-				grupoRefugio {
+				gruporefugio {
 					descripcion
 					titulo
 					targetas {
@@ -86,6 +93,41 @@ Component.query = gql`
 							mediaItemUrl
 							altText
 							title
+						}
+					}
+				}
+				grupohabitaciones {
+					titulo
+					descripcion
+					targetas {
+						cta {
+							url
+							title
+							target
+						}
+						titulo
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
+				grupoexperiencias {
+					titulo
+					descripcion
+					targetas {
+						titulo
+						subTitulo
+						descripcion
+						imagen {
+							mediaItemUrl
+							altText
+							title
+							mediaDetails {
+								height
+								width
+							}
 						}
 					}
 				}

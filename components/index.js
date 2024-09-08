@@ -10,9 +10,9 @@ export { HeroImage } from "./UI/Heros/HeroImage";
 
 //Cards
 // export { Card } from "./UI/Cards/Card";
-// export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
+export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
 // export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
-// export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
+export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
 export { CardsGrid } from "./UI/Cards/CardsGrid";
 // export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
 // export { CardsMasonry } from "./UI/Cards/CardsMasonry";

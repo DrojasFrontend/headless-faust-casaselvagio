@@ -7,11 +7,11 @@ import className from "classnames/bind";
 import styles from "./CardsGridThreeCarusel.module.scss";
 let cx = className.bind(styles);
 
-import Slide1 from "/public/images/posts/slide-1.png";
-import Slide2 from "/public/images/posts/slide-2.png";
-import Slide3 from "/public/images/posts/slide-3.png";
+import { Container } from "../../../Layout/Container";
 
-const CardsGridThreeCarusel = () => {
+const CardsGridThreeCarusel = ({ data }) => {
+	const { titulo, descripcion, targetas } = data;
+	
 	const [nav1, setNav1] = useState(null);
 	const [nav2, setNav2] = useState(null);
 	let sliderRef1 = useRef(null);
@@ -61,21 +61,23 @@ const CardsGridThreeCarusel = () => {
 		sliderRef1.slickPrev();
 	};
 
+	if (!targetas.length === 0) {
+		return <p>No hay tarjetas disponibles.</p>;
+	}
+
 	return (
 		<section className="CardsGridThreeCarusel">
 			<div className={cx(["component"])}>
-				<div className="container">
+				<Container>
 					<div className={cx(["grid"])}>
 						<h2 className={cx(["heading", "heading--44 color--primary"])}>
-							Experiencias Exclusivas
+							{titulo}
 						</h2>
 						<p className="heading--16 color--gray">
-							En Casa Selvaggio, ofrecemos una variedad de servicios exclusivos
-							diseñados para enriquecer tu estancia y brindarte una experiencia
-							de lujo .inolvidable
+							{descripcion}
 						</p>
 					</div>
-				</div>
+				</Container>
 
 				<div className="container--slick">
 					<div className={cx("grid-slick")}>
@@ -85,36 +87,24 @@ const CardsGridThreeCarusel = () => {
 								ref={(slider) => (sliderRef2 = slider)}
 								{...settings}
 							>
-								<div className={cx("card")}>
-									<Image
-										src={Slide1}
-										quality={100}
-										alt="Imagen"
-									/>
-									<h3 className={cx(["title", "heading--24 color--white"])}>
-										Servicio 01
-									</h3>
-								</div>
-								<div className={cx("card")}>
-									<Image
-										src={Slide1}
-										quality={100}
-										alt="Imagen"
-									/>
-									<h3 className={cx(["title", "heading--24 color--white"])}>
-										Servicio 02
-									</h3>
-								</div>
-								<div className={cx("card")}>
-									<Image
-										src={Slide1}
-										quality={100}
-										alt="Imagen"
-									/>
-									<h3 className={cx(["title", "heading--24 color--white"])}>
-										Servicio 03
-									</h3>
-								</div>
+								{targetas.map((targeta, index) => (
+									<div key={index} className={cx("card")}>
+										<Image
+											src={targeta?.imagen?.mediaItemUrl}
+											width={372}
+											height={500}
+											quality={100}
+											priority
+											sizes="100vw"
+											objectFit="cover"
+											alt={targeta?.imagen?.altText}
+											title={targeta?.imagen?.title}
+										/>
+										<h3 className={cx(["title", "heading--24 color--white"])}>
+											{targeta.subTitulo}
+										</h3>
+									</div>
+								))}
 							</Slider>
 						</div>
 						<div className="CardsGridThreeCarusel__info">
@@ -123,33 +113,18 @@ const CardsGridThreeCarusel = () => {
 								ref={(slider) => (sliderRef1 = slider)}
 								{...settingsText}
 							>
-								<div className={cx("copy")}>
-									<h3 className={cx(["heading", "heading--32 color--primary"])}>
-										Spa Ecológico 1
-									</h3>
-									<p className="heading--16 color--gray">
-										Relájate y rejuvenece en nuestro spa, que utiliza productos
-										naturales y técnicas sostenibles.
-									</p>
-								</div>
-								<div className={cx("copy")}>
-									<h3 className={cx(["heading", "heading--32 color--primary"])}>
-										Spa Ecológico 2
-									</h3>
-									<p className="heading--16 color--gray">
-										Relájate y rejuvenece en nuestro spa, que utiliza productos
-										naturales y técnicas sostenibles.
-									</p>
-								</div>
-								<div className={cx("copy")}>
-									<h3 className={cx(["heading", "heading--32 color--primary"])}>
-										Spa Ecológico 3
-									</h3>
-									<p className="heading--16 color--gray">
-										Relájate y rejuvenece en nuestro spa, que utiliza productos
-										naturales y técnicas sostenibles.
-									</p>
-								</div>
+								{targetas.map((targeta, index) => (
+									<div key={index} className={cx("copy")}>
+										<h3
+											className={cx(["heading", "heading--32 color--primary"])}
+										>
+											{targeta.titulo}
+										</h3>
+										<p className="heading--16 color--gray">
+											{targeta.descripcion}
+										</p>
+									</div>
+								))}
 							</Slider>
 							<div className={cx(["customArrows", "custom-arrows"])}>
 								<button

@@ -47,10 +47,9 @@ const CardGrid = ({ data }) => {
 		return <p>No hay tarjetas disponibles.</p>;
 	}
 
-	console.log(targetas);
 	return (
 		<section className="CardsGrid">
-			<div className={cx(["component"])}>
+			<div className={cx("component")}>
 				<Container>
 					<div className={cx("grid")}>
 						<h2 className={cx(["heading", "heading--44", "color--primary"])}>
@@ -68,11 +67,10 @@ const CardGrid = ({ data }) => {
 									width={372}
 									height={440}
 									quality={100}
-									alt={targeta?.altText}
-									title={targeta?.title}
 									priority
 									sizes="100vw"
-									
+									alt={targeta?.imagen?.altText}
+									title={targeta?.imagen?.title}
 								/>
 								<div className={cx(["copy"])}>
 									<h3 className="heading--24 color--white">{targeta.titulo}</h3>
