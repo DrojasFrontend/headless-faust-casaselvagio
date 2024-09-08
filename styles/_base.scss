@@ -114,6 +114,18 @@ a {
 	color: inherit;
 }
 
+.container {
+	&--slick {
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+
+		@media only screen and (min-width: 1024px) {
+			max-width: rem(1240);
+		}
+	}
+}
+
 /********************** Buttons *********************/
 /****************************************************/
 /****************************************************/
@@ -481,4 +493,3 @@ textarea {
 	font-size: rem(16);
 	height: auto;
 }
-

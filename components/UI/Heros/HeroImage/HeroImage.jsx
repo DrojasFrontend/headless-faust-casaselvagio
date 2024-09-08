@@ -5,20 +5,23 @@ import styles from "./HeroImage.module.scss";
 let cx = className.bind(styles);
 import Hero from "/public/img/hero.jpg";
 
-const HeroImage = () => {
+const HeroImage = ({data}) => {
+	const {titulo, imagen } = data;
+
 	return (
 		<section className={cx(["component"])}>
 			<div className={cx(["bckg"])}>
 				<Image
-					src={Hero}
+					src={imagen.mediaItemUrl}
 					layout="fill"
 					quality={100}
 					priority={true}
 					style={{objectFit: "cover"}}
-					alt="Image"
+					alt={imagen.altText}
+					title={imagen.title}
 				/>
 				<h1 className={cx(["heading", "heading--68", "color--white"])}>
-					Sustainable eco-villas
+					{titulo}
 				</h1>
 			</div>
 		</section>

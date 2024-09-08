@@ -1,14 +1,14 @@
 import { useState } from "react";
-
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
-import { Footer, Main, NavigationMenu, Hero, SEO } from "../components";
+import { Footer, Main, NavigationMenu, SEO } from "../components";
 
 import { Header } from "../components/UI/Header";
 import { HeroImage } from "../components/UI/Heros/HeroImage";
+import { CardsGrid } from "../components/UI/Cards/CardsGrid";
 
-export default function Component() {
+export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
@@ -18,7 +18,11 @@ export default function Component() {
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
+	const grupoHero = props?.data?.pageBy?.paginaInicio?.grupoHero ?? [];
+	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.grupoRefugio ?? [];
+
 	const [isNavShown, setIsNavShown] = useState(false);
+
 
 	return (
 		<>
@@ -26,7 +30,7 @@ export default function Component() {
 			<Header
 				title={siteTitle}
 				description={siteDescription}
-				isNavShown={isNavShown} // Estado de visibilidad
+				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
 			<Main
@@ -34,7 +38,8 @@ export default function Component() {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<HeroImage />
+				<HeroImage data={grupoHero}/>
+				<CardsGrid data={grupoRefugio}/>
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -59,6 +64,31 @@ Component.query = gql`
 		footerMenuItems: menuItems(where: { location: $footerLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
+			}
+		}
+		pageBy(uri: "/") {
+			paginaInicio {
+				grupoHero {
+					titulo
+					imagen {
+						mediaItemUrl
+						altText
+          	title
+					}
+				}
+				grupoRefugio {
+					descripcion
+					titulo
+					targetas {
+						detalle
+						titulo
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
 			}
 		}
 	}

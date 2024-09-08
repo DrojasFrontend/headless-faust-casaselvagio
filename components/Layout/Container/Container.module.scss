@@ -8,14 +8,4 @@
 	@media only screen and (min-width: 1024px) {
 		max-width: rem(1248);
 	}
-
-	&--slick {
-		width: 100%;
-		margin: 0 auto;
-		overflow: hidden;
-
-		@media only screen and (min-width: 1024px) {
-			max-width: rem(1240);
-		}
-	}
 }
