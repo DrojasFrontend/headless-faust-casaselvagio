@@ -73,6 +73,7 @@ p {
 a {
 	color: inherit;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 img {
@@ -123,6 +124,22 @@ a {
 		@media only screen and (min-width: 1024px) {
 			max-width: rem(1240);
 		}
+	}
+}
+
+.text {
+	&--center {
+		text-align: center;
+	}
+}
+
+.color {
+	&--white {
+		color: var(--color-white);
+	}
+
+	&--default {
+		color: var(--color-primary);
 	}
 }
 

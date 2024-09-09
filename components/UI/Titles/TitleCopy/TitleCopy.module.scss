@@ -1,0 +1,19 @@
+@import "../../../../styles/mixin";
+
+.component {
+	padding: rem(100) 0 0;
+
+	@media only screen and (min-width: 1024px) {
+		padding: rem(120) 0 0;
+	}
+}
+
+.grid {
+	display: grid;
+	row-gap: rem(20);
+
+	@media only screen and (min-width: 1024px) {
+		grid-template-columns: 3fr 2fr;
+		column-gap: rem(20);
+	}
+}

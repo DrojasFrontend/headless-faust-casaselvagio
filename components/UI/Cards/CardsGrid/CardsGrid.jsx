@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 
@@ -9,8 +10,8 @@ let cx = className.bind(styles);
 
 import { Container } from "../../../Layout/Container";
 
-const CardGrid = ({ data }) => {
-	const { titulo, descripcion, targetas } = data;
+const CardGrid = ({ data, className }) => {
+	const { titulo, descripcion, targetas, cta } = data;
 	var settings = {
 		dots: false,
 		arrows: false,
@@ -51,11 +52,14 @@ const CardGrid = ({ data }) => {
 		<section className="CardsGrid">
 			<div className={cx("component")}>
 				<Container>
-					<div className={cx("grid")}>
+					<div className={cx(["grid", className])}>
 						<h2 className={cx(["heading", "heading--44", "color--primary"])}>
 							{titulo}
 						</h2>
-						<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
+						<p
+							className="heading--16 color--gray"
+							dangerouslySetInnerHTML={{ __html: descripcion }}
+						/>
 					</div>
 				</Container>
 				<div className="container--slick">
@@ -73,12 +77,25 @@ const CardGrid = ({ data }) => {
 									title={targeta?.imagen?.title}
 								/>
 								<div className={cx(["copy"])}>
-									<h3 className="heading--24 color--white">{targeta?.titulo}</h3>
-									<p className="heading--16 color--white" dangerouslySetInnerHTML={{ __html: targeta?.detalle }} />
+									<h3 className="heading--24 color--white">
+										{targeta?.titulo}
+									</h3>
+									<p
+										className="heading--16 color--white"
+										dangerouslySetInnerHTML={{ __html: targeta?.detalle }}
+									/>
 								</div>
 							</div>
 						))}
 					</Slider>
+
+					{cta && (
+						<Link href={cta.url}>
+							<a className="button button--primary button--center" target={cta.target}>
+								{cta.title}
+							</a>
+						</Link>
+					)}
 				</div>
 			</div>
 		</section>

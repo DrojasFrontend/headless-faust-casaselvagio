@@ -3,6 +3,9 @@ export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
 export { Container } from "./Layout/Container";
 
+//BannerTextCta
+export { BannerTextCta } from "./UI/Banners/BannerTextCta";
+
 //Heros
 export { HeroCarusel } from "./UI/Heros/HeroCarusel";
 export { HeroImage } from "./UI/Heros/HeroImage";
@@ -22,6 +25,12 @@ export { TextImages } from "./UI/TextImages/TextImage";
 
 /* ListItem */
 export { ListItem } from "./UI/ListItem";
+
+/* Titles */
+export { TitleCopy } from "./UI/Titles/TitleCopy";
+
+/* Caruseles */
+export { Carusel } from "./UI/Caruseles/Carusel";
 
 export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";

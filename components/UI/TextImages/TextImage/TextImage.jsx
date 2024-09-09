@@ -10,7 +10,6 @@ import { ListItem } from "../../ListItem";
 import { Container } from "../../../Layout/Container";
 
 const TextImage = ({ data }) => {
-
 	const { items } = data;
 
 	if (!items.length === 0) {
@@ -38,12 +37,13 @@ const TextImage = ({ data }) => {
 											</div>
 										))}
 								</div>
-								<Link href="#">
-									<a className="button button--primary">Reservar</a>
-								</Link>
+								{item.cta && (
+									<Link href="#">
+										<a className="button button--primary">Reservar</a>
+									</Link>
+								)}
 							</div>
 							<div className={cx("img")}>
-								
 								<Image
 									src={item?.imagen?.mediaItemUrl}
 									width={372}

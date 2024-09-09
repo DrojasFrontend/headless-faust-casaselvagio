@@ -20,6 +20,10 @@
 		column-gap: rem(30);
 		margin-bottom: rem(80);
 	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .style {
@@ -54,6 +58,13 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: rem(20);
+
+	p {
+		margin-bottom: rem(12);
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .listitems {
