@@ -1,1 +1,1 @@
-export { default as CardsGridFourCarusel } from "./CardsGridFourCarusel";
+export { default as CardsGridThreeCarusel } from "./CardsGridThreeCarusel";

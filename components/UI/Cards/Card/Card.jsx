@@ -8,56 +8,68 @@ import className from "classnames/bind";
 import styles from "./Card.module.scss";
 let cx = className.bind(styles);
 
-import Slide1 from "/public/images/posts/slide-1.png";
+import ImageNotAvailable from "/public/img/image-not-available.png";
 
-export default function Card() {
+export default function Card({
+	title,
+	excerpt,
+	postExperiencia,
+	featuredImage,
+}) {
 	return (
 		<article className="Card">
 			<div className={cx("component")}>
 				<div className={cx("item")}>
 					<div className={cx("img")}>
-						<Image
-							layout="fill"
-							src={Slide1}
-							width={330}
-							height={205}
-							quality={100}
-							alt=""
-						/>
+						{featuredImage ? (
+							<Image
+								src={featuredImage?.node?.mediaItemUrl}
+								width={372}
+								height={200}
+								quality={100}
+								priority
+								sizes="100vw"
+								alt={featuredImage?.node?.altText}
+								title={featuredImage?.node?.title}
+							/>
+						) : (
+							<Image
+								src={ImageNotAvailable}
+								width={372}
+								height={200}
+								quality={100}
+								priority
+								sizes="100vw"
+								alt="Imagen no disponible"
+								title="no disponible"
+							/>
+						)}
 						<h3 className={cx(["title", "heading--24 color--white"])}>
-							Tour Selvaggio 01
+							{title}
 							<span className="button--circle"></span>
 						</h3>
 					</div>
 					<div className={cx("info")}>
-						<p className="heading--16 color--gray">
-							El Restaurante Selvaggio ofrece una experiencia culinaria que
-							fusiona sabores locales con técnicas gourmet. Nuestro menú cambia
-							con las estaciones para aprovechar los ingredientes más frescos
-							disponibles.
-						</p>
+						<div
+							className="heading--16 color--gray"
+							dangerouslySetInnerHTML={{ __html: excerpt }}
+						/>
 						<h3 className="heading--18 color--primary">
-							Características del Restaurante
+							{postExperiencia?.grupocaracteristicas?.titulo}
 						</h3>
 						<ul className="">
-							<li>
-								<span className={cx("icon")}>
-									<IconCheck />
-								</span>
-								Dato interes 01
-							</li>
-							<li>
-								<span className={cx("icon")}>
-									<IconCheck />
-								</span>
-								Dato interes 01
-							</li>
-							<li>
-								<span className={cx("icon")}>
-									<IconCheck />
-								</span>
-								Dato interes 01
-							</li>
+							{postExperiencia?.grupocaracteristicas?.caracteristica && (
+								<>
+									{postExperiencia?.grupocaracteristicas?.caracteristica?.map((icon, index) => (
+										<li key={index}>
+											<span className={cx("icon")}>
+												<IconCheck />
+											</span>
+											{icon?.detalle}
+										</li>
+									))}
+								</>
+							)}
 						</ul>
 					</div>
 				</div>

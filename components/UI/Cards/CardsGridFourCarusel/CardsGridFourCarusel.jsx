@@ -4,12 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 
 import className from "classnames/bind";
-import styles from "./CardsGridFourCarusel.module.scss";
+import styles from "./CardsGridThreeCarusel.module.scss";
 let cx = className.bind(styles);
 
 import Team1 from "/public/images/team/team-1.png";
 
-const CardsGridFourCarusel = () => {
+const CardsGridThreeCarusel = () => {
 	const [nav1, setNav1] = useState(null);
 	let sliderRef1 = useRef(null);
 
@@ -57,7 +57,7 @@ const CardsGridFourCarusel = () => {
 	};
 
 	return (
-		<section className="CardsGridFourCarusel">
+		<section className="CardsGridThreeCarusel">
 			<div className={cx("component")}>
 				<div className="container">
 					<div className={cx("title")}>
@@ -183,4 +183,4 @@ const CardsGridFourCarusel = () => {
 	);
 };
 
-export default CardsGridFourCarusel;
+export default CardsGridThreeCarusel;

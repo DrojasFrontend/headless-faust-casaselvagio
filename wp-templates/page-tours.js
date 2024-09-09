@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
@@ -7,7 +7,9 @@ import { Footer, Main, NavigationMenu, SEO } from "../components";
 
 import { Header } from "../components/UI/Header";
 import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
-import { TextImage } from "../components/UI/TextImages";
+import { CardsGridThree } from "../components/UI/Cards/CardsGridThree";
+import { CardsMasonry } from "../components/UI/Cards/CardsMasonry";
+import { BannerTextCta } from "../components/UI/Banners/BannerTextCta";
 
 export default function Component(props, pageProps) {
 	const router = useRouter();
@@ -20,8 +22,14 @@ export default function Component(props, pageProps) {
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
-  const grupocarusel = props?.data?.pageBy?.paginaEcoVillas?.grupocarusel ?? [];
-  const grupoTexto = props?.data?.pageBy?.paginaEcoVillas?.grupoTexto ?? [];
+	const grupoCarusel =
+		props?.data?.pageBy?.paginaExperiencias?.grupoCarusel ?? [];
+	const grupoSitios =
+		props?.data?.pageBy?.paginaExperiencias?.grupositios ?? [];
+
+	const postExperiencias = props?.data?.experiencias?.nodes ?? [];
+
+	const grupoCta = props?.data?.pageBy?.paginaExperiencias?.grupoCta ?? [];
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
@@ -40,8 +48,10 @@ export default function Component(props, pageProps) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-        <HeroCarusel data={grupocarusel} />
-        <TextImage data={grupoTexto}/>
+				<HeroCarusel data={grupoCarusel} />
+				<CardsGridThree data={postExperiencias} />
+				<CardsMasonry data={grupoSitios} />
+				<BannerTextCta data={grupoCta} />
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -68,47 +78,83 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-    pageBy(uri: "/eco-villas") {
-      paginaEcoVillas {
-        grupocarusel {
-          slides {
-            titulo
-            descripcion
-            imagen {
-              mediaItemUrl
-              altText
-              title
-            }
-            cta {
-              target
-              title
-              url
-            }
-          }
-        }
-        grupoTexto {
-          items {
-            estilo
-            titulo
-            descripcion
-            imagen {
-              mediaItemUrl
-              altText
-              title
-            }
-            cta {
-              target
-              title
-              url
-            }
-            items {
-              titulo
-            }
-          }
-        }
-      }
-    }
-		
+		pageBy(uri: "/tours") {
+			paginaExperiencias {
+				grupoCarusel {
+					slides {
+						titulo
+						descripcion
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						cta {
+							target
+							title
+							url
+						}
+					}
+				}
+				grupositios {
+					titulo
+					descripcion
+					targetas {
+						titulo
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						items {
+							titulo
+						}
+					}
+					cantidad
+					detalle
+					cta {
+						target
+						title
+						url
+					}
+				}
+				grupoCta {
+					imagen {
+						mediaItemUrl
+						altText
+						title
+					}
+					titulo
+					cta {
+						url
+						title
+						target
+					}
+				}
+			}
+		}
+		experiencias {
+			nodes {
+				title
+				featuredImage {
+					node {
+						altText
+						mediaItemUrl
+						title
+					}
+				}
+				excerpt
+				postExperiencia {
+					grupocaracteristicas {
+						titulo
+						caracteristica {
+							detalle
+						}
+						titulo
+					}
+				}
+			}
+		}
 	}
 `;
 

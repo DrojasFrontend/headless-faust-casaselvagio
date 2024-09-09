@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from 'next/router';
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
@@ -10,7 +11,8 @@ import { CardsGrid } from "../components/UI/Cards/CardsGrid";
 import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
 import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
 
-export default function Component(props) {
+export default function Component(props, pageProps) {
+	const router = useRouter();
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
@@ -37,6 +39,7 @@ export default function Component(props) {
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				router={router}
 			/>
 			<Main
 				menuItems={primaryMenu}

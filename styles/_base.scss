@@ -360,30 +360,33 @@ a {
 			}
 		}
 	}
-}
 
-/* TODO */
-.CardTODO {
-	padding: rem(40) 0 0;
+	&GridThree {
+		.slick {
+			&-dots {
+				position: relative;
+				bottom: 0;
 
-	@media only screen and (min-width: 1024px) {
-		padding: rem(80) 0 0;
-	}
+				button {
+					&:before {
+						font-size: rem(12);
+						opacity: .4;
+						color: var(--color-secondary);
+					}
+				}
+			}
 
-	&__title {
-		display: grid;
-		row-gap: rem(24);
-		padding-bottom: rem(40);
-		text-align: center;
-	}
+			&-active {
+				button {
+					&:before {
+						color: var(--color-secondary) !important;
+					}
+				}
+			}
 
-	&__CTA {
-		display: none;
-		justify-content: center;
-		column-gap: rem(20);
-
-		@media only screen and (min-width: 1024px) {
-			display: flex;
+			&-list {
+				padding-bottom: rem(20);
+			}
 		}
 	}
 }

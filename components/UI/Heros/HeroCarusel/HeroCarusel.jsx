@@ -11,7 +11,6 @@ let cx = className.bind(styles);
 import { Container } from "../../../Layout/Container";
 
 const HeroCarusel = ({ data }) => {
-
 	const { slides } = data;
 
 	if (!slides.length === 0) {
@@ -67,11 +66,22 @@ const HeroCarusel = ({ data }) => {
 													{slide?.titulo}
 												</h2>
 											)}
-											<p className="heading--16 color--white" dangerouslySetInnerHTML={{ __html: slide?.descripcion }} />
+											<p
+												className="heading--16 color--white"
+												dangerouslySetInnerHTML={{ __html: slide?.descripcion }}
+											/>
 											<span className="space space--10"></span>
-											<Link href={slide?.cta?.url} target={slide?.cta?.target}>
-												<a className="button button--white">{slide?.cta?.title}</a>
-											</Link>
+
+											{slide?.cta && (
+												<Link
+													href={slide?.cta?.url}
+													target={slide?.cta?.target}
+												>
+													<a className="button button--white">
+														{slide?.cta?.title}
+													</a>
+												</Link>
+											)}
 										</div>
 									</Container>
 								</div>

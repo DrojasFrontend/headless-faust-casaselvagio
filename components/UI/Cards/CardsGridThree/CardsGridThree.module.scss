@@ -1,0 +1,26 @@
+@import "/styles/mixin";
+
+.component {
+	padding: rem(40) 0 0;
+
+	@media only screen and (min-width: 1024px) {
+		padding: rem(80) 0 0;
+	}
+
+	.title {
+		display: grid;
+		row-gap: rem(24);
+		padding-bottom: rem(40);
+		text-align: center;
+	}
+
+	&__CTA {
+		display: none;
+		justify-content: center;
+		column-gap: rem(20);
+
+		@media only screen and (min-width: 1024px) {
+			display: flex;
+		}
+	}
+}

@@ -12,13 +12,14 @@ export { HeroImage } from "./UI/Heros/HeroImage";
 // export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
 
 //Cards
-// export { Card } from "./UI/Cards/Card";
+export { Card } from "./UI/Cards/Card";
 export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
+export { CardsGrid } from "./UI/Cards/CardsGrid";
+export { CardsGridFour } from "./UI/Cards/CardsGridThree";
 // export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
-export { CardsGrid } from "./UI/Cards/CardsGrid";
 // export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
-// export { CardsMasonry } from "./UI/Cards/CardsMasonry";
+export { CardsMasonry } from "./UI/Cards/CardsMasonry";
 
 /* TextImages */
 export { TextImages } from "./UI/TextImages/TextImage";
