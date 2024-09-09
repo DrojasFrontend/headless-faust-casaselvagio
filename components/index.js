@@ -17,9 +17,9 @@ export { Card } from "./UI/Cards/Card";
 export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
 export { CardsGrid } from "./UI/Cards/CardsGrid";
 export { CardsGridFour } from "./UI/Cards/CardsGridThree";
-// export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
+export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
-// export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
+export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
 export { CardsMasonry } from "./UI/Cards/CardsMasonry";
 
 /* TextImages */

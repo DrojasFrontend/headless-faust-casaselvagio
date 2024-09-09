@@ -12,7 +12,7 @@ import { Container } from "../../../Layout/Container";
 import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 
 const HeroImageText = ({ data }) => {
-	const { title, excerpt, postExperiencia } = data;
+	const { title, excerpt, postExperiencia, titulo, descripcion, cta, imagen } = data;
 	return (
 		<section className="HeroImageText">
 			<div className={cx(["component"])}>
@@ -25,6 +25,15 @@ const HeroImageText = ({ data }) => {
 							priority
 							alt={postExperiencia?.grupobanner?.imagen?.altText}
 							title={postExperiencia?.grupobanner?.imagen?.title}
+						/>
+					) :  imagen?.mediaItemUrl ? (
+						<Image
+							src={imagen?.mediaItemUrl}
+							layout="fill"
+							quality={100}
+							priority
+							alt={imagen?.altText}
+							title={imagen?.title}
 						/>
 					) : (
 						<Image
@@ -40,18 +49,35 @@ const HeroImageText = ({ data }) => {
 					<div className={cx("content")}>
 						<Container>
 							<div className={cx("copy")}>
-								<h1 className={cx(["heading", "heading--68", "color--white"])}>
-									{title}
-								</h1>
+								{title ? (
+									<h1
+										className={cx(["heading", "heading--68", "color--white"])}
+									>
+										{title}
+									</h1>
+								) : (
+									<h1
+										className={cx(["heading", "heading--68", "color--white"])}
+									>
+										{titulo}
+									</h1>
+								)}
 
-								<div
-									className="heading--16 color--white"
-									dangerouslySetInnerHTML={{ __html: excerpt }}
-								/>
+								{excerpt ? (
+									<div
+										className="heading--16 color--white"
+										dangerouslySetInnerHTML={{ __html: excerpt }}
+									/>
+								) : (
+									<div
+										className="heading--16 color--white"
+										dangerouslySetInnerHTML={{ __html: descripcion }}
+									/>
+								)}
 
 								<span className="space space--10"></span>
 
-								{postExperiencia?.grupobanner?.cta && (
+								{postExperiencia?.grupobanner?.cta ? (
 									<Link
 										href={postExperiencia?.grupobanner?.cta?.url}
 										target={postExperiencia?.grupobanner?.cta?.target}
@@ -59,6 +85,10 @@ const HeroImageText = ({ data }) => {
 										<a className="button button--white">
 											{postExperiencia?.grupobanner?.cta?.title}
 										</a>
+									</Link>
+								) : (
+									<Link href={cta?.url} target={cta?.target}>
+										<a className="button button--white">{cta?.title}</a>
 									</Link>
 								)}
 							</div>

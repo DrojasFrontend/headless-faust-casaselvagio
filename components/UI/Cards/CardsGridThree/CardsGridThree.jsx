@@ -9,7 +9,6 @@ let cx = className.bind(styles);
 import Card from "../Card/Card";
 
 const CardsGridThree = ({ data }) => {
-	console.log(data)
 	var settings = {
 		dots: true,
 		arrows: false,

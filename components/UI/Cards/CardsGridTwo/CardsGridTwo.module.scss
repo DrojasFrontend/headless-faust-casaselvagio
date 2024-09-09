@@ -34,6 +34,11 @@
 	position: relative;
 	border-radius: rem(20) rem(6);
 	overflow: hidden;
+	height: rem(400);
+
+	@media only screen and (min-width: 1024px) {
+		height: rem(440);
+	}
 
 	&:before {
 		content: "";

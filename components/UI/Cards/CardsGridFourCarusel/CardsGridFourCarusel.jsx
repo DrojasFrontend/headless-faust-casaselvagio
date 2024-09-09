@@ -4,12 +4,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 
 import className from "classnames/bind";
-import styles from "./CardsGridThreeCarusel.module.scss";
+import styles from "./CardsGridFourCarusel.module.scss";
 let cx = className.bind(styles);
 
-import Team1 from "/public/images/team/team-1.png";
+import { Container } from "../../../Layout/Container";
 
-const CardsGridThreeCarusel = () => {
+import ImageNotAvailable from "/public/img/image-not-available.png";
+
+const CardsGridThreeCarusel = ({ data }) => {
+	const { titulo, descripcion, items } = data;
 	const [nav1, setNav1] = useState(null);
 	let sliderRef1 = useRef(null);
 
@@ -56,20 +59,23 @@ const CardsGridThreeCarusel = () => {
 		sliderRef1.slickPrev();
 	};
 
+	if (!items?.length === 0) {
+		return <p>No hay Equipo disponibles.</p>;
+	}
+
 	return (
 		<section className="CardsGridThreeCarusel">
 			<div className={cx("component")}>
-				<div className="container">
+				<Container>
 					<div className={cx("title")}>
 						<div>
-							<h2 className="heading--44 color--primary">
-								Equipo casa selvaggio
-							</h2>
-							<p className="heading--16 color--gray">
-								En Casa Selvaggio, creemos que la gastronomía es una parte
-								esencial de la experiencia de lujo. Nuestro compromiso con la
-								sostenibilidad se refleja en cada plato que servimos,
-							</p>
+							{titulo && (
+								<h2 className="heading--44 color--primary">{titulo}</h2>
+							)}
+							<div
+								className="heading--16 color--gray"
+								dangerouslySetInnerHTML={{ __html: descripcion }}
+							/>
 						</div>
 						<div className={cx(["arrow", "desktop"])}>
 							<button
@@ -82,89 +88,50 @@ const CardsGridThreeCarusel = () => {
 							></button>
 						</div>
 					</div>
-				</div>
+				</Container>
 				<div className="container--slick">
 					<Slider ref={(slider) => (sliderRef1 = slider)} {...settings}>
-						<div>
-							<div className={cx("card")}>
-								<Image
-									src={Team1}
-									quality={100}
-									fill
-									alt=""
-									sizes="100vw"
-									style={{
-										objectFit: "cover",
-									}}
-								/>
+						{items?.map((item, index) => (
+							<div key={index}>
+								<div className={cx("card")}>
+									{item?.imagen?.mediaItemUrl ? (
+										<Image
+											src={item?.imagen?.mediaItemUrl}
+											layout="fill"
+											quality={100}
+											priority
+											sizes="100vw"
+											objectFit="cover"
+											objectPosition="top"
+											alt={item?.imagen?.altText}
+											title={item?.imagen?.title}
+										/>
+									) : (
+										<Image
+											src={ImageNotAvailable}
+											width={372}
+											height={400}
+											quality={100}
+											priority
+											sizes="100vw"
+											objectFit="cover"
+											alt="Imagen no disponible"
+											title="no disponible"
+										/>
+									)}
+								</div>
+								<div className={cx("name")}>
+									{item?.nombre && (
+										<h3 className={cx(["heading--24 color--primary"])}>
+											{item?.nombre}
+										</h3>
+									)}
+									{item?.rol && (
+										<p className="heading--16 color--gray">{item?.rol}</p>
+									)}
+								</div>
 							</div>
-							<div className={cx("name")}>
-								<h3 className={cx(["heading--24 color--primary"])}>
-									Servicio 01
-								</h3>
-								<p className="heading--16 color--gray">Design, Australia</p>
-							</div>
-						</div>
-						<div>
-							<div className={cx("card")}>
-								<Image
-									src={Team1}
-									quality={100}
-									fill
-									alt=""
-									sizes="100vw"
-									style={{
-										objectFit: "cover",
-									}}
-								/>
-							</div>
-							<div className={cx("name")}>
-								<h3 className={cx(["heading--24 color--primary"])}>
-									Servicio 02
-								</h3>
-								<p className="heading--16 color--gray">Design, Australia</p>
-							</div>
-						</div>
-						<div>
-							<div className={cx("card")}>
-								<Image
-									src={Team1}
-									quality={100}
-									fill
-									alt=""
-									sizes="100vw"
-									style={{
-										objectFit: "cover",
-									}}
-								/>
-							</div>
-							<div className={cx("name")}>
-								<h3 className={cx(["heading--24 color--primary"])}>
-									Servicio 03
-								</h3>
-								<p className="heading--16 color--gray">Design, Australia</p>
-							</div>
-						</div>
-						<div>
-							<div className={cx("card")}>
-								<Image
-									src={Team1}
-									quality={100}
-									fill
-									alt=""
-									sizes="100vw"
-									style={{
-										objectFit: "cover",
-									}}
-								/>
-							</div>
-							<div className={cx("name")}>
-								<h3 className={cx(["heading--24 color--primary"])}>
-									Servicio 04
-								</h3>
-								<p className="heading--16 color--gray">Design, Australia</p>
-							</div>
-						</div>
+						))}
 					</Slider>
 
 					<div className={cx(["arrow", "mobile"])}>
