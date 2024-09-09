@@ -6,6 +6,7 @@ import ecoVillas from './page-eco-villas';
 import gastronomia from './page-gastronomia';
 import tours from './page-tours';
 import single from './single';
+import { experiencia } from "./singles";
 
 export default {
   category,
@@ -16,4 +17,5 @@ export default {
   'page-tours': tours,
   page,
   single,
+  "single-experiencia": experiencia
 };

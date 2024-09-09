@@ -136,6 +136,8 @@ Component.query = gql`
 		experiencias {
 			nodes {
 				title
+				excerpt
+				link
 				featuredImage {
 					node {
 						altText
@@ -143,7 +145,6 @@ Component.query = gql`
 						title
 					}
 				}
-				excerpt
 				postExperiencia {
 					grupocaracteristicas {
 						titulo

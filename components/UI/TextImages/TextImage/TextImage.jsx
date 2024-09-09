@@ -12,7 +12,7 @@ import { Container } from "../../../Layout/Container";
 const TextImage = ({ data }) => {
 	const { items } = data;
 
-	if (!items.length === 0) {
+	if (!items?.length === 0) {
 		return <p>No hay slides disponibles.</p>;
 	}
 
@@ -20,24 +20,24 @@ const TextImage = ({ data }) => {
 		<section className="">
 			<div className={cx("component")}>
 				<Container>
-					{items.map((item, index) => (
-						<div key={index} className={cx(["grid", item.estilo])}>
+					{items?.map((item, index) => (
+						<div key={index} className={cx(["grid", item?.estilo])}>
 							<div className={cx("content")}>
-								<h2 className="heading--44 color--primary">{item.titulo}</h2>
+								<h2 className="heading--44 color--primary">{item?.titulo}</h2>
 								<div
 									className="heading--16 color--gray"
-									dangerouslySetInnerHTML={{ __html: item.descripcion }}
+									dangerouslySetInnerHTML={{ __html: item?.descripcion }}
 								/>
 								<div className={cx("listitems")}>
-									{item.items &&
-										item.items.length > 0 &&
-										item.items.map((item, index) => (
+									{item?.items &&
+										item?.items?.length > 0 &&
+										item?.items?.map((item, index) => (
 											<div key={index}>
 												<ListItem data={item} />
 											</div>
 										))}
 								</div>
-								{item.cta && (
+								{item?.cta && (
 									<Link href="#">
 										<a className="button button--primary">Reservar</a>
 									</Link>

@@ -44,6 +44,7 @@ const CardsGridThree = ({ data }) => {
 	if (!data.length === 0) {
 		return null;
 	}
+
 	return (
 		<section className="CardsGridThree">
 			<div className={cx("component")}>
@@ -69,11 +70,12 @@ const CardsGridThree = ({ data }) => {
 							{data.map((targeta, index) => (
 								<Card
 									key={index}
-									title={targeta.title}
-									excerpt={targeta.excerpt}
-									postExperiencia={targeta.postExperiencia}
-									featuredImage={targeta.featuredImage}
-									info={targeta.postExperiencia}
+									title={targeta?.title}
+									excerpt={targeta?.excerpt}
+									postExperiencia={targeta?.postExperiencia}
+									featuredImage={targeta?.featuredImage}
+									info={targeta?.postExperiencia}
+									slug={targeta?.link}
 								/>
 							))}
 						</Slider>

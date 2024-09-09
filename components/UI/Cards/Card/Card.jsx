@@ -13,6 +13,7 @@ import ImageNotAvailable from "/public/img/image-not-available.png";
 export default function Card({
 	title,
 	excerpt,
+	slug,
 	postExperiencia,
 	featuredImage,
 }) {
@@ -45,32 +46,42 @@ export default function Card({
 							/>
 						)}
 						<h3 className={cx(["title", "heading--24 color--white"])}>
-							{title}
-							<span className="button--circle"></span>
+							<Link href={slug}>
+								<a>
+									{title}
+									<span className="button--circle"></span>
+								</a>
+							</Link>
 						</h3>
 					</div>
 					<div className={cx("info")}>
-						<div
-							className="heading--16 color--gray"
-							dangerouslySetInnerHTML={{ __html: excerpt }}
-						/>
-						<h3 className="heading--18 color--primary">
-							{postExperiencia?.grupocaracteristicas?.titulo}
-						</h3>
-						<ul className="">
-							{postExperiencia?.grupocaracteristicas?.caracteristica && (
-								<>
-									{postExperiencia?.grupocaracteristicas?.caracteristica?.map((icon, index) => (
-										<li key={index}>
-											<span className={cx("icon")}>
-												<IconCheck />
-											</span>
-											{icon?.detalle}
-										</li>
-									))}
-								</>
-							)}
-						</ul>
+						<Link href={slug}>
+							<a>
+								<div
+									className="heading--16 color--gray"
+									dangerouslySetInnerHTML={{ __html: excerpt }}
+								/>
+								<h3 className="heading--18 color--primary">
+									{postExperiencia?.grupocaracteristicas?.titulo}
+								</h3>
+								<ul className="">
+									{postExperiencia?.grupocaracteristicas?.caracteristica && (
+										<>
+											{postExperiencia?.grupocaracteristicas?.caracteristica?.map(
+												(icon, index) => (
+													<li key={index}>
+														<span className={cx("icon")}>
+															<IconCheck />
+														</span>
+														{icon?.detalle}
+													</li>
+												)
+											)}
+										</>
+									)}
+								</ul>
+							</a>
+						</Link>
 					</div>
 				</div>
 			</div>

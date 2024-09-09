@@ -9,6 +9,7 @@ export { BannerTextCta } from "./UI/Banners/BannerTextCta";
 //Heros
 export { HeroCarusel } from "./UI/Heros/HeroCarusel";
 export { HeroImage } from "./UI/Heros/HeroImage";
+export { HeroImageTextCTA } from "./UI/Heros/HeroImageTextCTA";
 // export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
 
 //Cards

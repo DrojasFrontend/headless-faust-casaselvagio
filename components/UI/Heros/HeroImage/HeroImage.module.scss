@@ -1,8 +1,8 @@
-@import "../../../../styles/mixin";
+@import "/styles/mixin";
 
 .bckg {
   position: relative;
-  height: 100vh;
+  height: rem(600);
   border-radius: 0 0 rem(12) rem(44);
   overflow: hidden;
 
