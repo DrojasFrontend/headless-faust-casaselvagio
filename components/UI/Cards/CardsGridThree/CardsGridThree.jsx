@@ -9,6 +9,7 @@ let cx = className.bind(styles);
 import Card from "../Card/Card";
 
 const CardsGridThree = ({ data }) => {
+	console.log(data)
 	var settings = {
 		dots: true,
 		arrows: false,
@@ -75,7 +76,7 @@ const CardsGridThree = ({ data }) => {
 									postExperiencia={targeta?.postExperiencia}
 									featuredImage={targeta?.featuredImage}
 									info={targeta?.postExperiencia}
-									slug={targeta?.link}
+									slug={targeta?.uri}
 								/>
 							))}
 						</Slider>

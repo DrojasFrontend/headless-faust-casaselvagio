@@ -137,7 +137,7 @@ Component.query = gql`
 			nodes {
 				title
 				excerpt
-				link
+				uri
 				featuredImage {
 					node {
 						altText

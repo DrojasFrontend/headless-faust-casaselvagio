@@ -41,7 +41,7 @@ export default function Component(props, pageProps) {
 
   return (
     <>
-    
+
       <SEO title={siteTitle} description={siteDescription} />
       <Header
         title={siteTitle}
@@ -133,7 +133,7 @@ Component.query = gql`
       nodes {
         title
         excerpt
-        link
+        uri
         featuredImage {
           node {
             altText
