@@ -3,13 +3,14 @@ import { useRouter } from 'next/router';
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
-import { Footer, Main, NavigationMenu, SEO } from "../components";
+import { Main, NavigationMenu, SEO } from "../components";
 
 import { Header } from "../components/UI/Header";
 import { HeroImage } from "../components/UI/Heros/HeroImage";
 import { CardsGrid } from "../components/UI/Cards/CardsGrid";
 import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
 import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
+import { Footer } from "../components/UI/Footer";
 
 export default function Component(props, pageProps) {
 	const router = useRouter();

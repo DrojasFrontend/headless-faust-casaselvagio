@@ -1,13 +1,13 @@
-@import "../../../../styles/mixin";
+@import "/styles/mixin";
 
 .bckg {
   position: relative;
-  height: 100vh;
+  height: rem(500);
   border-radius: 0 0 rem(12) rem(44);
   overflow: hidden;
 
   @media only screen and (min-width: 1024px) {
-    height: rem(400);
+    height: rem(490);
     border-radius: 0 0 rem(10) rem(54);
   }
 
@@ -44,6 +44,6 @@
   z-index: 1;
   
   @media only screen and (min-width: 1024px){
-    max-width: rem(540);
+    max-width: rem(1000);
   }
 }

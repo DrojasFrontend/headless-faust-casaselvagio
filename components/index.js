@@ -10,7 +10,7 @@ export { BannerTextCta } from "./UI/Banners/BannerTextCta";
 export { HeroCarusel } from "./UI/Heros/HeroCarusel";
 export { HeroImage } from "./UI/Heros/HeroImage";
 export { HeroImageTextCTA } from "./UI/Heros/HeroImageTextCTA";
-// export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
+export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
 
 //Cards
 export { Card } from "./UI/Cards/Card";
@@ -37,7 +37,7 @@ export { Carusel } from "./UI/Caruseles/Carusel";
 export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";
 export { FeaturedImage } from "./FeaturedImage";
-export { Footer } from "./Footer";
+export { Footer } from "./UI/Footer";
 export { FormatDate } from "./FormatDate";
 
 export { Heading } from "./Heading";

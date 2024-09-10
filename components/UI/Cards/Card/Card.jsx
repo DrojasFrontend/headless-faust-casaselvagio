@@ -25,8 +25,7 @@ export default function Card({
 						{featuredImage ? (
 							<Image
 								src={featuredImage?.node?.mediaItemUrl}
-								width={372}
-								height={200}
+								layout="fill"
 								quality={100}
 								priority
 								sizes="100vw"

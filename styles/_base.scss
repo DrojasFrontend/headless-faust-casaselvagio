@@ -370,7 +370,7 @@ a {
 				button {
 					&:before {
 						font-size: rem(12);
-						opacity: .4;
+						opacity: 0.4;
 						color: var(--color-secondary);
 					}
 				}
@@ -440,6 +440,23 @@ a {
 			&-track {
 				padding-bottom: 0;
 			}
+		}
+	}
+}
+
+.sectionDetailPost {
+	padding: rem(40) 0;
+	@media only screen and (min-width: 1024px) {
+		padding: rem(80) 0;
+	}
+
+	&__grid {
+		display: grid;
+		
+		@media only screen and (min-width: 1024px) {
+			grid-template-columns: 2fr 1fr;
+			column-gap: rem(50);
+
 		}
 	}
 }

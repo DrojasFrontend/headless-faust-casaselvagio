@@ -1,5 +1,5 @@
 import className from 'classnames/bind';
-import { Heading, PostInfo, FeaturedImage } from '../../components';
+import { Heading, PostInfo, FeaturedImage, HeroImageMedium } from '../../components';
 import styles from './EntryHeader.module.scss';
 
 let cx = className.bind(styles);
@@ -9,15 +9,16 @@ export default function EntryHeader({ title, image, date, author, className }) {
 
   return (
     <div className={cx(['component', className])}>
-      {image && (
+      {/* {image && (
         <FeaturedImage
           image={image}
           className={cx('image')}
           priority
         />
-      )}
+      )} */}
+      
 
-      {hasText && (
+      {/* {hasText && (
         <div className={cx('text', { 'has-image': image })}>
             {!!title && <Heading className={cx('title')}>{title}</Heading>}
             <PostInfo
@@ -26,7 +27,8 @@ export default function EntryHeader({ title, image, date, author, className }) {
               date={date}
             />
         </div>
-      )}
+      )} */}
+      <HeroImageMedium title={title}/>
     </div>
   );
 }

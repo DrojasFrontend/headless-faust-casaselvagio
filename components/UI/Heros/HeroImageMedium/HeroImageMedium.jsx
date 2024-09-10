@@ -4,7 +4,7 @@ import className from "classnames/bind";
 import styles from "./HeroImageMedium.module.scss";
 let cx = className.bind(styles);
 
-import Hero from "/public/images/bckg/hero.jpg";
+import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 
 const HeroImageMedium = ({ title }) => {
 	return (
@@ -12,7 +12,7 @@ const HeroImageMedium = ({ title }) => {
 			<div className={cx(["bckg"])}>
 				<Image
 					layout="fill"
-					src={Hero}
+					src={ImageNotAvailable}
 					width={1920}
 					height={1253}
 					quality={100}
