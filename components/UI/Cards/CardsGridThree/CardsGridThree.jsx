@@ -50,7 +50,7 @@ const CardsGridThree = ({ data }) => {
 			<div className={cx("component")}>
 				<div className="container--slick">
 					<div className={cx("title")}>
-						<h2 className="heading--44 color--primary">
+						<h2 className="heading--40 color--primary">
 							Experiencias más populares
 						</h2>
 						{/* <div className="CardsGridThree__CTA">

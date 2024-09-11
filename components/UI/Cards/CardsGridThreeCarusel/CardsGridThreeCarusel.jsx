@@ -70,7 +70,7 @@ const CardsGridThreeCarusel = ({ data }) => {
 			<div className={cx(["component"])}>
 				<Container>
 					<div className={cx(["grid"])}>
-						<h2 className={cx(["heading", "heading--44 color--primary"])}>
+						<h2 className={cx(["heading", "heading--40 color--primary"])}>
 							{titulo}
 						</h2>
 						<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />

@@ -70,7 +70,7 @@ const CardsGridThreeCarusel = ({ data }) => {
 					<div className={cx("title")}>
 						<div>
 							{titulo && (
-								<h2 className="heading--44 color--primary">{titulo}</h2>
+								<h2 className="heading--40 color--primary">{titulo}</h2>
 							)}
 							<div
 								className="heading--16 color--gray"

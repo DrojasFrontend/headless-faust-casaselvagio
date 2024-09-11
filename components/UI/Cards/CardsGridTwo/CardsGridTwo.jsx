@@ -19,7 +19,7 @@ const CardsGridTwo = ({ data }) => {
 			<div className={cx("component")}>
 				<Container>
 					<div className={cx(["title", "desktop"])}>
-						{titulo && <h2 className="heading--44 color--primary">{titulo}</h2>}
+						{titulo && <h2 className="heading--40 color--primary">{titulo}</h2>}
 						<div
 							className="heading--16 color--gray"
 							dangerouslySetInnerHTML={{ __html: descripcion }}

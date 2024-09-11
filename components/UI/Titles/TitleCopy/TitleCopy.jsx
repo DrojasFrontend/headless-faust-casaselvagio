@@ -14,7 +14,7 @@ const TitleCopy = ({ data }) => {
 			<div className={cx("component")}>
 				<Container>
 					<div className={cx("grid")}>
-						<h1 className="heading--68 color--primary">{titulo}</h1>
+						<h1 className="heading--54 color--primary">{titulo}</h1>
 						<div
 							className="heading--16"
 							dangerouslySetInnerHTML={{ __html: descripcion }}

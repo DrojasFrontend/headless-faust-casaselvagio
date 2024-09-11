@@ -51,13 +51,13 @@ const HeroImageText = ({ data }) => {
 							<div className={cx("copy")}>
 								{title ? (
 									<h1
-										className={cx(["heading", "heading--68", "color--white"])}
+										className={cx(["heading", "heading--54", "color--white"])}
 									>
 										{title}
 									</h1>
 								) : (
 									<h1
-										className={cx(["heading", "heading--68", "color--white"])}
+										className={cx(["heading", "heading--54", "color--white"])}
 									>
 										{titulo}
 									</h1>

@@ -49,7 +49,7 @@ const HeroCarusel = ({ data }) => {
 												<h1
 													className={cx([
 														"heading",
-														"heading--68",
+														"heading--54",
 														"color--white",
 													])}
 												>
@@ -59,7 +59,7 @@ const HeroCarusel = ({ data }) => {
 												<h2
 													className={cx([
 														"heading",
-														"heading--68",
+														"heading--54",
 														"color--white",
 													])}
 												>

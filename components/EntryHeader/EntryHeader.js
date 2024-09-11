@@ -9,16 +9,16 @@ export default function EntryHeader({ title, image, date, author, className }) {
 
   return (
     <div className={cx(['component', className])}>
-      {/* {image && (
+      {image && (
         <FeaturedImage
           image={image}
           className={cx('image')}
           priority
         />
-      )} */}
+      )}
       
 
-      {/* {hasText && (
+      {hasText && (
         <div className={cx('text', { 'has-image': image })}>
             {!!title && <Heading className={cx('title')}>{title}</Heading>}
             <PostInfo
@@ -27,8 +27,8 @@ export default function EntryHeader({ title, image, date, author, className }) {
               date={date}
             />
         </div>
-      )} */}
-      <HeroImageMedium title={title}/>
+      )}
+      {/* <HeroImageMedium title={title}/> */}
     </div>
   );
 }

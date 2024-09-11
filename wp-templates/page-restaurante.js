@@ -80,7 +80,7 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-		pageBy(uri: "/gastronomia") {
+		pageBy(uri: "/restaurante") {
 			paginaGatronomia {
 				grupoGaleria {
 					titulo

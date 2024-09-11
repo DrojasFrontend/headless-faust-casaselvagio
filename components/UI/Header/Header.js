@@ -19,7 +19,7 @@ export default function Header({
 	router,
 }) {
 	// Cambiamos logo por pagina
-	const isGastronomia = router?.asPath === "/gastronomia";
+	const isGastronomia = router?.asPath === "/restaurante";
 	const logoSrc = isGastronomia ? LogoGreen : LogoDefault;
 	return (
 		<header className={cx(["component"])}>

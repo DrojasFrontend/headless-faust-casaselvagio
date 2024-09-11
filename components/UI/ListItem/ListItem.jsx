@@ -13,7 +13,7 @@ const ListItem = ({data}) => {
       <span className={cx("icon")}>
         <IconCheck />
       </span>
-      <p className="heading--20 color--primary">{titulo}</p>
+      <p className="heading--16 color--primary">{titulo}</p>
     </li>
   );
 };

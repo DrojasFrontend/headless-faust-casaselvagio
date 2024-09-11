@@ -62,17 +62,18 @@
 		line-height: 110%;
 	}
 
-	&--44 {
+	&--40 {
 		font-size: rem(24);
 		@media only screen and (min-width: 1024px) {
-			font-size: rem(44);
+			font-size: rem(40);
 		}
 	}
 
-	&--68 {
+	&--54 {
 		font-size: rem(32);
 		@media only screen and (min-width: 1024px) {
-			font-size: rem(68);
+			font-size: rem(54);
+			line-height: rem(60);
 		}
 	}
 }

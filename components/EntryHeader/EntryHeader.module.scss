@@ -1,1 +1,14 @@
 @import 'styles/breakpoints';
+
+.component {
+  height: 500px;
+  overflow: hidden;
+
+}
+
+.image {
+  position: relative;
+  display: flex;
+  height: 500px;
+  overflow: hidden;
+}

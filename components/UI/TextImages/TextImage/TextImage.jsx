@@ -23,7 +23,7 @@ const TextImage = ({ data }) => {
 					{items?.map((item, index) => (
 						<div key={index} className={cx(["grid", item?.estilo])}>
 							<div className={cx("content")}>
-								<h2 className="heading--44 color--primary">{item?.titulo}</h2>
+								<h2 className="heading--40 color--primary">{item?.titulo}</h2>
 								<div
 									className="heading--16 color--gray"
 									dangerouslySetInnerHTML={{ __html: item?.descripcion }}

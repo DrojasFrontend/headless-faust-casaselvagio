@@ -25,7 +25,7 @@ const BannerTextCta = ({ data }) => {
 							title={imagen?.title}
 						/>
 						<div className={cx("copy")}>
-							<h2 className="heading--44 color--white">{titulo}</h2>
+							<h2 className="heading--40 color--white">{titulo}</h2>
 
 							{cta && (
 								<Link href={cta.url}>

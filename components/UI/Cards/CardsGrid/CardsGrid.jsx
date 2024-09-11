@@ -53,7 +53,7 @@ const CardGrid = ({ data, className }) => {
 			<div className={cx("component")}>
 				<Container>
 					<div className={cx(["grid", className])}>
-						<h2 className={cx(["heading", "heading--44", "color--primary"])}>
+						<h2 className={cx(["heading", "heading--40", "color--primary"])}>
 							{titulo}
 						</h2>
 						<p

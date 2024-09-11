@@ -18,7 +18,7 @@ const HeroImageMedium = ({ title }) => {
 					quality={100}
 					alt=""
 				/>
-				<h1 className={cx(["heading", "heading--68", "color--white"])}>
+				<h1 className={cx(["heading", "heading--54", "color--white"])}>
 					{title}
 				</h1>
 			</div>

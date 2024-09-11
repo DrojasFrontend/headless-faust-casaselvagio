@@ -18,7 +18,7 @@ const HeroImage = ({data}) => {
 					alt={imagen.altText}
 					title={imagen.title}
 				/>
-				<h1 className={cx(["heading", "heading--68", "color--white"])}>
+				<h1 className={cx(["heading", "heading--54", "color--white"])}>
 					{titulo}
 				</h1>
 			</div>

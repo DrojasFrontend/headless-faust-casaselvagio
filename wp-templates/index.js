@@ -3,7 +3,7 @@ import tag from './tag';
 import frontPage from './front-page';
 import page from './page';
 import ecoVillas from './page-eco-villas';
-import gastronomia from './page-gastronomia';
+import restaurante from './page-restaurante';
 import diarioSelvaggio from './page-diario-selvaggio';
 import tours from './page-tours';
 import single from './single';
@@ -14,7 +14,7 @@ export default {
   tag,
   'front-page': frontPage,
   'page-eco-villas': ecoVillas,
-  'page-gastronomia': gastronomia,
+  'page-restaurante': restaurante,
   'page-diario-selvaggio': diarioSelvaggio,
   'page-tours': tours,
   page,
