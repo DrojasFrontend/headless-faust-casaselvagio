@@ -3,11 +3,10 @@ import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
-import { Footer, Main, NavigationMenu, SEO } from "../components";
+import { Accordion, Footer, Main, NavigationMenu, SEO } from "../components";
 
 import { Header } from "../components/UI/Header";
-import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
-import { Gallery } from "../components/UI/Galleries/Gallery";
+import { HeroImageMedium } from "../components/UI/Heros/HeroImageMedium";
 
 export default function Component(props, pageProps) {
 	const router = useRouter();
@@ -20,12 +19,11 @@ export default function Component(props, pageProps) {
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
-	const grupoCarusel = props?.data?.pageBy?.paginaGaleria?.grupoCarusel ?? [];
-	const grupoGaleria = props?.data?.pageBy?.paginaGaleria?.grupogaleria ?? [];
-	const mostrarCarusel =
-		props?.data?.pageBy?.paginaGaleria?.mostrarcarusel ?? "";
-	const mostrarGaleria =
-		props?.data?.pageBy?.paginaGaleria?.mostrarGaleria ?? "";
+	const grupoHero = props?.data?.pageBy?.paginaFaqs?.grupoHero ?? [];
+	const mostrarHero = props?.data?.pageBy?.paginaFaqs?.mostrarHero ?? "";
+	const grupoPreguntas = props?.data?.pageBy?.paginaFaqs?.grupoPreguntas ?? [];
+	const mostrarPreguntas =
+		props?.data?.pageBy?.paginaFaqs?.mostrarPreguntas ?? "";
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
@@ -44,8 +42,8 @@ export default function Component(props, pageProps) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
-				{mostrarGaleria && <Gallery data={grupoGaleria} />}
+				{mostrarHero && <HeroImageMedium data={grupoHero} />}
+				{mostrarPreguntas && <Accordion data={grupoPreguntas} />}
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -72,34 +70,27 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-		pageBy(uri: "/galeria") {
-			paginaGaleria {
-				mostrarcarusel
-				mostrarGaleria
-				grupoCarusel {
-					slides {
-						titulo
-						descripcion
-						cta {
-							target
-							title
-							url
-						}
-						imagen {
-							mediaItemUrl
-							altText
-							title
-						}
+		pageBy(uri: "/faqs") {
+			paginaFaqs {
+				mostrarHero
+				mostrarPreguntas
+				grupoHero {
+					titulo
+					imagen {
+						mediaItemUrl
+						altText
+						title
 					}
 				}
-				grupogaleria {
-					Imagenes {
-						columnas
-						imagen {
-							mediaItemUrl
-							altText
-							title
-						}
+				grupoPreguntas {
+					imagen {
+						mediaItemUrl
+						altText
+						title
+					}
+					items {
+						pregunta
+						respuesta
 					}
 				}
 			}

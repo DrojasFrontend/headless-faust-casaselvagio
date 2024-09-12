@@ -52,8 +52,8 @@ const Carusel = ({ data }) => {
 					<div key={index} className={cx(["img"])}>
 						<Image
 							src={img?.mediaItemUrl}
-							width={372}
-							height={540}
+							width={420}
+							height={609}
 							quality={100}
 							priority
 							sizes="100vw"

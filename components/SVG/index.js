@@ -1,4 +1,5 @@
 import { IconCheck } from "./IconCheck";
+import { IconChevronUp } from "./IconChevronUp";
 import { IconChevronDown } from "./IconChevronDown";
 import { IconLocation } from "./IconLocation";
 import { IconEnvelope } from "./IconEnvelope";

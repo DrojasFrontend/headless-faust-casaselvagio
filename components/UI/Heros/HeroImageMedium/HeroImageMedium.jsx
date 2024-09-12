@@ -4,22 +4,21 @@ import className from "classnames/bind";
 import styles from "./HeroImageMedium.module.scss";
 let cx = className.bind(styles);
 
-import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
-
-const HeroImageMedium = ({ title }) => {
+const HeroImageMedium = ({ data }) => {
+	const { titulo, imagen } = data;
 	return (
 		<section className={cx(["component"])}>
 			<div className={cx(["bckg"])}>
-				<Image
+			<Image
+					src={imagen.mediaItemUrl}
 					layout="fill"
-					src={ImageNotAvailable}
-					width={1920}
-					height={1253}
 					quality={100}
-					alt=""
+					priority={true}
+					alt={imagen.altText}
+					title={imagen.title}
 				/>
 				<h1 className={cx(["heading", "heading--54", "color--white"])}>
-					{title}
+					{titulo}
 				</h1>
 			</div>
 		</section>

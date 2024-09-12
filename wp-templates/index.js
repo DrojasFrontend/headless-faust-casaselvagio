@@ -7,6 +7,7 @@ import restaurante from './page-restaurante';
 import diarioSelvaggio from './page-diario-selvaggio';
 import galeria from './page-galeria';
 import tours from './page-tours';
+import faqs from './page-faqs';
 import single from './single';
 import { experiencia } from "./singles";
 
@@ -19,6 +20,7 @@ export default {
   'page-diario-selvaggio': diarioSelvaggio,
   'page-tours': tours,
   'page-galeria': galeria,
+  'page-faqs': faqs,
   page,
   single,
   "single-experiencia": experiencia

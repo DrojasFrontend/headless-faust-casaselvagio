@@ -24,13 +24,16 @@ const CardsBigSmall = ({ data }) => {
 							<h2 className={cx(["heading--40", "color--primary"])}>
 								{titulo}
 							</h2>
-							<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
+							<p
+								className="heading--16 color--gray"
+								dangerouslySetInnerHTML={{ __html: descripcion }}
+							/>
 						</div>
 						<div className={cx("grid")}>
 							{targetas.map((targeta, index) => (
 								<div key={index} className={cx("card")}>
 									<Image
-									layout="fill"
+										layout="fill"
 										src={targeta?.imagen?.mediaItemUrl}
 										quality={100}
 										priority={true}
@@ -47,7 +50,9 @@ const CardsBigSmall = ({ data }) => {
 											{targeta?.titulo}
 										</h3>
 										<Link href={targeta?.cta?.url}>
-											<a className="button button--white">{targeta?.cta?.title}</a>
+											<a className="button button--white">
+												{targeta?.cta?.title}
+											</a>
 										</Link>
 									</div>
 								</div>

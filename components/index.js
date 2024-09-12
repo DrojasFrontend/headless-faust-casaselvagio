@@ -3,6 +3,9 @@ export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
 export { Container } from "./Layout/Container";
 
+// Accordion
+export { Accordion } from "./UI/Accordion";
+
 //BannerTextCta
 export { BannerTextCta } from "./UI/Banners/BannerTextCta";
 
