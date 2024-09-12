@@ -1,0 +1,117 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useQuery, gql } from "@apollo/client";
+import * as MENUS from "../constants/menus";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { Footer, Main, NavigationMenu, SEO } from "../components";
+
+import { Header } from "../components/UI/Header";
+import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
+import { Gallery } from "../components/UI/Galleries/Gallery";
+
+export default function Component(props, pageProps) {
+	const router = useRouter();
+	const { data } = useQuery(Component.query, {
+		variables: Component.variables(),
+	});
+
+	const { title: siteTitle, description: siteDescription } =
+		data?.generalSettings;
+	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+	const footerMenu = data?.footerMenuItems?.nodes ?? [];
+
+	const grupoCarusel = props?.data?.pageBy?.paginaGaleria?.grupoCarusel ?? [];
+	const grupoGaleria = props?.data?.pageBy?.paginaGaleria?.grupogaleria ?? [];
+	const mostrarCarusel =
+		props?.data?.pageBy?.paginaGaleria?.mostrarcarusel ?? "";
+	const mostrarGaleria =
+		props?.data?.pageBy?.paginaGaleria?.mostrarGaleria ?? "";
+
+	console.log(grupoGaleria);
+
+	const [isNavShown, setIsNavShown] = useState(false);
+
+	return (
+		<>
+			<SEO title={siteTitle} description={siteDescription} />
+			<Header
+				title={siteTitle}
+				description={siteDescription}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+				router={router}
+			/>
+			<Main
+				menuItems={primaryMenu}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+			>
+				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
+				<Gallery data={grupoGaleria}/>
+			</Main>
+			<Footer title={siteTitle} menuItems={footerMenu} />
+		</>
+	);
+}
+
+Component.query = gql`
+	${BlogInfoFragment}
+	${NavigationMenu.fragments.entry}
+	query GetPageData(
+		$headerLocation: MenuLocationEnum
+		$footerLocation: MenuLocationEnum
+	) {
+		generalSettings {
+			...BlogInfoFragment
+		}
+		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItems: menuItems(where: { location: $footerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		pageBy(uri: "/galeria") {
+			paginaGaleria {
+				mostrarcarusel
+				mostrarGaleria
+				grupoCarusel {
+					slides {
+						titulo
+						descripcion
+						cta {
+							target
+							title
+							url
+						}
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
+				grupogaleria {
+					Imagenes {
+            columnas
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+Component.variables = () => {
+	return {
+		headerLocation: MENUS.PRIMARY_LOCATION,
+		footerLocation: MENUS.FOOTER_LOCATION,
+	};
+};

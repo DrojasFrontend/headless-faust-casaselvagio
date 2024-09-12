@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,8 +23,26 @@ export default function Header({
 	// Cambiamos logo por pagina
 	const isGastronomia = router?.asPath === "/restaurante";
 	const logoSrc = isGastronomia ? LogoGreen : LogoDefault;
+
+	const [scrolled, setScrolled] = useState(false);
+	const handleScroll = () => {
+		const offset = window.scrollY;
+		if (offset > 50) {
+			setScrolled(true);
+		} else {
+			setScrolled(false);
+		}
+	};
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+	const menuClasses = scrolled ? "header-scrolled" : "";
+
 	return (
-		<header className={cx(["component"])}>
+		<header className={cx(["component", menuClasses])}>
 			<Container>
 				<div className={cx(["grid"])}>
 					<div className={cx(["logo"])}>

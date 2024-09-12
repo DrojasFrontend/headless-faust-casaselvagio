@@ -32,6 +32,11 @@ export default function Component(props, pageProps) {
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
+	const mostrarHero = props?.data?.pageBy?.paginaInicio?.mostrarHero;
+	const mostrarRefigio = props?.data?.pageBy?.paginaInicio?.mostrarRefigio;
+	const mostrarHabitaciones = props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
+	const mostrarExperiencias = props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
+
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
@@ -47,10 +52,20 @@ export default function Component(props, pageProps) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<HeroImage data={grupoHero} />
-				<CardsGrid data={grupoRefugio} />
-				<CardsBigSmall data={grupohabitaciones} />
-				<CardsGridThreeCarusel data={grupoexperiencias} />
+				{mostrarHero && (
+					<HeroImage data={grupoHero} />
+				)}
+				{mostrarRefigio && (
+					<CardsGrid data={grupoRefugio} />
+				)}
+
+				{mostrarHabitaciones && (
+					<CardsBigSmall data={grupohabitaciones} />
+				)}
+
+				{mostrarExperiencias && (
+					<CardsGridThreeCarusel data={grupoexperiencias} />
+				)}
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -79,6 +94,11 @@ Component.query = gql`
 		}
 		pageBy(uri: "/") {
 			paginaInicio {
+				mostrarHero
+				mostrarRefigio
+				mostrarHabitaciones
+				mostrarExperiencias
+
 				grupoHero {
 					titulo
 					imagen {

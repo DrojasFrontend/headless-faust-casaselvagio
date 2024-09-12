@@ -34,6 +34,9 @@ export { TitleCopy } from "./UI/Titles/TitleCopy";
 /* Caruseles */
 export { Carusel } from "./UI/Caruseles/Carusel";
 
+/* Galleries */
+export { Gallery } from "./UI/Galleries/Gallery";
+
 export { ContentWrapper } from "./ContentWrapper";
 export { EntryHeader } from "./EntryHeader";
 export { FeaturedImage } from "./FeaturedImage";

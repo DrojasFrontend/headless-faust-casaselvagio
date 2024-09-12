@@ -5,14 +5,27 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 2;
+	z-index: 10;
+	transition: transform .4s ease;
+
+	&.header-scrolled {
+		backdrop-filter: blur(12px);
+
+		.nav-toggle {
+			color: var(--color-secondary);
+		}
+	}
 }
 
 .grid {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	min-height: rem(80);
+	min-height: rem(100);
+}
+
+.logo {
+	width: rem(180);
 }
 
 .nav-toggle {

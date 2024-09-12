@@ -1,7 +1,8 @@
-@import "../../../styles/mixin";
+@import "/styles/mixin";
 
 .listitem {
-  display: flex;
+  display: grid;
+  grid-template-columns: rem(40) 1fr;
   align-items: center;
   column-gap: rem(10);
   width: 100%;
