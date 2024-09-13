@@ -13,7 +13,7 @@ const Gallery = ({data}) => {
 		<section className="Gallery">
 			<div className={cx(["conmponent"])}>
 				<Container>
-					<h2 className="heading--44">Galeria</h2>
+					<h2 className="heading--40 color--primary">Galeria</h2>
 					<span className="space space--20"></span>
 					<div className={cx(["grid"])}>
 						{Imagenes.map((item, index) => (

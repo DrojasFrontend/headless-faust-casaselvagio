@@ -17,6 +17,7 @@ export { HeroImageMedium } from "./UI/Heros/HeroImageMedium";
 
 //Cards
 export { Card } from "./UI/Cards/Card";
+export { CardPost } from "./UI/Cards/CardPost";
 export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
 export { CardsGrid } from "./UI/Cards/CardsGrid";
 export { CardsGridFour } from "./UI/Cards/CardsGridThree";
@@ -24,6 +25,15 @@ export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
 export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
 export { CardsMasonry } from "./UI/Cards/CardsMasonry";
+
+//Forms
+export { FormContact } from "./Forms/FormContact";
+
+//Map
+export { Map } from "./UI/Map";
+
+//Social
+export { SocialMedia } from "./UI/SocialMedia";
 
 /* TextImages */
 export { TextImages } from "./UI/TextImages/TextImage";

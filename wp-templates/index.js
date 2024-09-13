@@ -8,6 +8,8 @@ import diarioSelvaggio from './page-diario-selvaggio';
 import galeria from './page-galeria';
 import tours from './page-tours';
 import faqs from './page-faqs';
+import blog from './page-blog';
+import contacto from './page-contacto';
 import single from './single';
 import { experiencia } from "./singles";
 
@@ -21,6 +23,8 @@ export default {
   'page-tours': tours,
   'page-galeria': galeria,
   'page-faqs': faqs,
+  'page-blog': blog,
+  'page-contacto': contacto,
   page,
   single,
   "single-experiencia": experiencia

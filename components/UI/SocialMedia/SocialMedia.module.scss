@@ -1,0 +1,11 @@
+@import "../../../styles/mixin";
+
+.info {
+  a {
+    color: var(--color-primary);
+    svg {
+      fill: var(--color-white);
+    }
+  }
+
+}

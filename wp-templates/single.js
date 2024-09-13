@@ -1,4 +1,7 @@
 import { gql } from "@apollo/client";
+import Image from "next/image";
+import Link from "next/link";
+
 import { useFaustQuery } from "@faustwp/core";
 import {
 	Container,
@@ -6,13 +9,17 @@ import {
 	EntryHeader,
 	FeaturedImage,
 	Footer,
+	FormatDate,
 	Header,
+	HeroImageMedium,
 	Main,
 	NavigationMenu,
 	SEO,
 } from "../components";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
+
+import ImageNotAvailable from "/public/img/image-not-available.png";
 
 const GET_LAYOUT_QUERY = gql`
 	${BlogInfoFragment}
@@ -54,6 +61,28 @@ const GET_POST_QUERY = gql`
 	}
 `;
 
+const GET_RECENT_POSTS_QUERY = gql`
+	query GetRecentPosts($first: Int!) {
+		posts(first: $first) {
+			edges {
+				node {
+					id
+					title
+					uri
+					excerpt
+					date
+					featuredImage {
+						node {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
+			}
+		}
+	}
+`;
 export default function Component(props) {
 	// Loading state for previews
 	if (props.loading) {
@@ -61,6 +90,10 @@ export default function Component(props) {
 	}
 
 	const { post } = useFaustQuery(GET_POST_QUERY);
+	const { posts } = useFaustQuery(GET_RECENT_POSTS_QUERY);
+
+	const recentPosts = posts?.edges ?? [];
+
 	const { generalSettings, headerMenuItems, footerMenuItems } =
 		useFaustQuery(GET_LAYOUT_QUERY);
 
@@ -83,20 +116,72 @@ export default function Component(props) {
 			/>
 			<Main>
 				<>
-					<EntryHeader
-						title={title}
-						image={featuredImage?.node}
-						date={date}
-						author={author?.node?.name}
-					/>
 					{/* TODO */}
 					<div className="sectionDetailPost">
 						<Container>
-							<div class="sectionDetailPost__grid">
-								<ContentWrapper content={content} />
-								<div>
-                  <h2 className="heading--18 color--primary">Resientes</h2>
-                </div>
+							<div className="sectionDetailPost__grid">
+								<section>
+									<h1 className="heading--54 color--primary">{title}</h1>
+									<div className="sectionDetailPost__img">
+										<Image
+											src={featuredImage?.node?.sourceUrl}
+											layout="fill"
+											objectFit="cover"
+											quality
+											priority
+											alt={featuredImage?.node?.altText}
+											title={featuredImage?.node?.title}
+										/>
+									</div>
+									<ContentWrapper content={content} />
+								</section>
+								<section className="sectionSideBar">
+									<h2 className="heading--18 color--primary">Resientes</h2>
+									{recentPosts.map((post, index) => (
+										<div key={index}>
+											<Link href={post?.node?.uri}>
+												<a className="sectionDetailPost__post">
+													<div className="sectionDetailPost__thumbnail">
+														{post?.node?.featuredImage ? (
+															<Image
+																src={
+																	post?.node?.featuredImage?.node?.mediaItemUrl
+																}
+																layout="fill"
+																objectFit="cover"
+																sizes="100vw"
+																alt={featuredImage?.node?.altText}
+																title={featuredImage?.node?.title}
+															/>
+														) : (
+															<Image
+																src={ImageNotAvailable}
+																width={372}
+																height={230}
+																sizes="100vw"
+																alt="Imagen no disponible"
+																title="no disponible"
+															/>
+														)}
+													</div>
+													<div className="sectionDetailPost__info">
+														<h3 className="heading--14 color--primary">
+															{post?.node?.title}
+														</h3>
+														<p className="heading--12 color--gray">
+															<FormatDate data={post?.node?.date} />
+															{post?.node?.date && (
+																<time dateTime={post?.node?.date}>
+																	<FormatDate date={post?.node?.date} />
+																</time>
+															)}
+														</p>
+													</div>
+												</a>
+											</Link>
+										</div>
+									))}
+								</section>
 							</div>
 						</Container>
 					</div>
@@ -120,6 +205,12 @@ Component.queries = [
 		variables: ({ databaseId }, ctx) => ({
 			databaseId,
 			asPreview: ctx?.asPreview,
+		}),
+	},
+	{
+		query: GET_RECENT_POSTS_QUERY,
+		variables: () => ({
+			first: 5,
 		}),
 	},
 ];

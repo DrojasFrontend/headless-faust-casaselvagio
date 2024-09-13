@@ -9,6 +9,8 @@ export default function EntryHeader({ title, image, date, author, className }) {
 
   return (
     <div className={cx(['component', className])}>
+    {!!title && <Heading className="heading--54 color--primary">{title}</Heading>}
+      
       {image && (
         <FeaturedImage
           image={image}
@@ -16,7 +18,6 @@ export default function EntryHeader({ title, image, date, author, className }) {
           priority
         />
       )}
-      
 
       {hasText && (
         <div className={cx('text', { 'has-image': image })}>

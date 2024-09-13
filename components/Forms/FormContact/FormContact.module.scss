@@ -1,0 +1,68 @@
+@import "../../../styles/mixin";
+
+.component {
+  padding: rem(40) 0 0;
+
+  @media only screen and (min-width: 1024px) {
+    padding: rem(80) 0 0;
+  }
+}
+
+.grid {
+  display: grid;
+  row-gap: rem(30);
+
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: 66% 30%;
+    column-gap: rem(40);
+  }
+}
+
+.title {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  @media only screen and (min-width: 1024px) {
+    max-width: rem(600);
+  }
+}
+
+.button {
+  width: 100%;
+
+  @media only screen and (min-width: 1024px) {
+    width: max-content;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(24);
+  padding: rem(60) rem(40);
+  border-radius: rem(20) rem(6);
+  background: var(--color-primary-50);
+
+  .link {
+    display: grid;
+    align-items: center;
+    grid-template-columns: rem(44) 1fr;
+    column-gap: rem(10);
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: rem(44);
+      height: rem(44);
+      border-radius: rem(44);
+      background-color: var(--color-white);
+    }
+  }
+}
+
+.social {
+  display: flex;
+  column-gap: rem(20);
+}
