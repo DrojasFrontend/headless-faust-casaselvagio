@@ -8,7 +8,7 @@ let cx = className.bind(styles);
 
 import Card from "../Card/Card";
 
-const CardsGridThree = ({ data }) => {
+const CardsGridThree = ({ data, heading }) => {
 	var settings = {
 		dots: true,
 		arrows: false,
@@ -50,9 +50,7 @@ const CardsGridThree = ({ data }) => {
 			<div className={cx("component")}>
 				<div className="container--slick">
 					<div className={cx("title")}>
-						<h2 className="heading--40 color--primary">
-							Experiencias más populares
-						</h2>
+						<h2 className="heading--40 color--primary">{heading && heading}</h2>
 						{/* <div className="CardsGridThree__CTA">
 						<button type="button" className="button button--primary">
 							Tours Casa Selvaggio
@@ -72,9 +70,9 @@ const CardsGridThree = ({ data }) => {
 									key={index}
 									title={targeta?.title}
 									excerpt={targeta?.excerpt}
-									postExperiencia={targeta?.postExperiencia}
+									postInterna={targeta?.postInterna}
 									featuredImage={targeta?.featuredImage}
-									info={targeta?.postExperiencia}
+									info={targeta?.postInterna}
 									slug={targeta?.uri}
 								/>
 							))}

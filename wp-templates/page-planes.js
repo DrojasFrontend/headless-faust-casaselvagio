@@ -1,0 +1,108 @@
+import { gql } from "@apollo/client";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useFaustQuery } from "@faustwp/core";
+import * as MENUS from "../constants/menus";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import { Main, NavigationMenu, SEO } from "../components";
+
+import { Header } from "../components/UI/Header";
+import { HeroImageMedium } from "../components/UI/Heros/HeroImageMedium";
+import { CardsPlan } from "../components/UI/Cards/CardsPlan";
+import { Footer } from "../components/UI/Footer";
+
+const GET_LAYOUT_QUERY = gql`
+	${BlogInfoFragment}
+	${NavigationMenu.fragments.entry}
+	query GetLayout(
+		$headerLocation: MenuLocationEnum
+		$footerLocation: MenuLocationEnum
+	) {
+		generalSettings {
+			...BlogInfoFragment
+		}
+		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItems: menuItems(where: { location: $footerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		pageBy(uri: "/planes") {
+			paginaPlanes {
+        grupohero {
+          titulo
+          imagen {
+            mediaItemUrl
+            altText
+            title
+          }
+        }
+        grupotexto {
+          titulo
+          descripcion
+        }
+      }
+		}
+	}
+`;
+
+const GET_ALL_PLANES_QUERY = gql`
+	query GetAllPlanes($first: Int!) {
+		planes(first: $first) {
+			nodes {
+				title
+        excerpt
+				uri
+				featuredImage {
+					node {
+						mediaItemUrl
+						altText
+						title
+					}
+				}
+			}
+		}
+	}
+`;
+
+export default function Component() {
+	const { generalSettings, headerMenuItems, footerMenuItems, pageBy } =
+		useFaustQuery(GET_LAYOUT_QUERY);
+	const { planes } = useFaustQuery(GET_ALL_PLANES_QUERY);
+
+	const { title: siteTitle, description: siteDescription } = generalSettings;
+	const primaryMenu = headerMenuItems?.nodes ?? [];
+	const footerMenu = footerMenuItems?.nodes ?? [];
+	const grupoHero = pageBy?.paginaPlanes?.grupohero ?? [];
+	const grupoTexto = pageBy?.paginaPlanes?.grupotexto ?? [];
+
+	return (
+		<>
+			<SEO title={siteTitle} description={siteDescription} imageUrl="" />
+			<Header title={siteTitle} description={siteDescription} />
+			<HeroImageMedium data={grupoHero} />
+      <CardsPlan data={planes?.nodes} detail={grupoTexto}/>
+			<Footer title={siteTitle} menuItems={footerMenu} />
+		</>
+	);
+}
+
+Component.queries = [
+	{
+		query: GET_LAYOUT_QUERY,
+		variables: (seedNode, ctx) => ({
+			headerLocation: MENUS.PRIMARY_LOCATION,
+			footerLocation: MENUS.FOOTER_LOCATION,
+		}),
+	},
+	{
+		query: GET_ALL_PLANES_QUERY,
+		variables: () => ({
+			first: 5,
+		}),
+	},
+];

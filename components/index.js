@@ -25,6 +25,7 @@ export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
 export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
 export { CardsMasonry } from "./UI/Cards/CardsMasonry";
+export { CardsPlan } from "./UI/Cards/CardsPlan";
 
 //Forms
 export { FormContact } from "./Forms/FormContact";

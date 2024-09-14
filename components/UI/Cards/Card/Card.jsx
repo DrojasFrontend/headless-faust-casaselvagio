@@ -14,7 +14,7 @@ export default function Card({
 	title,
 	excerpt,
 	slug,
-	postExperiencia,
+	postInterna,
 	featuredImage,
 }) {
 	return (
@@ -61,12 +61,12 @@ export default function Card({
 									dangerouslySetInnerHTML={{ __html: excerpt }}
 								/>
 								<h3 className="heading--18 color--primary">
-									{postExperiencia?.grupocaracteristicas?.titulo}
+									{postInterna?.grupocaracteristicas?.titulo}
 								</h3>
 								<ul className="">
-									{postExperiencia?.grupocaracteristicas?.caracteristica && (
+									{postInterna?.grupocaracteristicas?.caracteristica && (
 										<>
-											{postExperiencia?.grupocaracteristicas?.caracteristica?.map(
+											{postInterna?.grupocaracteristicas?.caracteristica?.map(
 												(icon, index) => (
 													<li key={index}>
 														<span className={cx("icon")}>

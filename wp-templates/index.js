@@ -8,8 +8,9 @@ import tours from './page-tours';
 import preguntasFrecuentes from './page-preguntas-frecuentes';
 import blog from './page-blog';
 import contacto from './page-contacto';
+import planes from './page-planes';
 import single from './single';
-import { experiencia } from "./singles";
+import { experiencia, singlePlan } from "./singles";
 
 export default {
   'front-page': frontPage,
@@ -21,7 +22,9 @@ export default {
   'page-preguntas-frecuentes': preguntasFrecuentes,
   'page-blog': blog,
   'page-contacto': contacto,
+  'page-planes': planes,
   page,
   single,
-  "single-experiencia": experiencia
+  "single-experiencia": experiencia,
+  "single-plan": singlePlan,
 };

@@ -33,9 +33,9 @@ export default function Component(props, pageProps) {
 
   const experiencia = props?.data?.experiencia ?? [];
 
-  const grupoTexto = props?.data?.experiencia?.postExperiencia?.grupotexto ?? [];
+  const grupoTexto = props?.data?.experiencia?.postInterna?.grupotexto ?? [];
 
-  const postExperiencias = props?.data?.experiencias?.nodes ?? [];
+  const postInternas = props?.data?.experiencias?.nodes ?? [];
 
   const [isNavShown, setIsNavShown] = useState(false);
 
@@ -53,7 +53,7 @@ export default function Component(props, pageProps) {
       <Main>
         <HeroImageTextCTA data={experiencia}/>
         <TextImage data={grupoTexto} />
-        <CardsGridThree data={postExperiencias} />
+        <CardsGridThree data={postInternas} heading="Experiencias más populares"/>
       </Main>
       <Footer />
     </>
@@ -94,7 +94,7 @@ Component.query = gql`
     experiencia(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       excerpt
-      postExperiencia {
+      postInterna {
         grupobanner {
           imagen {
             mediaItemUrl
@@ -141,7 +141,7 @@ Component.query = gql`
             title
           }
         }
-        postExperiencia {
+        postInterna {
           grupocaracteristicas {
             titulo
             caracteristica {

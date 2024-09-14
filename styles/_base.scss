@@ -474,11 +474,11 @@ a {
 
 	&__grid {
 		display: grid;
+		padding: rem(80) 0 0;
 
 		@media only screen and (min-width: 1024px) {
 			grid-template-columns: 3fr 1fr;
 			column-gap: rem(50);
-			padding: rem(80) 0 0;
 		}
 
 		.heading--54 {

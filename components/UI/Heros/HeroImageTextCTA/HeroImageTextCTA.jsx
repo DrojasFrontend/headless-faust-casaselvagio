@@ -12,19 +12,19 @@ import { Container } from "../../../Layout/Container";
 import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 
 const HeroImageText = ({ data }) => {
-	const { title, excerpt, postExperiencia, titulo, descripcion, cta, imagen } = data;
+	const { title, excerpt, postInterna, titulo, descripcion, cta, imagen } = data;
 	return (
 		<section className="HeroImageText">
 			<div className={cx(["component"])}>
 				<div className={cx("bckg")}>
-					{postExperiencia?.grupobanner?.imagen ? (
+					{postInterna?.grupobanner?.imagen ? (
 						<Image
-							src={postExperiencia?.grupobanner?.imagen?.mediaItemUrl}
+							src={postInterna?.grupobanner?.imagen?.mediaItemUrl}
 							layout="fill"
 							quality={100}
 							priority
-							alt={postExperiencia?.grupobanner?.imagen?.altText}
-							title={postExperiencia?.grupobanner?.imagen?.title}
+							alt={postInterna?.grupobanner?.imagen?.altText}
+							title={postInterna?.grupobanner?.imagen?.title}
 						/>
 					) :  imagen?.mediaItemUrl ? (
 						<Image
@@ -77,13 +77,13 @@ const HeroImageText = ({ data }) => {
 
 								<span className="space space--10"></span>
 
-								{postExperiencia?.grupobanner?.cta ? (
+								{postInterna?.grupobanner?.cta ? (
 									<Link
-										href={postExperiencia?.grupobanner?.cta?.url}
-										target={postExperiencia?.grupobanner?.cta?.target}
+										href={postInterna?.grupobanner?.cta?.url}
+										target={postInterna?.grupobanner?.cta?.target}
 									>
 										<a className="button button--white">
-											{postExperiencia?.grupobanner?.cta?.title}
+											{postInterna?.grupobanner?.cta?.title}
 										</a>
 									</Link>
 								) : (

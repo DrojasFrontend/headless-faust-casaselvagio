@@ -27,7 +27,7 @@ export default function Component(props, pageProps) {
 	const grupoSitios =
 		props?.data?.pageBy?.paginaExperiencias?.grupositios ?? [];
 
-	const postExperiencias = props?.data?.experiencias?.nodes ?? [];
+	const postInternas = props?.data?.experiencias?.nodes ?? [];
 
 	const grupoCta = props?.data?.pageBy?.paginaExperiencias?.grupoCta ?? [];
 
@@ -49,7 +49,7 @@ export default function Component(props, pageProps) {
 				setIsNavShown={setIsNavShown}
 			>
 				<HeroCarusel data={grupoCarusel} />
-				<CardsGridThree data={postExperiencias} />
+				<CardsGridThree data={postInternas} heading="Experiencias más populares" />
 				<CardsMasonry data={grupoSitios} />
 				<BannerTextCta data={grupoCta} />
 			</Main>
@@ -145,7 +145,7 @@ Component.query = gql`
 						title
 					}
 				}
-				postExperiencia {
+				postInterna {
 					grupocaracteristicas {
 						titulo
 						caracteristica {
