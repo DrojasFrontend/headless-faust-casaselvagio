@@ -1,17 +1,18 @@
 import { gql } from "@apollo/client";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import { sanitize } from "../utils/miscellaneous";
 
 import { useFaustQuery } from "@faustwp/core";
 import {
 	Container,
 	ContentWrapper,
-	EntryHeader,
 	FeaturedImage,
 	Footer,
 	FormatDate,
 	Header,
-	HeroImageMedium,
 	Main,
 	NavigationMenu,
 	SEO,
@@ -83,7 +84,8 @@ const GET_RECENT_POSTS_QUERY = gql`
 		}
 	}
 `;
-export default function Component(props) {
+export default function Component(props, pageProps) {
+	const router = useRouter();
 	// Loading state for previews
 	if (props.loading) {
 		return <>Loading...</>;
@@ -102,6 +104,8 @@ export default function Component(props) {
 	const footerMenu = footerMenuItems?.nodes ?? [];
 	const { title, content, featuredImage, date, author } = post ?? {};
 
+	const [isNavShown, setIsNavShown] = useState(false);
+
 	return (
 		<>
 			<SEO
@@ -112,9 +116,15 @@ export default function Component(props) {
 			<Header
 				title={siteTitle}
 				description={siteDescription}
-				menuItems={primaryMenu}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+				router={router}
 			/>
-			<Main>
+			<Main
+				menuItems={primaryMenu}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+			>
 				<>
 					{/* TODO */}
 					<div className="sectionDetailPost">
@@ -136,7 +146,7 @@ export default function Component(props) {
 									<ContentWrapper content={content} />
 								</section>
 								<section className="sectionSideBar">
-									<h2 className="heading--18 color--primary">Resientes</h2>
+									<h2 className="heading--18 color--primary">Recientes</h2>
 									{recentPosts.map((post, index) => (
 										<div key={index}>
 											<Link href={post?.node?.uri}>
@@ -165,9 +175,13 @@ export default function Component(props) {
 														)}
 													</div>
 													<div className="sectionDetailPost__info">
-														<h3 className="heading--14 color--primary">
-															{post?.node?.title}
-														</h3>
+														<h3
+															className="heading--14 color--primary"
+															dangerouslySetInnerHTML={{
+																__html: sanitize(post?.node?.title),
+															}}
+														/>
+
 														<p className="heading--12 color--gray">
 															<FormatDate data={post?.node?.date} />
 															{post?.node?.date && (

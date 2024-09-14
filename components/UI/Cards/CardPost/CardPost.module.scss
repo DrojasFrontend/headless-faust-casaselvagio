@@ -43,6 +43,7 @@
 }
 
 .info {
-  display: block;
+  display: grid;
+	row-gap: rem(10);
 	padding: rem(20);
 }

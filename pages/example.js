@@ -3,7 +3,6 @@ import * as MENUS from '../constants/menus';
 import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   Header,
-  Hero,
   Footer,
   Main,
   NavigationMenu,
@@ -30,11 +29,7 @@ export default function Page(props) {
         menuItems={primaryMenu}
       />
       <Main>
-          <Hero title={title} />
-          <div className="text-center">
-            <p>This page is utilizing the Next.js File based routes.</p>
-            <code>pages/example.js</code>
-          </div>
+          Example
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>

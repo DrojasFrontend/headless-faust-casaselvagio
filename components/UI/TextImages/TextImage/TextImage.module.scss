@@ -49,6 +49,7 @@
 		.img {
 			@media only screen and (min-width: 1024px) {
 				grid-row: 1;
+				min-height: rem(400);
 			}
 		}
 	}
@@ -81,6 +82,10 @@
 	position: relative;
 	border-radius: rem(20) rem(6);
 	overflow: hidden;
+
+	@media only screen and (min-width: 1024px) {
+		min-height: rem(400);
+	}
 
 	&:before {
 		content: "";

@@ -399,9 +399,16 @@ a {
 		}
 		&__grid {
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
 			gap: rem(20);
 			padding: rem(40) 0 0;
+
+			@media only screen and (min-width: 680px) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@media only screen and (min-width: 1024px) {
+				grid-template-columns: repeat(3, 1fr);
+			}
 		}
 	}
 }
@@ -532,7 +539,9 @@ a {
 	}
 
 	&__info {
-		display: grid;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		row-gap: rem(5);
 		padding: rem(10);
 	}
@@ -540,7 +549,7 @@ a {
 
 .sectionSideBar {
 	position: sticky;
-	top: rem(100);
+	top: rem(120);
 	height: fit-content;
 
 	.heading--18 {

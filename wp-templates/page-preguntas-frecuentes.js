@@ -70,7 +70,7 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-		pageBy(uri: "/faqs") {
+		pageBy(uri: "/preguntas-frecuentes") {
 			paginaFaqs {
 				mostrarHero
 				mostrarPreguntas

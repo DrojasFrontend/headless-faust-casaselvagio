@@ -36,7 +36,7 @@ const CardsBigSmall = ({ data }) => {
 										layout="fill"
 										src={targeta?.imagen?.mediaItemUrl}
 										quality={100}
-										priority={true}
+										priority
 										sizes="100vw"
 										objectFit="cover"
 										alt={targeta?.imagen?.altText}

@@ -20,7 +20,7 @@ export { Card } from "./UI/Cards/Card";
 export { CardPost } from "./UI/Cards/CardPost";
 export { CardsBigSmall } from "./UI/Cards/CardsBigSmall";
 export { CardsGrid } from "./UI/Cards/CardsGrid";
-export { CardsGridFour } from "./UI/Cards/CardsGridThree";
+export { CardsGridThree } from "./UI/Cards/CardsGridThree";
 export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
 export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
@@ -36,7 +36,7 @@ export { Map } from "./UI/Map";
 export { SocialMedia } from "./UI/SocialMedia";
 
 /* TextImages */
-export { TextImages } from "./UI/TextImages/TextImage";
+export { TextImage } from "./UI/TextImages/TextImage";
 
 /* ListItem */
 export { ListItem } from "./UI/ListItem";
@@ -51,7 +51,6 @@ export { Carusel } from "./UI/Caruseles/Carusel";
 export { Gallery } from "./UI/Galleries/Gallery";
 
 export { ContentWrapper } from "./ContentWrapper";
-export { EntryHeader } from "./EntryHeader";
 export { FeaturedImage } from "./FeaturedImage";
 export { Footer } from "./UI/Footer";
 export { FormatDate } from "./FormatDate";
@@ -59,7 +58,4 @@ export { FormatDate } from "./FormatDate";
 export { Heading } from "./Heading";
 export { Main } from "./Main";
 
-export { PostInfo } from "./PostInfo";
-export { Hero } from "./Hero";
-export { Post } from "./Post";
 export { SEO } from "./SEO";

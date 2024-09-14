@@ -46,8 +46,7 @@ const TextImage = ({ data }) => {
 							<div className={cx("img")}>
 								<Image
 									src={item?.imagen?.mediaItemUrl}
-									width={372}
-									height={440}
+									layout="fill"
 									quality={100}
 									priority
 									sizes="100vw"

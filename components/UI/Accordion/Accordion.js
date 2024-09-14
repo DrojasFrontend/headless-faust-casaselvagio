@@ -54,7 +54,7 @@ const Accordion = ({ data }) => {
 								layout="fill"
 								src={imagen?.mediaItemUrl}
 								quality={100}
-								priority={true}
+								priority
 								sizes="100vw"
 								objectFit="cover"
 								alt={imagen?.altText}
