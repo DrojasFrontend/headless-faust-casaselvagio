@@ -37,6 +37,7 @@ export default function Component(props, pageProps) {
 	const mostrarHabitaciones = props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
 	const mostrarExperiencias = props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
 
+
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
