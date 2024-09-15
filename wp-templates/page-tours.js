@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { Footer, Main, NavigationMenu, SEO } from "../components";
 
-import { Header } from "../components/UI/Header";
+import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
 import { CardsGridThree } from "../components/UI/Cards/CardsGridThree";
 import { CardsMasonry } from "../components/UI/Cards/CardsMasonry";
 import { BannerTextCta } from "../components/UI/Banners/BannerTextCta";
 
-export default function Component(props, pageProps) {
-	const router = useRouter();
+export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
@@ -26,22 +24,18 @@ export default function Component(props, pageProps) {
 		props?.data?.pageBy?.paginaExperiencias?.grupoCarusel ?? [];
 	const grupoSitios =
 		props?.data?.pageBy?.paginaExperiencias?.grupositios ?? [];
-
 	const postInternas = props?.data?.experiencias?.nodes ?? [];
-
 	const grupoCta = props?.data?.pageBy?.paginaExperiencias?.grupoCta ?? [];
-
 	const [isNavShown, setIsNavShown] = useState(false);
 
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
-			<Header
+			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
-				router={router}
 			/>
 			<Main
 				menuItems={primaryMenu}

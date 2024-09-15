@@ -1,12 +1,11 @@
 import { gql } from "@apollo/client";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useFaustQuery } from "@faustwp/core";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { Main, NavigationMenu, SEO } from "../components";
 
-import { Header } from "../components/UI/Header";
+import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { HeroImageMedium } from "../components/UI/Heros/HeroImageMedium";
 import { CardsPlan } from "../components/UI/Cards/CardsPlan";
 import { Footer } from "../components/UI/Footer";
@@ -33,19 +32,19 @@ const GET_LAYOUT_QUERY = gql`
 		}
 		pageBy(uri: "/planes") {
 			paginaPlanes {
-        grupohero {
-          titulo
-          imagen {
-            mediaItemUrl
-            altText
-            title
-          }
-        }
-        grupotexto {
-          titulo
-          descripcion
-        }
-      }
+				grupohero {
+					titulo
+					imagen {
+						mediaItemUrl
+						altText
+						title
+					}
+				}
+				grupotexto {
+					titulo
+					descripcion
+				}
+			}
 		}
 	}
 `;
@@ -55,7 +54,7 @@ const GET_ALL_PLANES_QUERY = gql`
 		planes(first: $first) {
 			nodes {
 				title
-        excerpt
+				excerpt
 				uri
 				featuredImage {
 					node {
@@ -77,15 +76,29 @@ export default function Component() {
 	const { title: siteTitle, description: siteDescription } = generalSettings;
 	const primaryMenu = headerMenuItems?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
+
 	const grupoHero = pageBy?.paginaPlanes?.grupohero ?? [];
 	const grupoTexto = pageBy?.paginaPlanes?.grupotexto ?? [];
 
+	const [isNavShown, setIsNavShown] = useState(false);
+
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} imageUrl="" />
-			<Header title={siteTitle} description={siteDescription} />
-			<HeroImageMedium data={grupoHero} />
-      <CardsPlan data={planes?.nodes} detail={grupoTexto}/>
+			<SEO title={siteTitle} description={siteDescription} />
+			<HeaderWhite
+				title={siteTitle}
+				description={siteDescription}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+			/>
+			<Main
+				menuItems={primaryMenu}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+			>
+				<HeroImageMedium data={grupoHero} />
+				<CardsPlan data={planes?.nodes} detail={grupoTexto} />
+			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
 	);

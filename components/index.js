@@ -1,4 +1,6 @@
-export { Header } from "./UI/Header";
+//Header
+export { HeaderWhite } from "./UI/Header/HeaderWhite";
+export { HeaderGreen } from "./UI/Header/HeaderGreen";
 export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
 export { Container } from "./Layout/Container";

@@ -1,1 +1,2 @@
-export { default as Header } from './Header';
+export { HeaderWhite } from './HeaderWhite';
+export { HeaderGreen } from './HeaderGreen';

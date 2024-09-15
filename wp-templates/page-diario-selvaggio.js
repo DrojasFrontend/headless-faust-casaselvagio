@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
@@ -11,13 +10,12 @@ import {
 	SEO,
 } from "../components";
 
-import { Header } from "../components/UI/Header";
+import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { CardsGridTwo } from "../components/UI/Cards/CardsGridTwo";
 import { TextImage } from "../components/UI/TextImages";
 import { CardsGridFourCarusel } from "../components/UI/Cards/CardsGridFourCarusel";
 
-export default function Component(props, pageProps) {
-	const router = useRouter();
+export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
@@ -35,27 +33,31 @@ export default function Component(props, pageProps) {
 	const grupoEquipo =
 		props?.data?.pageBy?.paginaDiarioSelvaggio?.grupoequipo ?? [];
 
+	const mostrarEquipo = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarEquipo;
+	const mostrarHero = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarHero;
+	const mostrarTargetas = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrartargetas;
+	const mostrarTexto = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarTexto;
+
 	const [isNavShown, setIsNavShown] = useState(false);
 
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
-			<Header
+			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
-				router={router}
 			/>
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				<HeroImageTextCTA data={grupoHero} />
-				<TextImage data={grupoTexto} />
-				<CardsGridTwo data={grupoTargetas} />
-				<CardsGridFourCarusel data={grupoEquipo} />
+				{mostrarHero && <HeroImageTextCTA data={grupoHero} />}
+				{mostrarTexto && <TextImage data={grupoTexto} />}
+				{mostrarTargetas && <CardsGridTwo data={grupoTargetas} />}
+				{mostrarEquipo && <CardsGridFourCarusel data={grupoEquipo} />}
 			</Main>
 			<Footer title={siteTitle} menuItems={footerMenu} />
 		</>
@@ -84,6 +86,10 @@ Component.query = gql`
 		}
 		pageBy(uri: "/diario-selvaggio") {
 			paginaDiarioSelvaggio {
+				mostrarEquipo
+				mostrarHero
+				mostrarTexto
+				mostrartargetas
 				grupoHero {
 					titulo
 					descripcion

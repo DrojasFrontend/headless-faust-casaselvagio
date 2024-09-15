@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
+import { useState } from "react";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
@@ -12,12 +11,12 @@ import {
 	SEO,
 } from "../components";
 
+import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { Container } from "../components/Layout/Container";
 import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
 import { CardPost } from "../components/UI/Cards/CardPost";
 
-export default function Component(props, pageProps) {
-	const router = useRouter();
+export default function Component(props) {
 	// Loading state for previews
 	if (props.loading) {
 		return <>Loading...</>;
@@ -46,12 +45,11 @@ export default function Component(props, pageProps) {
 				description={siteDescription}
 				imageUrl={featuredImage?.node?.sourceUrl}
 			/>
-			<Header
+			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
-				router={router}
 			/>
 			<Main
 				menuItems={primaryMenu}

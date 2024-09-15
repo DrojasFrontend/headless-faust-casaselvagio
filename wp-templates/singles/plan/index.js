@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
+import { useState } from "react";
 import * as MENUS from "../../../constants/menus";
 import {
 	BlogInfoFragment,
@@ -8,14 +7,13 @@ import {
 } from "../../../fragments/GeneralSettings";
 import { SEO, NavigationMenu, Main, Footer } from "../../../components";
 
-import { Header } from "../../../components/UI/Header";
+import { HeaderWhite } from "../../../components/UI/Header/HeaderWhite";
 import { HeroImageTextCTA } from "../../../components/UI/Heros/HeroImageTextCTA";
 import { TextImage } from "../../../components/UI/TextImages";
 import { CardsGridThree } from "../../../components/UI/Cards/CardsGridThree";
 import { BannerTextCta } from "../../../components/UI/Banners/BannerTextCta";
 
 export default function Component(props, pageProps) {
-	const router = useRouter();
 	// Loading state for previews
 	if (props.loading) {
 		return <>Loading...</>;
@@ -30,25 +28,28 @@ export default function Component(props, pageProps) {
 	const plan = props?.data?.plan ?? [];
 	const grupoTexto = props?.data?.plan?.postInterna?.grupotexto ?? [];
 	const postInternas = props?.data?.planes?.nodes ?? [];
-  const grupoCta = props?.data?.plan?.postInterna?.grupocta ?? [];
+	const grupoCta = props?.data?.plan?.postInterna?.grupocta ?? [];
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
-			<Header
+			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
-				router={router}
 			/>
-			<Main>
+			<Main
+				menuItems={primaryMenu}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+			>
 				<HeroImageTextCTA data={plan} />
 				<TextImage data={grupoTexto} />
-				<CardsGridThree data={postInternas} heading="Planes mas destacados"/>
-        <BannerTextCta data={grupoCta} />
+				<CardsGridThree data={postInternas} heading="Planes mas destacados" />
+				<BannerTextCta data={grupoCta} />
 			</Main>
 			<Footer />
 		</>
@@ -122,19 +123,19 @@ Component.query = gql`
 						}
 					}
 				}
-        grupocta {
-          imagen {
-            mediaItemUrl
-            altText
-            title
-          }
-          titulo
-          cta {
-            url
-            title
-            target
-          }
-        }
+				grupocta {
+					imagen {
+						mediaItemUrl
+						altText
+						title
+					}
+					titulo
+					cta {
+						url
+						title
+						target
+					}
+				}
 			}
 		}
 		planes {

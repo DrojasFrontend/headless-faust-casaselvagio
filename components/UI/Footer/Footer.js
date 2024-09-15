@@ -34,8 +34,8 @@ export default function Footer() {
 									Contacto
 								</a>
 							</Link>
-							<Link href="/faqa">
-								<a className="heading--20 font-weight--100 color--white">FAQ</a>
+							<Link href="/preguntas-frecuentes">
+								<a className="heading--20 font-weight--100 color--white">Preguntas Frecuentes</a>
 							</Link>
 							<Link href="/politica-de-privacidad">
 								<a className="heading--20 font-weight--100 color--white">
@@ -53,37 +53,31 @@ export default function Footer() {
 							<div className={cx("menu")}>
 								<Link href="/eco-villas">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Eco-villas
 									</a>
 								</Link>
 								<Link href="/restaurante">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Restaurante
 									</a>
 								</Link>
 								<Link href="/tours">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Experiencias
 									</a>
 								</Link>
 								<Link href="/diario-selvaggio">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Diario Selvaggio
 									</a>
 								</Link>
 								<Link href="/galeria">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Galería
 									</a>
 								</Link>
 								<Link href="/blog">
 									<a className="heading--20 font-weight--100 color--white">
-										{" "}
 										Blog
 									</a>
 								</Link>
@@ -125,8 +119,8 @@ export default function Footer() {
 									Contacto
 								</a>
 							</Link>
-							<Link href="/faqa">
-								<a className="heading--20 font-weight--100 color--white">FAQ</a>
+							<Link href="/preguntas-frecuentes">
+								<a className="heading--20 font-weight--100 color--white">Preguntas Frecuentes</a>
 							</Link>
 							<Link href="/politica-de-privacidad">
 								<a className="heading--20 font-weight--100 color--white">

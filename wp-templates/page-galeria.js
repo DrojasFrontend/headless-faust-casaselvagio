@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import { Footer, Main, NavigationMenu, SEO } from "../components";
 
-import { Header } from "../components/UI/Header";
+import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
 import { Gallery } from "../components/UI/Galleries/Gallery";
 
 export default function Component(props, pageProps) {
-	const router = useRouter();
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
@@ -32,12 +30,11 @@ export default function Component(props, pageProps) {
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} />
-			<Header
+			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
-				router={router}
 			/>
 			<Main
 				menuItems={primaryMenu}
