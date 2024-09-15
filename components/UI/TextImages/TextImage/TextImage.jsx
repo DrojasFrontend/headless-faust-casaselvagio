@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+
 import className from "classnames/bind";
 import styles from "./TextImage.module.scss";
 let cx = className.bind(styles);
@@ -16,8 +19,18 @@ const TextImage = ({ data }) => {
 		return <p>No hay slides disponibles.</p>;
 	}
 
+	var settings = {
+		dots: true,
+		arrows: false,
+		infinite: true,
+		speed: 500,
+		fade: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+	};
+
 	return (
-		<section className="">
+		<section className="sectionTextImage">
 			<div className={cx("component")}>
 				<Container>
 					{items?.map((item, index) => (
@@ -44,15 +57,21 @@ const TextImage = ({ data }) => {
 								)}
 							</div>
 							<div className={cx("img")}>
-								<Image
-									src={item?.imagen?.mediaItemUrl}
-									layout="fill"
-									quality={100}
-									priority
-									sizes="100vw"
-									alt={item?.imagen?.altText}
-									title={item?.imagen?.title}
-								/>
+								<Slider {...settings}>
+									{item?.imagen.map((img, idx) => (
+										<div key={idx} className={cx("slide")}>
+											<Image
+												src={img?.mediaItemUrl}
+												layout="fill"
+												quality={100}
+												priority
+												objectFit="cover"
+												alt={img?.altText}
+												title={img?.title}
+											/>
+										</div>
+									))}
+								</Slider>
 							</div>
 						</div>
 					))}

@@ -557,6 +557,39 @@ a {
 	}
 }
 
+.sectionTextImage {
+	.slick {
+		&-track {
+			padding-bottom: 0;
+		}
+
+		&-slide {
+			height: rem(500);
+		}
+
+		&-dots {
+			bottom: rem(10);
+			z-index: 1;
+
+			button {
+				&:before {
+					font-size: rem(12);
+					opacity: 1;
+					color: var(--color-white);
+				}
+			}
+		}
+
+		&-active {
+			button {
+				&:before {
+					color: var(--color-secondary) !important;
+				}
+			}
+		}
+	}
+}
+
 /*********************** Forms **********************/
 /****************************************************/
 /****************************************************/

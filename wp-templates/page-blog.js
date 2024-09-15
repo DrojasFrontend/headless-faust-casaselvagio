@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 import { useState } from "react";
+import Link from "next/link";
 import * as MENUS from "../constants/menus";
 import { BlogInfoFragment } from "../fragments/GeneralSettings";
 import {
-	Header,
 	Footer,
 	Main,
 	NavigationMenu,
@@ -13,7 +13,7 @@ import {
 
 import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { Container } from "../components/Layout/Container";
-import { HeroCarusel } from "../components/UI/Heros/HeroCarusel";
+import { HeroCaruselPosts } from "../components/UI/Heros/HeroCaruselPosts";
 import { CardPost } from "../components/UI/Cards/CardPost";
 
 export default function Component(props) {
@@ -28,9 +28,9 @@ export default function Component(props) {
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const { title, content, featuredImage } = props?.data?.page ?? { title: "" };
 
-	const grupoCarusel = props?.data?.page?.paginaBlog?.grupocarusel ?? [];
 	const mostrarCarusel = props?.data?.page?.paginaBlog?.mostrarcarusel ?? "";
 	const posts = props?.data?.posts?.edges ?? [];
+	const categories = props?.data?.categories?.edges ?? [];
 
 	if (!posts.length === 0) {
 		return null;
@@ -56,10 +56,15 @@ export default function Component(props) {
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
+				{mostrarCarusel && <HeroCaruselPosts data={posts} />}
 				<div className="CardsPost">
 					<Container>
 						<h2 className="heading--40 color--primary">Descubrir artículos</h2>
+						{/* {categories.map((category, index) => (
+							<Link href={category?.node?.slug}>
+								{category?.node?.name}
+							</Link>
+							))} */}
 						<div className="CardsPost__grid">
 							{posts.map((post, index) => (
 								<CardPost key={index} data={post} />
@@ -98,25 +103,9 @@ Component.query = gql`
 			...FeaturedImageFragment
 			paginaBlog {
 				mostrarcarusel
-				grupocarusel {
-					slides {
-						titulo
-						descripcion
-						cta {
-							target
-							title
-							url
-						}
-						imagen {
-							mediaItemUrl
-							altText
-							title
-						}
-					}
-				}
 			}
 		}
-		posts(first: 100) {
+		posts(first: 9) {
 			edges {
 				node {
 					id
@@ -136,6 +125,22 @@ Component.query = gql`
 						}
 					}
 					date
+					internaBlog {
+						imgen {
+							mediaItemUrl
+							altText
+							title
+						}
+					}
+				}
+			}
+		}
+		categories(first: 100) {
+			edges {
+				node {
+					id
+					name
+					slug
 				}
 			}
 		}

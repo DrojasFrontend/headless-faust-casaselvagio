@@ -31,7 +31,7 @@ const Accordion = ({ data }) => {
 										className={cx(["accordion-header", activeIndex === index ? "active" : ""])}
 										onClick={() => toggleAccordion(index)}
 									>
-										<h2 class="heading--24 color--primary">{item.pregunta}</h2>
+										<h2 className="heading--24 color--primary">{item.pregunta}</h2>
 										<span>
 											{activeIndex === index ? (
 												<IconChevronUp />

@@ -1,3 +1,4 @@
+import category from './category';
 import frontPage from './front-page';
 import page from './page';
 import ecoVillas from './page-eco-villas';
@@ -13,6 +14,7 @@ import single from './single';
 import { experiencia, singlePlan } from "./singles";
 
 export default {
+  category,
   'front-page': frontPage,
   'page-eco-villas': ecoVillas,
   'page-restaurante': restaurante,
