@@ -3,6 +3,9 @@ export { HeaderWhite } from "./UI/Header/HeaderWhite";
 export { HeaderGreen } from "./UI/Header/HeaderGreen";
 export { NavigationMenu } from "./UI/Header/NavigationMenu";
 
+//Breadcrumbs
+import { Breadcrumbs } from "./Breadcrumbs";
+
 export { Container } from "./Layout/Container";
 
 // Accordion

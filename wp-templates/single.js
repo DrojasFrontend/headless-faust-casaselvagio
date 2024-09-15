@@ -19,6 +19,7 @@ import {
 } from "../components";
 
 import { HeaderGreen } from "../components/UI/Header/HeaderGreen";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 import ImageNotAvailable from "/public/img/image-not-available.png";
 
@@ -128,6 +129,7 @@ export default function Component(props) {
 						<Container>
 							<div className="sectionDetailPost__grid">
 								<section>
+									<Breadcrumbs />
 									<h1 className="heading--54 color--primary">{title}</h1>
 									<div className="sectionDetailPost__img">
 										<Image

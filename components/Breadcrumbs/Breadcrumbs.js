@@ -1,0 +1,36 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+import className from "classnames/bind";
+import styles from "./Breadcrumbs.module.scss";
+let cx = className.bind(styles);
+
+export default function Breadcrumbs() {
+	const router = useRouter();
+	const { asPath } = router;
+
+	const pathArray = asPath.split("/").filter((segment) => segment !== "");
+
+	const breadcrumbs = pathArray.map((segment, index) => {
+		const href = "/" + pathArray.slice(0, index + 1).join("/");
+		return { segment, href };
+	});
+
+	return (
+		<nav aria-label="breadcrumb">
+			<ul className={cx("breadcrumbs")}>
+				<li>
+					<Link href="/">
+						<a className="heading--14 color--primary">Home</a>
+					</Link>
+				</li>
+				{breadcrumbs.map((crumb, index) => (
+					<li key={index}>
+						<Link href={crumb.href}>
+							<a>{crumb.segment.replace(/-/g, " ")}</a>
+						</Link>
+					</li>
+				))}
+			</ul>
+		</nav>
+	);
+}
