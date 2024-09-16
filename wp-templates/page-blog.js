@@ -40,6 +40,8 @@ export default function Component(props) {
 
 	const [isNavShown, setIsNavShown] = useState(false);
 
+	console.log(posts)
+
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

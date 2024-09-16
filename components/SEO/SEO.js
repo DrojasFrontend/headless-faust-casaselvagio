@@ -23,7 +23,7 @@ export default function SEO({ title, description, imageUrl, url, themeGeneralSet
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
         <link rel='shortcut icon' href={themeGeneralSettings?.options?.favicon?.mediaItemUrl} />
-        
+        <meta name="google-site-verification" content="kIrRZ8SfE0YMixMItktR8EBfaTmelZVAhWh6TMsAsJk" />
 
         {title && (
           <>
