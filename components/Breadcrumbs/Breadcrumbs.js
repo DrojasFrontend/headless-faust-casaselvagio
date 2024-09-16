@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import className from "classnames/bind";
 import styles from "./Breadcrumbs.module.scss";
+
 let cx = className.bind(styles);
 
 export default function Breadcrumbs() {
@@ -18,16 +19,17 @@ export default function Breadcrumbs() {
 	return (
 		<nav aria-label="breadcrumb">
 			<ul className={cx("breadcrumbs")}>
+				{/* Inicio siempre es un enlace */}
 				<li>
 					<Link href="/">
-						<a className="heading--14 color--primary">Home</a>
+						<a className="heading--14 color--primary">Inicio</a>
 					</Link>
 				</li>
+				{/* Los demás elementos no son enlaces */}
 				{breadcrumbs.map((crumb, index) => (
 					<li key={index}>
-						<Link href={crumb.href}>
-							<a>{crumb.segment.replace(/-/g, " ")}</a>
-						</Link>
+						{/* Mostrar los demás elementos como texto sin enlace */}
+						<span>{crumb.segment.replace(/-/g, " ")}</span>
 					</li>
 				))}
 			</ul>

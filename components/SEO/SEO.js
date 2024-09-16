@@ -11,8 +11,9 @@ import Head from 'next/head';
  *
  * @returns {React.ReactElement} The SEO component
  */
-export default function SEO({ title, description, imageUrl, url }) {
-  if (!title && !description && !imageUrl && !url) {
+export default function SEO({ title, description, imageUrl, url, themeGeneralSettings }) {
+
+  if (!title && !description && !imageUrl && !url && !themeGeneralSettings) {
     return null;
   }
 
@@ -21,6 +22,8 @@ export default function SEO({ title, description, imageUrl, url }) {
       <Head>
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
+        <link rel='shortcut icon' href={themeGeneralSettings?.options?.favicon?.mediaItemUrl} />
+        
 
         {title && (
           <>

@@ -29,9 +29,27 @@ const GET_LAYOUT_QUERY = gql`
 	query GetLayout(
 		$headerLocation: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
+		$footerLocationMain: MenuLocationEnum
 	) {
 		generalSettings {
 			...BlogInfoFragment
+		}
+		themeGeneralSettings {
+			pageSlug
+			pageTitle
+			options {
+				favicon {
+					mediaItemUrl
+				}
+				grupoheader {
+					logo {
+						mediaItemUrl
+					}
+					logoGreen {
+						mediaItemUrl
+					}
+				}
+			}
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
 			nodes {
@@ -39,6 +57,11 @@ const GET_LAYOUT_QUERY = gql`
 			}
 		}
 		footerMenuItems: menuItems(where: { location: $footerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
@@ -95,12 +118,17 @@ export default function Component(props) {
 	const { posts } = useFaustQuery(GET_RECENT_POSTS_QUERY);
 
 	const recentPosts = posts?.edges ?? [];
-	const { generalSettings, headerMenuItems, footerMenuItems } =
-		useFaustQuery(GET_LAYOUT_QUERY);
+	const {
+		generalSettings,
+		headerMenuItems,
+		footerMenuItems,
+		footerMenuItemsMain,
+	} = useFaustQuery(GET_LAYOUT_QUERY);
 
 	const { title: siteTitle, description: siteDescription } = generalSettings;
 	const primaryMenu = headerMenuItems?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
+	const footerMenuMain = footerMenuItemsMain?.nodes ?? [];
 	const { title, content, featuredImage, date, author } = post ?? {};
 
 	const [isNavShown, setIsNavShown] = useState(false);
@@ -132,15 +160,16 @@ export default function Component(props) {
 									<Breadcrumbs />
 									<h1 className="heading--54 color--primary">{title}</h1>
 									<div className="sectionDetailPost__img">
-										<Image
-											src={featuredImage?.node?.sourceUrl}
-											layout="fill"
-											objectFit="cover"
-											quality
-											priority
-											alt={featuredImage?.node?.altText}
-											title={featuredImage?.node?.title}
-										/>
+										{featuredImage?.node?.sourceUrl && (
+											<Image
+												layout="fill"
+												src={featuredImage.node.sourceUrl}
+												priority
+												alt={featuredImage.node.altText}
+												title={featuredImage.node.title}
+												objectFit="cover"
+											/>
+										)}
 									</div>
 									<ContentWrapper content={content} />
 								</section>
@@ -200,7 +229,11 @@ export default function Component(props) {
 					</div>
 				</>
 			</Main>
-			<Footer title={siteTitle} menuItems={footerMenu} />
+			<Footer
+				title={siteTitle}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -210,6 +243,7 @@ Component.queries = [
 		query: GET_LAYOUT_QUERY,
 		variables: (seedNode, ctx) => ({
 			headerLocation: MENUS.PRIMARY_LOCATION,
+			footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 			footerLocation: MENUS.FOOTER_LOCATION,
 		}),
 	},

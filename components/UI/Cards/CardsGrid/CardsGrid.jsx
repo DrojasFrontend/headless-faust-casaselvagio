@@ -71,7 +71,6 @@ const CardGrid = ({ data, className }) => {
 									width={372}
 									height={440}
 									quality={100}
-									priority
 									sizes="100vw"
 									alt={targeta?.imagen?.altText}
 									title={targeta?.imagen?.title}

@@ -16,9 +16,11 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
+	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const { title: siteTitle, description: siteDescription } =
 		data?.generalSettings;
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
 	const grupoGaleria =
@@ -30,7 +32,7 @@ export default function Component(props) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} />
+			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderGreen
 				title={siteTitle}
 				description={siteDescription}
@@ -48,7 +50,7 @@ export default function Component(props) {
 				<CardsGrid data={grupoPlatos} className="text--center" />
 				<BannerTextCta data={grupoCta} />
 			</Main>
-			<Footer title={siteTitle} menuItems={footerMenu} />
+			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -58,12 +60,35 @@ Component.query = gql`
 	${NavigationMenu.fragments.entry}
 	query GetPageData(
 		$headerLocation: MenuLocationEnum
+		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
 		generalSettings {
 			...BlogInfoFragment
 		}
+		themeGeneralSettings {
+			pageSlug
+			pageTitle
+			options {
+				favicon {
+					mediaItemUrl
+				}
+				grupoheader {
+					logo {
+						mediaItemUrl
+					}
+					logoGreen {
+						mediaItemUrl
+					}
+				}
+			}
+		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
@@ -143,6 +168,7 @@ Component.query = gql`
 Component.variables = () => {
 	return {
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};
 };

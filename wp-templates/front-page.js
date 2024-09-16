@@ -16,10 +16,12 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
+	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const { title: siteTitle, description: siteDescription } =
 		data?.generalSettings;
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
+	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 
 	const grupoHero = props?.data?.pageBy?.paginaInicio?.grupoHero ?? [];
 	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.gruporefugio ?? [];
@@ -37,7 +39,7 @@ export default function Component(props) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} />
+			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
@@ -52,6 +54,7 @@ export default function Component(props) {
 				{mostrarHero && (
 					<HeroImage data={grupoHero} />
 				)}
+				
 				{mostrarRefigio && (
 					<CardsGrid data={grupoRefugio} />
 				)}
@@ -64,7 +67,7 @@ export default function Component(props) {
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
 			</Main>
-			<Footer title={siteTitle} menuItems={footerMenu} />
+			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -74,6 +77,7 @@ Component.query = gql`
 	${NavigationMenu.fragments.entry}
 	query GetPageData(
 		$headerLocation: MenuLocationEnum
+		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
 		generalSettings {
@@ -87,6 +91,28 @@ Component.query = gql`
 		footerMenuItems: menuItems(where: { location: $footerLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
+			}
+		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		themeGeneralSettings {
+			pageSlug
+			pageTitle
+			options {
+				favicon {
+					mediaItemUrl
+				}
+				grupoheader {
+					logo {
+						mediaItemUrl
+					}
+					logoGreen {
+						mediaItemUrl
+					}
+				}
 			}
 		}
 		pageBy(uri: "/") {
@@ -160,6 +186,7 @@ Component.query = gql`
 Component.variables = () => {
 	return {
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};
 };

@@ -3,7 +3,6 @@ import { useState } from "react";
 import * as MENUS from "../../../constants/menus";
 import {
 	BlogInfoFragment,
-	ThemeGeneralSettingsFragment,
 } from "../../../fragments/GeneralSettings";
 import { SEO, NavigationMenu, Main, Footer } from "../../../components";
 
@@ -23,6 +22,8 @@ export default function Component(props, pageProps) {
 	const { title: siteTitle, description: siteDescription } =
 		props?.data?.generalSettings;
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
+	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
 	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 
 	const plan = props?.data?.plan ?? [];
@@ -34,7 +35,7 @@ export default function Component(props, pageProps) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} />
+			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
@@ -51,7 +52,7 @@ export default function Component(props, pageProps) {
 				<CardsGridThree data={postInternas} heading="Planes mas destacados" />
 				<BannerTextCta data={grupoCta} />
 			</Main>
-			<Footer />
+			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -60,6 +61,7 @@ Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 		asPreview: ctx?.asPreview,
 	};
@@ -71,6 +73,7 @@ Component.query = gql`
 	query GetPageData(
 		$databaseId: ID!
 		$headerLocation: MenuLocationEnum
+		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 		$asPreview: Boolean = false
 	) {
@@ -82,9 +85,31 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
 		footerMenuItems: menuItems(where: { location: $footerLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
+			}
+		}
+		themeGeneralSettings {
+			pageSlug
+			pageTitle
+			options {
+				favicon {
+					mediaItemUrl
+				}
+				grupoheader {
+					logo {
+						mediaItemUrl
+					}
+					logoGreen {
+						mediaItemUrl
+					}
+				}
 			}
 		}
 		plan(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {

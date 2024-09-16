@@ -2,13 +2,17 @@
 
 .bckg {
   position: relative;
-  height: rem(500);
+  aspect-ratio: 600 / 694;
   border-radius: 0 0 rem(12) rem(44);
   overflow: hidden;
 
-  @media only screen and (min-width: 1024px) and (min-height: 650px) {
-    height: rem(650);
-    border-radius: 0 0 rem(10) rem(54);
+  // @media only screen and (min-width: 1024px) and (min-height: 650px) {
+  //   height: rem(650);
+  //   border-radius: 0 0 rem(10) rem(54);
+  // }
+
+  @media only screen and (min-width: 1024px) {
+    aspect-ratio: 1440 / 550;
   }
 
   &:before {

@@ -15,6 +15,7 @@ const GET_LAYOUT_QUERY = gql`
 	${NavigationMenu.fragments.entry}
 	query GetLayout(
 		$headerLocation: MenuLocationEnum
+		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
 		generalSettings {
@@ -25,11 +26,17 @@ const GET_LAYOUT_QUERY = gql`
 				...NavigationMenuItemFragment
 			}
 		}
+		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
 		footerMenuItems: menuItems(where: { location: $footerLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
 		}
+		
 		pageBy(uri: "/planes") {
 			paginaPlanes {
 				grupohero {
@@ -69,12 +76,13 @@ const GET_ALL_PLANES_QUERY = gql`
 `;
 
 export default function Component() {
-	const { generalSettings, headerMenuItems, footerMenuItems, pageBy } =
+	const { generalSettings, headerMenuItems, footerMenuItems, footerMenuItemsMain, pageBy } =
 		useFaustQuery(GET_LAYOUT_QUERY);
 	const { planes } = useFaustQuery(GET_ALL_PLANES_QUERY);
 
 	const { title: siteTitle, description: siteDescription } = generalSettings;
 	const primaryMenu = headerMenuItems?.nodes ?? [];
+	const footerMenuMain = footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
 
 	const grupoHero = pageBy?.paginaPlanes?.grupohero ?? [];
@@ -99,7 +107,7 @@ export default function Component() {
 				<HeroImageMedium data={grupoHero} />
 				<CardsPlan data={planes?.nodes} detail={grupoTexto} />
 			</Main>
-			<Footer title={siteTitle} menuItems={footerMenu} />
+			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -109,6 +117,7 @@ Component.queries = [
 		query: GET_LAYOUT_QUERY,
 		variables: (seedNode, ctx) => ({
 			headerLocation: MENUS.PRIMARY_LOCATION,
+			footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 			footerLocation: MENUS.FOOTER_LOCATION,
 		}),
 	},

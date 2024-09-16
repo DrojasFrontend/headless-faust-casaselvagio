@@ -8,6 +8,7 @@ export { IconInstagram } from "./IconInstagram";
 export { IconLocation } from "./IconLocation";
 export { IconMenu } from "./IconMenu";
 export { IconPhone } from "./IconPhone";
+export { IconTikTok } from "./IconTikTok";
 export { IconWaze } from "./IconWaze";
 export { IconWhatsapp } from "./IconWhatsapp";
 export { IconWorld } from "./IconWorld";

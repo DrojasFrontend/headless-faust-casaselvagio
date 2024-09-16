@@ -13,8 +13,8 @@ const HeroImage = ({data}) => {
 				<Image
 					src={imagen.mediaItemUrl}
 					layout="fill"
-					quality={100}
 					priority
+					quality={100}
 					alt={imagen.altText}
 					title={imagen.title}
 				/>

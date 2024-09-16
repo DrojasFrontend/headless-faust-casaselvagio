@@ -92,7 +92,6 @@ const CardsGridThreeCarusel = ({ data }) => {
 											width={372}
 											height={500}
 											quality={100}
-											priority
 											sizes="100vw"
 											objectFit="cover"
 											alt={targeta?.imagen?.altText}
