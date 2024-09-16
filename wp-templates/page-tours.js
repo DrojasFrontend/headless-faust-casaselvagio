@@ -29,7 +29,6 @@ export default function Component(props) {
 	const postInternas = props?.data?.experiencias?.nodes ?? [];
 	const grupoCta = props?.data?.pageBy?.paginaExperiencias?.grupoCta ?? [];
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

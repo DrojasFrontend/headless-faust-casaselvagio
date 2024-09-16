@@ -66,6 +66,7 @@ export default function Component(props) {
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
+				
 			</Main>
 			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>

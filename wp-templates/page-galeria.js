@@ -28,7 +28,6 @@ export default function Component(props, pageProps) {
 		props?.data?.pageBy?.paginaGaleria?.mostrarGaleria ?? "";
 
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

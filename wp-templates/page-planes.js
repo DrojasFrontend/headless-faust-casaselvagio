@@ -74,7 +74,6 @@ const GET_ALL_PLANES_QUERY = gql`
 		}
 	}
 `;
-
 export default function Component() {
 	const { generalSettings, headerMenuItems, footerMenuItems, footerMenuItemsMain, pageBy } =
 		useFaustQuery(GET_LAYOUT_QUERY);

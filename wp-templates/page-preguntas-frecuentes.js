@@ -26,7 +26,6 @@ export default function Component(props) {
 		props?.data?.pageBy?.paginaFaqs?.mostrarPreguntas ?? "";
 
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

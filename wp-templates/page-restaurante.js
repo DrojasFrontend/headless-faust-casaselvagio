@@ -29,7 +29,6 @@ export default function Component(props) {
 	const grupoPlatos = props?.data?.pageBy?.paginaGatronomia?.grupoPlatos ?? [];
 	const grupoCta = props?.data?.pageBy?.paginaGatronomia?.grupocta ?? [];
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

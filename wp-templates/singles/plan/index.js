@@ -56,7 +56,6 @@ export default function Component(props, pageProps) {
 		</>
 	);
 }
-
 Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,

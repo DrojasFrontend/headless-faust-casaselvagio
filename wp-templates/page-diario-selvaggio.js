@@ -41,7 +41,6 @@ export default function Component(props) {
 	const mostrarTexto = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarTexto;
 
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

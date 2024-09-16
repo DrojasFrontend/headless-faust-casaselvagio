@@ -16,7 +16,6 @@ export default function Component(props, pageProps) {
 	if (props.loading) {
 		return <>Loading...</>;
 	}
-
 	const pageTitle = props?.data?.casodeExito?.title;
 	const { title: siteTitle, description: siteDescription } =
 		props?.data?.generalSettings;

@@ -23,7 +23,6 @@ export default function Component(props) {
 	const grupoHero = props?.data?.pageBy?.paginaContacto?.grupohero ?? [];
 
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />

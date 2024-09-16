@@ -22,9 +22,7 @@ export default function Component(props) {
 
   const grupocarusel = props?.data?.pageBy?.paginaEcoVillas?.grupocarusel ?? [];
   const grupoTexto = props?.data?.pageBy?.paginaEcoVillas?.grupoTexto ?? [];
-
 	const [isNavShown, setIsNavShown] = useState(false);
-
 	return (
 		<>
 			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
