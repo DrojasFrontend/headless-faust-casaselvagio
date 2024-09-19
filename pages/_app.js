@@ -6,8 +6,19 @@ import "@faustwp/core/dist/css/toolbar.css";
 import "../styles/global.scss";
 import Script from "next/script"; 
 
+import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
+
 export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
+
+	useEffect(() => {
+    const gtmId = process.env.NEXT_PUBLIC_GTM_ID; // Usamos una variable de entorno para el GTM ID
+
+    if (gtmId) {
+      TagManager.initialize({ gtmId }); // Inicializa GTM
+    }
+  }, []);
 
 	return (
 		<FaustProvider pageProps={pageProps}>
