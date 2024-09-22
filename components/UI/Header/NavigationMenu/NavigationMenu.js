@@ -26,15 +26,6 @@ export default function NavigationMenu({
 	function renderMenu(items) {
 		return (
 			<ul className={cx("menu")}>
-				<button
-					type="button"
-					className={cx("nav-close")}
-					onClick={() => setIsNavShown(false)}
-					aria-label="Close navigation"
-				>
-					<IconClose />
-				</button>
-
 				{items.map((item) => {
 					const { id, path, label, children, cssClasses } = item;
 
@@ -50,12 +41,15 @@ export default function NavigationMenu({
 						</li>
 					);
 				})}
-				<Link href="#">
-					<a className={cx("location")}>
-						<IconLocation />
-						Hoteles Casa Selvaggio
-					</a>
-				</Link>
+
+				<li>
+					<Link href="#">
+						<a className={cx("location")}>
+							<IconLocation />
+							Hoteles Casa Selvaggio
+						</a>
+					</Link>
+				</li>
 			</ul>
 		);
 	}
@@ -66,6 +60,14 @@ export default function NavigationMenu({
 			role="navigation"
 			aria-label={`${menuItems[0]?.menu?.node?.name} menu`}
 		>
+			<button
+				type="button"
+				className={cx("nav-close")}
+				onClick={() => setIsNavShown(false)}
+				aria-label="Close navigation"
+			>
+				<IconClose />
+			</button>
 			{renderMenu(hierarchicalMenuItems)}
 		</nav>
 	);

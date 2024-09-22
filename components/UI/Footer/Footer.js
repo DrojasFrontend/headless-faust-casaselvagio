@@ -15,7 +15,12 @@ import IconWaze from "../../SVG/IconWaze";
 import IconWhatsapp from "../../SVG/IconWhatsapp";
 import IconTikTok from "../../SVG/IconTikTok";
 
-export default function Footer({ menuItemsMain, menuItems }) {
+export default function Footer({
+	themeGeneralSettings,
+	menuItemsMain,
+	menuItems,
+}) {
+	const Logo = themeGeneralSettings.options.grupoheader.logo.mediaItemUrl;
 	return (
 		<footer className={cx("component")}>
 			<div className={cx("bckg")}>
@@ -23,8 +28,14 @@ export default function Footer({ menuItemsMain, menuItems }) {
 					<div className={cx("grid")}>
 						<div className={cx("logo")}>
 							<Link href="/">
-								<a>
-									<Image src={LogoDefault} alt="" title="logo footer" />
+								<a aria-label="Ir a la página de inicio">
+									<Image
+										src={Logo}
+										width={242}
+										height={105}
+										alt="Logotipo de Casaselvaggio Hotel Campestre"
+										title="Casaselvaggio Hotel Campestre - Relax y naturaleza en un entorno rural"
+									/>
 								</a>
 							</Link>
 						</div>
@@ -55,33 +66,42 @@ export default function Footer({ menuItemsMain, menuItems }) {
 								))}
 							</div>
 							<div className={cx("social")}>
-								<Link href="https://www.instagram.com/casaselvaggio/?hl=es" target="_blank">
-									<a>
+								<Link
+									href="https://www.instagram.com/casaselvaggio/?hl=es"
+									target="_blank"
+								>
+									<a aria-label="Enlace a Instagram de Casaselvaggio">
 										<IconInstagram />
 									</a>
 								</Link>
-								<Link href="https://www.facebook.com/profile.php?id=100088355431900&mibextid=LQQJ4d" target="_blank">
-									<a>
+								<Link
+									href="https://www.facebook.com/profile.php?id=100088355431900&mibextid=LQQJ4d"
+									target="_blank"
+								>
+									<a aria-label="Enlace a Facebook de Casaselvaggio">
 										<IconFacebook />
 									</a>
 								</Link>
 								<Link href="#" target="_blank">
-									<a>
+									<a aria-label="Enlace a Waze de Casaselvaggio">
 										<IconWaze />
 									</a>
 								</Link>
 								<Link href="#" target="_blank">
-									<a>
+									<a aria-label="Enlace a YouTube de Casaselvaggio">
 										<IconYoutube />
 									</a>
 								</Link>
 								<Link href="#" target="_blank">
-									<a>
+									<a aria-label="Enlace a WhatsApp de Casaselvaggio">
 										<IconWhatsapp />
 									</a>
 								</Link>
-								<Link href="https://www.tiktok.com/@casaselvaggio?_t=8phLJpiinOn&_r=1" target="_blank">
-									<a>
+								<Link
+									href="https://www.tiktok.com/@casaselvaggio?_t=8phLJpiinOn&_r=1"
+									target="_blank"
+								>
+									<a aria-label="Enlace a TikTok de Casaselvaggio">
 										<IconTikTok />
 									</a>
 								</Link>

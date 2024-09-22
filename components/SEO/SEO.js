@@ -11,11 +11,14 @@ import Head from 'next/head';
  *
  * @returns {React.ReactElement} The SEO component
  */
-export default function SEO({ title, description, imageUrl, url, themeGeneralSettings }) {
+export default function SEO({ data, themeGeneralSettings }) {
 
-  if (!title && !description && !imageUrl && !url && !themeGeneralSettings) {
+  if (!data && !themeGeneralSettings) {
     return null;
   }
+
+  const {title, metaDesc, opengraphImage, canonical } = data;
+  console.log(data)
 
   return (
     <>
@@ -32,25 +35,26 @@ export default function SEO({ title, description, imageUrl, url, themeGeneralSet
             <meta property="twitter:title" content={title} />
           </>
         )}
-        {description && (
+        {metaDesc && (
           <>
-            <meta name="description" content={description} />
-            <meta property="og:description" content={description} />
-            <meta property="twitter:description" content={description} />
+            <meta name="description" content={metaDesc} />
+            <meta property="og:description" content={metaDesc} />
+            <meta property="twitter:description" content={metaDesc} />
           </>
         )}
-        {imageUrl && (
+        {opengraphImage && (
           <>
-            <meta property="og:image" content={imageUrl} />
-            <meta property="twitter:image" content={imageUrl} />
+            <meta property="og:image" content={mediaItemUrl} />
+            <meta property="twitter:image" content={mediaItemUrl} />
           </>
         )}
-        {url && (
+        {/* {url && (
           <>
             <meta property="og:url" content={url} />
             <meta property="twitter:url" content={url} />
           </>
-        )}
+        )} */}
+        <link rel="canonical" href={canonical} />
       </Head>
     </>
   );
