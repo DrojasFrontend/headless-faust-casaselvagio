@@ -18,7 +18,6 @@ export default function SEO({ data, themeGeneralSettings }) {
   }
 
   const {title, metaDesc, opengraphImage, canonical } = data;
-  console.log(data)
 
   return (
     <>

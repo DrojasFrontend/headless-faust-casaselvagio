@@ -37,7 +37,7 @@ export default function Component(props) {
 	const mostrarHabitaciones = props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
 	const mostrarExperiencias = props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
 
-	console.log(props.data.pageBy.seo.title)
+	console.log(props)
 
 	return (
 		<>
