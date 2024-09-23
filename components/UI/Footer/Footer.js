@@ -20,7 +20,7 @@ export default function Footer({
 	menuItemsMain,
 	menuItems,
 }) {
-	const Logo = themeGeneralSettings.options.grupoheader.logo.mediaItemUrl;
+	const Logo = themeGeneralSettings?.options?.grupoheader?.logo?.mediaItemUrl;
 	return (
 		<footer className={cx("component")}>
 			<div className={cx("bckg")}>

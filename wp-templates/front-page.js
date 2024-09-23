@@ -37,8 +37,6 @@ export default function Component(props) {
 	const mostrarHabitaciones = props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
 	const mostrarExperiencias = props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
 
-	console.log(props)
-
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
