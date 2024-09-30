@@ -20,9 +20,9 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
+	const siteSeo = props.data.pageBy.seo
+	
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
-	const { title: siteTitle, description: siteDescription } =
-		data?.generalSettings;
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
@@ -43,10 +43,8 @@ export default function Component(props) {
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -60,7 +58,7 @@ export default function Component(props) {
 				{mostrarTargetas && <CardsGridTwo data={grupoTargetas} />}
 				{mostrarEquipo && <CardsGridFourCarusel data={grupoEquipo} />}
 			</Main>
-			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -109,6 +107,14 @@ Component.query = gql`
 			}
 		}
 		pageBy(uri: "/diario-selvaggio") {
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			paginaDiarioSelvaggio {
 				mostrarEquipo
 				mostrarHero

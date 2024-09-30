@@ -76,6 +76,14 @@ const GET_POST_QUERY = gql`
 			title
 			content
 			date
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			author {
 				node {
 					name
@@ -117,15 +125,17 @@ export default function Component(props) {
 	const { post } = useFaustQuery(GET_POST_QUERY);
 	const { posts } = useFaustQuery(GET_RECENT_POSTS_QUERY);
 
+	const siteSeo = post?.seo
+
 	const recentPosts = posts?.edges ?? [];
 	const {
 		generalSettings,
 		headerMenuItems,
 		footerMenuItems,
 		footerMenuItemsMain,
+		themeGeneralSettings
 	} = useFaustQuery(GET_LAYOUT_QUERY);
 
-	const { title: siteTitle, description: siteDescription } = generalSettings;
 	const primaryMenu = headerMenuItems?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
 	const footerMenuMain = footerMenuItemsMain?.nodes ?? [];
@@ -135,14 +145,8 @@ export default function Component(props) {
 
 	return (
 		<>
-			<SEO
-				title={siteTitle}
-				description={siteDescription}
-				imageUrl={featuredImage?.node?.sourceUrl}
-			/>
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderGreen
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -229,11 +233,7 @@ export default function Component(props) {
 					</div>
 				</>
 			</Main>
-			<Footer
-				title={siteTitle}
-				menuItemsMain={footerMenuMain}
-				menuItems={footerMenu}
-			/>
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }

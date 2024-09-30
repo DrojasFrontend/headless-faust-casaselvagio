@@ -22,9 +22,9 @@ export default function Component(props) {
 		return <>Loading...</>;
 	}
 
+	const siteSeo = props.data.page.seo
+
 	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
-	const { title: siteTitle, description: siteDescription } =
-		props?.data?.generalSettings;
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
@@ -42,10 +42,8 @@ export default function Component(props) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+		<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -89,11 +87,7 @@ export default function Component(props) {
 					</Container>
 				</section>
 			</Main>
-			<Footer
-				title={siteTitle}
-				menuItemsMain={footerMenuMain}
-				menuItems={footerMenu}
-			/>
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -125,6 +119,14 @@ Component.query = gql`
 			...FeaturedImageFragment
 			paginaBlog {
 				mostrarcarusel
+			}
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
 			}
 		}
 		posts(first: 9) {

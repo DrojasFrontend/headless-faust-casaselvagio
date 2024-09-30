@@ -13,9 +13,9 @@ export default function Component(props, pageProps) {
 		variables: Component.variables(),
 	});
 
+	const siteSeo = props.data.pageBy.seo
+
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
-	const { title: siteTitle, description: siteDescription } =
-		data?.generalSettings;
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
@@ -30,10 +30,8 @@ export default function Component(props, pageProps) {
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -45,7 +43,7 @@ export default function Component(props, pageProps) {
 				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
 				{mostrarGaleria && <Gallery data={grupoGaleria} />}
 			</Main>
-			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -94,6 +92,14 @@ Component.query = gql`
 			}
 		}
 		pageBy(uri: "/galeria") {
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			paginaGaleria {
 				mostrarcarusel
 				mostrarGaleria

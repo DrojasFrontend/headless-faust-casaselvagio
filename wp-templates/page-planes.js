@@ -36,8 +36,34 @@ const GET_LAYOUT_QUERY = gql`
 				...NavigationMenuItemFragment
 			}
 		}
+
+		themeGeneralSettings {
+			pageSlug
+			pageTitle
+			options {
+				favicon {
+					mediaItemUrl
+				}
+				grupoheader {
+					logo {
+						mediaItemUrl
+					}
+					logoGreen {
+						mediaItemUrl
+					}
+				}
+			}
+		}
 		
 		pageBy(uri: "/planes") {
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			paginaPlanes {
 				grupohero {
 					titulo
@@ -75,11 +101,12 @@ const GET_ALL_PLANES_QUERY = gql`
 	}
 `;
 export default function Component() {
-	const { generalSettings, headerMenuItems, footerMenuItems, footerMenuItemsMain, pageBy } =
+	const { themeGeneralSettings, generalSettings, headerMenuItems, footerMenuItems, footerMenuItemsMain, pageBy } =
 		useFaustQuery(GET_LAYOUT_QUERY);
 	const { planes } = useFaustQuery(GET_ALL_PLANES_QUERY);
 
-	const { title: siteTitle, description: siteDescription } = generalSettings;
+	const siteSeo = pageBy?.seo
+
 	const primaryMenu = headerMenuItems?.nodes ?? [];
 	const footerMenuMain = footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
@@ -91,10 +118,8 @@ export default function Component() {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} />
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -106,7 +131,7 @@ export default function Component() {
 				<HeroImageMedium data={grupoHero} />
 				<CardsPlan data={planes?.nodes} detail={grupoTexto} />
 			</Main>
-			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }

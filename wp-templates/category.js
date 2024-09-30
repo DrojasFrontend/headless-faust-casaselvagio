@@ -27,7 +27,7 @@ export default function Component(props) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+			
 			<HeaderWhite
 				title={siteTitle}
 				description={siteDescription}
@@ -85,6 +85,7 @@ export default function Component(props) {
 				title={siteTitle}
 				menuItemsMain={footerMenuMain}
 				menuItems={footerMenu}
+				themeGeneralSettings={themeGeneralSettings}
 			/>
 		</>
 	);

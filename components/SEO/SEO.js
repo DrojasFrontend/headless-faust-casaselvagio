@@ -43,8 +43,8 @@ export default function SEO({ data, themeGeneralSettings }) {
         )}
         {opengraphImage && (
           <>
-            <meta property="og:image" content={mediaItemUrl} />
-            <meta property="twitter:image" content={mediaItemUrl} />
+            <meta property="og:image" content={opengraphImage?.mediaItemUrl} />
+            <meta property="twitter:image" content={opengraphImage?.mediaItemUrl} />
           </>
         )}
         {/* {url && (

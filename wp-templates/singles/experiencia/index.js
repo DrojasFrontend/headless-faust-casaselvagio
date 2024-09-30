@@ -16,9 +16,9 @@ export default function Component(props, pageProps) {
 	if (props.loading) {
 		return <>Loading...</>;
 	}
-	const pageTitle = props?.data?.casodeExito?.title;
-	const { title: siteTitle, description: siteDescription } =
-		props?.data?.generalSettings;
+
+	const siteSeo = props?.data?.experiencia?.seo;
+
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
@@ -31,10 +31,8 @@ export default function Component(props, pageProps) {
 
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -50,7 +48,7 @@ export default function Component(props, pageProps) {
 					heading="Experiencias más populares"
 				/>
 			</Main>
-			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -113,6 +111,14 @@ Component.query = gql`
 		experiencia(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
 			title
 			excerpt
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			postInterna {
 				grupobanner {
 					imagen {

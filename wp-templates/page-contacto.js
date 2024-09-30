@@ -12,10 +12,9 @@ export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
+	const siteSeo = props.data.pageBy.seo
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
-	const { title: siteTitle, description: siteDescription } =
-		data?.generalSettings;
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
@@ -25,10 +24,8 @@ export default function Component(props) {
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
-			<SEO title={siteTitle} description={siteDescription} themeGeneralSettings={themeGeneralSettings} />
+			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
-				title={siteTitle}
-				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			/>
@@ -42,7 +39,7 @@ export default function Component(props) {
 					<FormContact />
 				</Container>
 			</Main>
-			<Footer title={siteTitle} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
 		</>
 	);
 }
@@ -91,6 +88,14 @@ Component.query = gql`
 			}
 		}
 		pageBy(uri: "/contacto") {
+			seo {
+				title
+				metaDesc
+				canonical
+				opengraphImage {
+					mediaItemUrl
+				}
+			}
 			paginaContacto {
 				mostrarhero
 				grupohero {
