@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import classNames from "classnames/bind";
 import { gql } from "@apollo/client";
 import Link from "next/link";
@@ -16,11 +17,13 @@ export default function NavigationMenu({
 	className,
 	setIsNavShown,
 }) {
+	const navRef = useRef(null); // Referencia al menú de navegación
+
 	if (!menuItems) {
 		return null;
 	}
 
-	// Based on https://www.wpgraphql.com/docs/menus/#hierarchical-data
+	// Basado en https://www.wpgraphql.com/docs/menus/#hierarchical-data
 	const hierarchicalMenuItems = flatListToHierarchical(menuItems);
 
 	function renderMenu(items) {
@@ -54,8 +57,27 @@ export default function NavigationMenu({
 		);
 	}
 
+	// Hook para manejar el click fuera del menú
+	useEffect(() => {
+		// Función para manejar los clics fuera del menú
+		const handleClickOutside = (event) => {
+			if (navRef.current && !navRef.current.contains(event.target)) {
+				setIsNavShown(false); // Cerrar el menú si se hace clic fuera
+			}
+		};
+
+		// Agregar evento de clic al documento
+		document.addEventListener("mousedown", handleClickOutside);
+
+		// Eliminar el evento al desmontar el componente
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [setIsNavShown]);
+
 	return (
 		<nav
+			ref={navRef} // Añadir la referencia al nav
 			className={cx(["component", className])}
 			role="navigation"
 			aria-label={`${menuItems[0]?.menu?.node?.name} menu`}

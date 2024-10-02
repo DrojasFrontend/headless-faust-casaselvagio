@@ -109,9 +109,9 @@ const CardsMasonry = ({ data }) => {
 									</div>
 									<div className="">
 										{cta && (
-											<Link href={cta.url}>
-												<a className="button button--white" target={cta.target}>
-													{cta.title}
+											<Link href={cta?.url}>
+												<a className="button button--white" target={cta?.target}>
+													{cta?.title}
 												</a>
 											</Link>
 										)}

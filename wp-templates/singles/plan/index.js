@@ -149,6 +149,9 @@ Component.query = gql`
 						}
 						items {
 							titulo
+							icono {
+								mediaItemUrl
+							}
 						}
 					}
 				}

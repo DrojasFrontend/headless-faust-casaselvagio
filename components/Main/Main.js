@@ -6,6 +6,7 @@ import styles from "./Main.module.scss";
 let cx = classNames.bind(styles);
 
 import { NavigationMenu } from "../UI/Header/NavigationMenu";
+import { NavigationMenuFloating } from "../UI/Header/NavigationMenuFloating";
 
 export default function Main({
 	children,
@@ -28,6 +29,7 @@ export default function Main({
 				menuItems={menuItems}
 				setIsNavShown={setIsNavShown}
 			/>
+			<NavigationMenuFloating/>
 		</main>
 	);
 }

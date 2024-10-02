@@ -20,34 +20,40 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
-	
+	const siteSeo = props.data.pageBy.seo;
+
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
+	const grupoHero = props?.data?.pageBy?.paginaDiarioSelvaggio?.grupoHero ?? [];
+
 	const grupoTexto =
 		props?.data?.pageBy?.paginaDiarioSelvaggio?.grupotexto ?? [];
-	const grupoHero = props?.data?.pageBy?.paginaDiarioSelvaggio?.grupoHero ?? [];
+
 	const grupoTargetas =
 		props?.data?.pageBy?.paginaDiarioSelvaggio?.grupotargetas ?? [];
+
+	const grupoTextoBottom =
+		props?.data?.pageBy?.paginaDiarioSelvaggio?.grupotextobottom ?? [];
+
 	const grupoEquipo =
 		props?.data?.pageBy?.paginaDiarioSelvaggio?.grupoequipo ?? [];
 
-	const mostrarEquipo = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarEquipo;
+	const mostrarEquipo =
+		props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarEquipo;
 	const mostrarHero = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarHero;
-	const mostrarTargetas = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrartargetas;
+	const mostrarTargetas =
+		props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrartargetas;
 	const mostrarTexto = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrarTexto;
+	const mostrarTextoBottom = props?.data?.pageBy?.paginaDiarioSelvaggio?.mostrartextobottom;
 
 	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
-			<HeaderWhite
-				isNavShown={isNavShown}
-				setIsNavShown={setIsNavShown}
-			/>
+			<HeaderWhite isNavShown={isNavShown} setIsNavShown={setIsNavShown} />
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
@@ -56,9 +62,14 @@ export default function Component(props) {
 				{mostrarHero && <HeroImageTextCTA data={grupoHero} />}
 				{mostrarTexto && <TextImage data={grupoTexto} />}
 				{mostrarTargetas && <CardsGridTwo data={grupoTargetas} />}
+				{mostrarTextoBottom && <TextImage data={grupoTextoBottom} />}
 				{mostrarEquipo && <CardsGridFourCarusel data={grupoEquipo} />}
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -119,6 +130,7 @@ Component.query = gql`
 				mostrarEquipo
 				mostrarHero
 				mostrarTexto
+				mostrartextobottom
 				mostrartargetas
 				grupoHero {
 					titulo
@@ -151,6 +163,32 @@ Component.query = gql`
 						}
 						items {
 							titulo
+							icono {
+								mediaItemUrl
+							}
+						}
+					}
+				}
+				grupotextobottom {
+					items {
+						estilo
+						titulo
+						descripcion
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						cta {
+							target
+							title
+							url
+						}
+						items {
+							titulo
+							icono {
+								mediaItemUrl
+							}
 						}
 					}
 				}

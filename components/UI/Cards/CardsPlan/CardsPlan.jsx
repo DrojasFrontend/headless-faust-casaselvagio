@@ -62,12 +62,12 @@ const CardsPlan = ({data, detail}) => {
 						))}
 
 						{/* {cta && (
-						<Link href={cta.url}>
+						<Link href={cta?.url}>
 							<a
 								className="button button--primary button--center"
-								target={cta.target}
+								target={cta?.target}
 							>
-								{cta.title}
+								{cta?.title}
 							</a>
 						</Link>
 					)} */}

@@ -165,6 +165,7 @@ Component.query = gql`
 							altText
 							title
 						}
+						columnas
 					}
 				}
 				grupoexperiencias {

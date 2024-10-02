@@ -28,9 +28,9 @@ const BannerTextCta = ({ data }) => {
 							<h2 className="heading--40 color--white">{titulo}</h2>
 
 							{cta && (
-								<Link href={cta.url}>
-									<a className="button button--white" target={cta.target}>
-										{cta.title}
+								<Link href={cta?.url}>
+									<a className="button button--white" target={cta?.target}>
+										{cta?.title}
 									</a>
 								</Link>
 							)}

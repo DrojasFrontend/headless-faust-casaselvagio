@@ -31,7 +31,7 @@ const CardsBigSmall = ({ data }) => {
 						</div>
 						<div className={cx("grid")}>
 							{targetas.map((targeta, index) => (
-								<div key={index} className={cx("card")}>
+								<div key={index} className={cx("card", { "gridColumn": targeta.columnas === 2 })} >
 									<Image
 										layout="fill"
 										src={targeta?.imagen?.mediaItemUrl}
@@ -48,11 +48,13 @@ const CardsBigSmall = ({ data }) => {
 										>
 											{targeta?.titulo}
 										</h3>
-										<Link href={targeta?.cta?.url}>
-											<a className="button button--white">
-												{targeta?.cta?.title}
-											</a>
-										</Link>
+										{targeta?.cta?.url && (
+											<Link href={targeta?.cta?.url}>
+												<a className="button button--white">
+													{targeta?.cta?.title}
+												</a>
+											</Link>
+										)}
 									</div>
 								</div>
 							))}

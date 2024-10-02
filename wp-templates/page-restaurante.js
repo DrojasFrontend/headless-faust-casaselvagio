@@ -113,6 +113,11 @@ Component.query = gql`
 						altText
 						title
 					}
+					cta {
+						target
+						title
+						url
+					}
 				}
 				grupotexto {
 					items {
@@ -131,6 +136,9 @@ Component.query = gql`
 						}
 						items {
 							titulo
+							icono {
+								mediaItemUrl
+							}
 						}
 					}
 				}

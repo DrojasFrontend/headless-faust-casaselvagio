@@ -89,9 +89,9 @@ const CardGrid = ({ data, className }) => {
 					</Slider>
 
 					{cta && (
-						<Link href={cta.url}>
-							<a className="button button--primary button--center" target={cta.target}>
-								{cta.title}
+						<Link href={cta?.url}>
+							<a className="button button--primary button--center" target={cta?.target}>
+								{cta?.title}
 							</a>
 						</Link>
 					)}
