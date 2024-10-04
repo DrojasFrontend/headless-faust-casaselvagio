@@ -11,6 +11,7 @@ import { Container } from "../../../Layout/Container";
 import IconMenu from "../../../SVG/IconMenu";
 
 import LogoDefault from "/public/img/logocasaselvaggio.svg";
+import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
 
 export default function Header({
 	title,
@@ -43,11 +44,24 @@ export default function Header({
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
-								<Image
-									src={LogoDefault}
-									alt={title}
-									title="logo casaselvaggio"
-								/>
+								<span className={cx("desktop")}>
+									<Image
+										src={LogoDefault}
+										alt={title}
+										width={120}
+										height={53}
+										title="logo casaselvaggio"
+									/>
+								</span>
+								<span className={cx("mobile")}>
+									<Image
+										src={LogoGreen}
+										alt={title}
+										width={120}
+										height={53}
+										title="logo casaselvaggio"
+									/>
+								</span>
 							</a>
 						</Link>
 					</div>

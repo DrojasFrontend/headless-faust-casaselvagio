@@ -106,6 +106,18 @@ Component.query = gql`
 						mediaItemUrl
 					}
 				}
+				grupoFooter {
+					redes {
+						link {
+							target
+							title
+							url
+						}
+						icon {
+							mediaItemUrl
+						}
+					}
+				}
 			}
 		}
 		plan(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {

@@ -21,6 +21,7 @@ export default function Footer({
 	menuItems,
 }) {
 	const Logo = themeGeneralSettings?.options?.grupoheader?.logo?.mediaItemUrl;
+	const redes = themeGeneralSettings?.options?.grupoFooter?.redes;
 	return (
 		<footer className={cx("component")}>
 			<div className={cx("bckg")}>
@@ -65,47 +66,28 @@ export default function Footer({
 									</Link>
 								))}
 							</div>
-							<div className={cx("social")}>
-								<Link
-									href="https://www.instagram.com/casaselvaggio/?hl=es"
-									target="_blank"
-								>
-									<a aria-label="Enlace a Instagram de Casaselvaggio">
-										<IconInstagram />
-									</a>
-								</Link>
-								<Link
-									href="https://www.facebook.com/profile.php?id=100088355431900&mibextid=LQQJ4d"
-									target="_blank"
-								>
-									<a aria-label="Enlace a Facebook de Casaselvaggio">
-										<IconFacebook />
-									</a>
-								</Link>
-								<Link href="#" target="_blank">
-									<a aria-label="Enlace a Waze de Casaselvaggio">
-										<IconWaze />
-									</a>
-								</Link>
-								<Link href="#" target="_blank">
-									<a aria-label="Enlace a YouTube de Casaselvaggio">
-										<IconYoutube />
-									</a>
-								</Link>
-								<Link href="#" target="_blank">
-									<a aria-label="Enlace a WhatsApp de Casaselvaggio">
-										<IconWhatsapp />
-									</a>
-								</Link>
-								<Link
-									href="https://www.tiktok.com/@casaselvaggio?_t=8phLJpiinOn&_r=1"
-									target="_blank"
-								>
-									<a aria-label="Enlace a TikTok de Casaselvaggio">
-										<IconTikTok />
-									</a>
-								</Link>
-							</div>
+							{redes && (
+								<div className={cx("social")}>
+									{redes.map((social, index) => (
+										<Link
+											key={index}
+											href={social?.link?.url}
+											target={social?.link?.target}
+										>
+											<a aria-label="Enlace a Instagram de Casaselvaggio">
+												<Image
+													priority
+													src={social?.icon?.mediaItemUrl}
+													width={24}
+													height={24}
+													alt={social?.link?.title}
+													title={`visitar ${social?.link?.title}`}
+												/>
+											</a>
+										</Link>
+									))}
+								</div>
+							)}
 						</div>
 					</div>
 
@@ -116,21 +98,13 @@ export default function Footer({
 									Contacto
 								</a>
 							</Link>
-							<Link href="/preguntas-frecuentes">
-								<a className="heading--20 font-weight--100 color--white">
-									Preguntas Frecuentes
-								</a>
-							</Link>
-							<Link href="/politica-de-privacidad">
-								<a className="heading--20 font-weight--100 color--white">
-									Política de privacidad
-								</a>
-							</Link>
-							<Link href="/trabaja-con-nosotros">
-								<a className="heading--20 font-weight--100 color--white">
-									Trabaja con nosotros
-								</a>
-							</Link>
+							{menuItems?.map((link, index) => (
+								<Link key={index} href={link?.path}>
+									<a className="heading--20 font-weight--100 color--white">
+										{link?.label}
+									</a>
+								</Link>
+							))}
 						</div>
 					</div>
 

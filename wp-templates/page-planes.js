@@ -52,6 +52,18 @@ const GET_LAYOUT_QUERY = gql`
 						mediaItemUrl
 					}
 				}
+				grupoFooter {
+					redes {
+						link {
+							target
+							title
+							url
+						}
+						icon {
+							mediaItemUrl
+						}
+					}
+				}
 			}
 		}
 		

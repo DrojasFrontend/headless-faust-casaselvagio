@@ -112,6 +112,18 @@ Component.query = gql`
 						mediaItemUrl
 					}
 				}
+				grupoFooter {
+					redes {
+						link {
+							target
+							title
+							url
+						}
+						icon {
+							mediaItemUrl
+						}
+					}
+				}
 			}
 		}
 		pageBy(uri: "/") {

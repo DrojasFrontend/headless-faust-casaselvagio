@@ -13,7 +13,7 @@
   }
 
 	&.header-scrolled {
-		backdrop-filter: blur(12px);
+		background-color: var(--color-white);
 	}
 }
 
@@ -21,7 +21,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	min-height: rem(100);
+	min-height: rem(80);
 }
 
 .logo {

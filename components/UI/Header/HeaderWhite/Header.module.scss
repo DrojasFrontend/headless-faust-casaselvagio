@@ -1,18 +1,27 @@
 @import "styles/breakpoints";
 @import "styles/mixin";
+
 .component {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 10;
-	transition: transform .4s ease;
+	transition: background .8s ease;
 
 	&.header-scrolled {
-		backdrop-filter: blur(12px);
+		background-color: var(--color-white);
 
 		.nav-toggle {
-			color: var(--color-secondary);
+			color: var(--color-primary);
+		}
+
+		.desktop {
+			opacity: 0;
+		}
+
+		.mobile {
+			opacity: 1;
 		}
 	}
 }
@@ -21,10 +30,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	min-height: rem(100);
+	min-height: rem(80);
 }
 
 .logo {
+	position: relative;
 	width: rem(180);
 }
 
@@ -40,4 +50,15 @@
 	border: 0;
 	background-color: transparent;
 	cursor: pointer;
+}
+
+.desktop {
+	opacity: 1;
+}
+
+.mobile {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
 }

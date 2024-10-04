@@ -100,6 +100,18 @@ Component.query = gql`
 						mediaItemUrl
 					}
 				}
+				grupoFooter {
+					redes {
+						link {
+							target
+							title
+							url
+						}
+						icon {
+							mediaItemUrl
+						}
+					}
+				}
 			}
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
