@@ -30,6 +30,7 @@ export { CardsGrid } from "./UI/Cards/CardsGrid";
 export { CardsGridThree } from "./UI/Cards/CardsGridThree";
 export { CardsGridFourCarusel } from "./UI/Cards/CardsGridFourCarusel";
 export { CardsGridThreeCarusel } from "./UI/Cards/CardsGridThreeCarusel";
+export { CardsGridThreeCaruselBlog } from "./UI/Cards/CardsGridThreeCaruselBlog";
 export { CardsGridTwo } from "./UI/Cards/CardsGridTwo";
 export { CardsMasonry } from "./UI/Cards/CardsMasonry";
 export { CardsPlan } from "./UI/Cards/CardsPlan";

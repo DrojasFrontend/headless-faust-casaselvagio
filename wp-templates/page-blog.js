@@ -14,6 +14,7 @@ import {
 import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { Container } from "../components/Layout/Container";
 import { HeroCaruselPosts } from "../components/UI/Heros/HeroCaruselPosts";
+import { CardsGridThreeCaruselBlog } from "../components/UI/Cards/CardsGridThreeCaruselBlog";
 import { CardPost } from "../components/UI/Cards/CardPost";
 
 import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
@@ -98,7 +99,6 @@ export default function BlogPage(props) {
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-	const { title, content, featuredImage } = props?.data?.page ?? { title: "" };
 	const mostrarCarusel = props?.data?.page?.paginaBlog?.mostrarcarusel ?? "";
 	const categories = props?.data?.categories?.edges ?? [];
 
@@ -175,6 +175,7 @@ export default function BlogPage(props) {
 								))}
 						</ul>
 					</div>
+					<CardsGridThreeCaruselBlog data={posts}/>
 					<Container>
 						<h2 className="heading--40 color--primary">Descubrir artículos</h2>
 						<div className="CardsPost__grid">

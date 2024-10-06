@@ -17,7 +17,7 @@
 	--color-gray: #5d5d5d;
 	--color-gray-50: #dde5e9;
 	--color-gray-100: #f7f7f7;
-	--color-gray-200: #ECECEC;
+	--color-gray-200: #ececec;
 }
 
 @font-face {
@@ -474,6 +474,21 @@ a {
 			}
 		}
 	}
+
+	&GridThreeCaruselBlog {
+		.slick {
+			&-arrow {
+				display: none !important;
+			}
+			&-slide {
+				padding: 0 rem(10) 0 0;
+
+				@media only screen and (min-width: 1024px) {
+					padding: 0 rem(5);
+				}
+			}
+		}
+	}
 }
 
 .sectionAcordionTODO {
@@ -790,4 +805,3 @@ textarea {
 	font-size: rem(16);
 	height: auto;
 }
-
