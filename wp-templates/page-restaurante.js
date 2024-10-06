@@ -23,8 +23,8 @@ export default function Component(props) {
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
-	const grupoGaleria =
-		props?.data?.pageBy?.paginaGatronomia?.grupoGaleria ?? [];
+	const grupoGaleria = props?.data?.pageBy?.paginaGatronomia?.grupoGaleria ?? [];
+	const grupoGaleriaCtaTop = props?.data?.pageBy?.paginaGatronomia?.grupoGaleria?.grupoctatop ?? [];
 	const grupoTexto = props?.data?.pageBy?.paginaGatronomia?.grupotexto ?? [];
 	const grupoPlatos = props?.data?.pageBy?.paginaGatronomia?.grupoPlatos ?? [];
 	const grupoCta = props?.data?.pageBy?.paginaGatronomia?.grupocta ?? [];
@@ -43,6 +43,7 @@ export default function Component(props) {
 			>
 				<TitleCopy data={grupoGaleria} />
 				<Carusel data={grupoGaleria}/>
+				<BannerTextCta data={grupoGaleriaCtaTop} />
 				<TextImage data={grupoTexto} />
 				<CardsGrid data={grupoPlatos} className="text--center" />
 				<BannerTextCta data={grupoCta} />
@@ -125,10 +126,18 @@ Component.query = gql`
 						altText
 						title
 					}
-					cta {
-						target
-						title
-						url
+					grupoctatop {
+						imagen {
+							mediaItemUrl
+							altText
+							title
+						}
+						titulo
+						cta {
+							url
+							title
+							target
+						}
 					}
 				}
 				grupotexto {

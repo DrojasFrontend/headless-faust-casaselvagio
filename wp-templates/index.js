@@ -12,6 +12,7 @@ import blog from './page-blog';
 import contacto from './page-contacto';
 import planes from './page-planes';
 import single from './single';
+import test from './page-test';
 import { experiencia, singlePlan } from "./singles";
 
 export default {
@@ -27,6 +28,7 @@ export default {
   'page-blog': blog,
   'page-contacto': contacto,
   'page-planes': planes,
+  'page-test': test,
   page,
   single,
   "single-experiencia": experiencia,
