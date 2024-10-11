@@ -1,7 +1,7 @@
 @import "/styles/mixin";
 
 .component {
-	padding: rem(40) 0 0;
+	padding: rem(40) 0 rem(60);
 
 	@media only screen and (min-width: 1024px) {
 		padding: rem(80) 0 0;
@@ -14,15 +14,13 @@
 }
 
 .grid {
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
+	display: grid;
 	row-gap: rem(20);
 	padding: 0 0 rem(30);
 	border-bottom: rem(1) solid var(--color-secondary-30);
 
 	@media only screen and (min-width: 480px) {
-		flex-direction: row;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 
 	&-bottom {
