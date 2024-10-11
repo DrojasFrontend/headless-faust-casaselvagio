@@ -37,10 +37,25 @@ export default function Header({
 	}, []);
 	const menuClasses = scrolled ? "header-scrolled" : "";
 
+	const menu1 = [
+		{ link: "Diario Selvaggio" },
+		{ link: "Experiencias" },
+		{ link: "Restaurante" },
+	];
+	const menu2 = [{ link: "Eco-villas" }, { link: "Blog" }, { link: "Planes" }];
+
 	return (
 		<header className={cx(["component", menuClasses])}>
 			<Container>
 				<div className={cx(["grid"])}>
+					{menu1.map((m, idx) => {
+						return (
+							<Link href="#" key={idx}>
+								<a className={cx("link")}>{m.link}</a>
+							</Link>
+						);
+					})}
+
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
@@ -65,6 +80,15 @@ export default function Header({
 							</a>
 						</Link>
 					</div>
+
+					{menu2.map((m, idx) => {
+						return (
+							<Link href="#" key={idx}>
+								<a className={cx("link")}>{m.link}</a>
+							</Link>
+						);
+					})}
+
 					<button
 						type="button"
 						onClick={() => setIsNavShown(!isNavShown)}

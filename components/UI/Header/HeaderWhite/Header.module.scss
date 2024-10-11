@@ -23,6 +23,10 @@
 		.mobile {
 			opacity: 1;
 		}
+
+		.link {
+			color: var(--color-primary);
+		}
 	}
 }
 
@@ -35,7 +39,13 @@
 
 .logo {
 	position: relative;
+	display: flex;
+	justify-content: center;
 	width: rem(180);
+
+	a {
+		position: relative;
+	}
 }
 
 .nav-toggle {
@@ -61,4 +71,8 @@
 	top: 0;
 	left: 0;
 	opacity: 0;
+}
+
+.link {
+	color: var(--color-white);
 }
