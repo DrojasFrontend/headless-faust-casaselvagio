@@ -76,7 +76,7 @@ export default function Header({
 					</div>
 
 					<div className={cx("right")}>
-						{menuHeaderItems?.slice(3, 7).map((m, idx) => {
+						{menuHeaderItems?.slice(4, 7).map((m, idx) => {
 							return (
 								<Link href={m?.path} key={idx}>
 									<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
