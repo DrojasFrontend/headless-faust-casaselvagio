@@ -18,6 +18,7 @@ export default function Component(props) {
 	const { title: siteTitle, description: siteDescription } =
 		props?.data?.generalSettings;
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
   const categories = props?.data?.categories?.edges ?? [];
@@ -33,6 +34,8 @@ export default function Component(props) {
 				description={siteDescription}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
@@ -95,6 +98,7 @@ Component.query = gql`
 	query GetCategoryPage(
 		$uri: String!
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
@@ -178,6 +182,11 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
 		footerMenuItemsMain: menuItems(where: { location: $footerLocationMain }) {
 			nodes {
 				...NavigationMenuItemFragment
@@ -195,6 +204,7 @@ Component.variables = ({ uri }) => {
 	return {
 		uri,
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};

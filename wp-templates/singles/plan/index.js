@@ -21,6 +21,7 @@ export default function Component(props, pageProps) {
 	const siteSeo = props?.data?.plan?.seo;
 
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
 	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
@@ -38,6 +39,8 @@ export default function Component(props, pageProps) {
 			<HeaderWhite
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
@@ -57,6 +60,7 @@ Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 		asPreview: ctx?.asPreview,
@@ -69,6 +73,7 @@ Component.query = gql`
 	query GetPageData(
 		$databaseId: ID!
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 		$asPreview: Boolean = false
@@ -77,6 +82,11 @@ Component.query = gql`
 			...BlogInfoFragment
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}

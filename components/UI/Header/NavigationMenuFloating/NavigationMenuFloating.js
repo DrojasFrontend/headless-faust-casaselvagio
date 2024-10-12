@@ -12,14 +12,14 @@ export default function NavigationMenuFloating({}) {
 	const { data, loading, error } = useQuery(GET_FLOATING_MENU);
 	const router = useRouter();
 	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error: {error.message}</p>;
+	if (error) return <p>Error: {error?.message}</p>;
 	const menuItems =
 		data?.themeGeneralSettings?.options?.grupomenufloating?.items ?? [];
 	return (
 		<>
 			<div className={cx("floatingMenu")}>
 				<div className={cx("grid")}>
-					{menuItems.map((item, index) => {
+					{menuItems?.map((item, index) => {
 						const isActive = router?.asPath === item?.enlace?.url;
 						return (
 							item?.enlace?.url && (

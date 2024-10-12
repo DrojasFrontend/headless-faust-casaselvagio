@@ -28,8 +28,9 @@ const GET_LAYOUT_QUERY = gql`
 	${NavigationMenu.fragments.entry}
 	query GetLayout(
 		$headerLocation: MenuLocationEnum
-		$footerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
+		$footerLocation: MenuLocationEnum
 	) {
 		generalSettings {
 			...BlogInfoFragment
@@ -64,6 +65,11 @@ const GET_LAYOUT_QUERY = gql`
 			}
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
@@ -137,18 +143,20 @@ export default function Component(props) {
 	const { post } = useFaustQuery(GET_POST_QUERY);
 	const { posts } = useFaustQuery(GET_RECENT_POSTS_QUERY);
 
-	const siteSeo = post?.seo
+	const siteSeo = post?.seo;
 
 	const recentPosts = posts?.edges ?? [];
 	const {
 		generalSettings,
 		headerMenuItems,
+		menuHeaderMenuItems,
 		footerMenuItems,
 		footerMenuItemsMain,
-		themeGeneralSettings
+		themeGeneralSettings,
 	} = useFaustQuery(GET_LAYOUT_QUERY);
 
 	const primaryMenu = headerMenuItems?.nodes ?? [];
+	const headerMenu = menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = footerMenuItems?.nodes ?? [];
 	const footerMenuMain = footerMenuItemsMain?.nodes ?? [];
 	const { title, content, featuredImage, date, author } = post ?? {};
@@ -161,6 +169,8 @@ export default function Component(props) {
 			<HeaderGreen
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
@@ -245,7 +255,11 @@ export default function Component(props) {
 					</div>
 				</>
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -255,6 +269,7 @@ Component.queries = [
 		query: GET_LAYOUT_QUERY,
 		variables: (seedNode, ctx) => ({
 			headerLocation: MENUS.PRIMARY_LOCATION,
+			menuHeaderLocation: MENUS.HEADER_LOCATION,
 			footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 			footerLocation: MENUS.FOOTER_LOCATION,
 		}),

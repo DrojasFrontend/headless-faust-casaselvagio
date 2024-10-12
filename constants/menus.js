@@ -1,3 +1,4 @@
  export const PRIMARY_LOCATION = 'PRIMARY';
+ export const HEADER_LOCATION = 'MENUHEADER';
  export const FOOTER_LOCATION_MAIN = 'FOOTERMAIN';
  export const FOOTER_LOCATION = 'FOOTER';

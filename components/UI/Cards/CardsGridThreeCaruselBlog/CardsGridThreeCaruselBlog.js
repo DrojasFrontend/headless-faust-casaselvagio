@@ -12,7 +12,6 @@ import { Container } from "../../../Layout/Container";
 import ImageNotAvailable from "/public/img/image-not-available.png";
 
 const CardsGridThreeCaruselBlog = ({ data }) => {
-	console.log(data.map((d, i) => d.node));
 	const [nav1, setNav1] = useState(null);
 	let sliderRef1 = useRef(null);
 

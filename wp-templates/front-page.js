@@ -16,10 +16,11 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props?.data?.pageBy?.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 
@@ -30,43 +31,40 @@ export default function Component(props) {
 	const grupoexperiencias =
 		props?.data?.pageBy?.paginaInicio?.grupoexperiencias ?? [];
 
-	const [isNavShown, setIsNavShown] = useState(false);
-
 	const mostrarHero = props?.data?.pageBy?.paginaInicio?.mostrarHero;
 	const mostrarRefigio = props?.data?.pageBy?.paginaInicio?.mostrarRefigio;
-	const mostrarHabitaciones = props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
-	const mostrarExperiencias = props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
+	const mostrarHabitaciones =
+		props?.data?.pageBy?.paginaInicio?.mostrarHabitaciones;
+	const mostrarExperiencias =
+		props?.data?.pageBy?.paginaInicio?.mostrarExperiencias;
 
+	const [isNavShown, setIsNavShown] = useState(false);
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
 			/>
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 			>
-				{mostrarHero && (
-					<HeroImage data={grupoHero} />
-				)}
-				
-				{mostrarRefigio && (
-					<CardsGrid data={grupoRefugio} />
-				)}
-
-				{mostrarHabitaciones && (
-					<CardsBigSmall data={grupohabitaciones} />
-				)}
-
+				{mostrarHero && <HeroImage data={grupoHero} />}
+				{mostrarRefigio && <CardsGrid data={grupoRefugio} />}
+				{mostrarHabitaciones && <CardsBigSmall data={grupohabitaciones} />}
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
-				
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
@@ -76,6 +74,7 @@ Component.query = gql`
 	${NavigationMenu.fragments.entry}
 	query GetPageData(
 		$headerLocation: MenuLocationEnum
+		$menuHeaderLocation: MenuLocationEnum
 		$footerLocationMain: MenuLocationEnum
 		$footerLocation: MenuLocationEnum
 	) {
@@ -83,6 +82,11 @@ Component.query = gql`
 			...BlogInfoFragment
 		}
 		headerMenuItems: menuItems(where: { location: $headerLocation }) {
+			nodes {
+				...NavigationMenuItemFragment
+			}
+		}
+		menuHeaderMenuItems: menuItems(where: { location: $menuHeaderLocation }) {
 			nodes {
 				...NavigationMenuItemFragment
 			}
@@ -206,6 +210,7 @@ Component.query = gql`
 Component.variables = () => {
 	return {
 		headerLocation: MENUS.PRIMARY_LOCATION,
+		menuHeaderLocation: MENUS.HEADER_LOCATION,
 		footerLocationMain: MENUS.FOOTER_LOCATION_MAIN,
 		footerLocation: MENUS.FOOTER_LOCATION,
 	};

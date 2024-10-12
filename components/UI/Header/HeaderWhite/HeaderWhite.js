@@ -15,10 +15,9 @@ import LogoGreen from "/public/img/logo-green-casaselvaggio.svg";
 
 export default function Header({
 	title,
-	menuItems,
+	menuHeaderItems,
 	isNavShown,
 	setIsNavShown,
-	router,
 }) {
 	const [scrolled, setScrolled] = useState(false);
 	const handleScroll = () => {
@@ -37,24 +36,19 @@ export default function Header({
 	}, []);
 	const menuClasses = scrolled ? "header-scrolled" : "";
 
-	const menu1 = [
-		{ link: "Diario Selvaggio" },
-		{ link: "Experiencias" },
-		{ link: "Restaurante" },
-	];
-	const menu2 = [{ link: "Eco-villas" }, { link: "Blog" }, { link: "Planes" }];
-
 	return (
 		<header className={cx(["component", menuClasses])}>
 			<Container>
 				<div className={cx(["grid"])}>
-					{menu1.map((m, idx) => {
-						return (
-							<Link href="#" key={idx}>
-								<a className={cx("link")}>{m.link}</a>
-							</Link>
-						);
-					})}
+					<div className={cx("left")}>
+						{menuHeaderItems?.slice(0, 4).map((m, idx) => {
+							return (
+								<Link href={m?.path} key={idx}>
+								<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+								</Link>
+							);
+						})}
+					</div>
 
 					<div className={cx(["logo"])}>
 						<Link href="/">
@@ -81,13 +75,15 @@ export default function Header({
 						</Link>
 					</div>
 
-					{menu2.map((m, idx) => {
-						return (
-							<Link href="#" key={idx}>
-								<a className={cx("link")}>{m.link}</a>
-							</Link>
-						);
-					})}
+					<div className={cx("right")}>
+						{menuHeaderItems?.slice(3, 7).map((m, idx) => {
+							return (
+								<Link href={m?.path} key={idx}>
+									<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+								</Link>
+							);
+						})}
+					</div>
 
 					<button
 						type="button"

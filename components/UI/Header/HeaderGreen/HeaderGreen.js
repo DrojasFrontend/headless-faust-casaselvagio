@@ -16,6 +16,8 @@ export default function HeaderGreen({
 	title,
 	isNavShown,
 	setIsNavShown,
+	menuItems,
+	menuHeaderItems
 }) {
 	const [scrolled, setScrolled] = useState(false);
 	const handleScroll = () => {
@@ -38,6 +40,16 @@ export default function HeaderGreen({
 		<header className={cx(["component", menuClasses])}>
 			<Container>
 				<div className={cx(["grid"])}>
+					<div className={cx("left")}>
+						{menuHeaderItems?.slice(0, 4).map((m, idx) => {
+							return (
+								<Link href={m.path} key={idx}>
+									<a className={cx("link", m.cssClasses)}>{m.label}</a>
+								</Link>
+							);
+						})}
+					</div>
+
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
@@ -45,13 +57,25 @@ export default function HeaderGreen({
 							</a>
 						</Link>
 					</div>
+
+					<div className={cx("right")}>
+						{menuHeaderItems?.slice(3, 7).map((m, idx) => {
+							return (
+								<Link href={m.path} key={idx}>
+									<a className={cx("link", m.cssClasses)}>{m.label}</a>
+								</Link>
+							);
+						})}
+					</div>
+
 					<button
 						type="button"
 						onClick={() => setIsNavShown(!isNavShown)}
 						aria-label="Toggle navigation"
 						aria-controls={cx("primary-navigation")}
 						aria-expanded={isNavShown}
-						className={cx(["nav-toggle", "color--default"])}>
+						className={cx(["nav-toggle", "color--default"])}
+					>
 						<IconMenu />
 						MENÚ
 					</button>
