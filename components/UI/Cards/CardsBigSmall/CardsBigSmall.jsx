@@ -24,7 +24,7 @@ const CardsBigSmall = ({ data }) => {
 							<h2 className={cx(["heading--40", "color--primary"])}>
 								{titulo}
 							</h2>
-							<p
+							<div
 								className="heading--16 color--gray"
 								dangerouslySetInnerHTML={{ __html: descripcion }}
 							/>

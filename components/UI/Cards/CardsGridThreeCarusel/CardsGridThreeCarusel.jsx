@@ -73,7 +73,7 @@ const CardsGridThreeCarusel = ({ data }) => {
 						<h2 className={cx(["heading", "heading--40 color--primary"])}>
 							{titulo}
 						</h2>
-						<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
+						<div className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: descripcion }} />
 					</div>
 				</Container>
 
@@ -117,7 +117,7 @@ const CardsGridThreeCarusel = ({ data }) => {
 										>
 											{targeta.titulo}
 										</h3>
-										<p className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: targeta?.descripcion }} />
+										<div className="heading--16 color--gray" dangerouslySetInnerHTML={{ __html: targeta?.descripcion }} />
 									</div>
 								))}
 							</Slider>

@@ -66,10 +66,14 @@ const HeroCarusel = ({ data }) => {
 													{slide?.titulo}
 												</h2>
 											)}
-											<p
-												className="heading--16 color--white"
-												dangerouslySetInnerHTML={{ __html: slide?.descripcion }}
-											/>
+											{slide?.descripcion && (
+												<div
+													className="heading--16 color--white"
+													dangerouslySetInnerHTML={{
+														__html: slide?.descripcion,
+													}}
+												/>
+											)}
 											<span className="space space--10"></span>
 
 											{slide?.cta && (

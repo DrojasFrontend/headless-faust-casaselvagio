@@ -54,7 +54,7 @@ const CardsMasonry = ({ data }) => {
 					<div className={cx("title")}>
 						{titulo && <h2 className="heading--40 color--primary">{titulo}</h2>}
 						{descripcion && (
-							<p
+							<div
 								className="heading--16 color--gray"
 								dangerouslySetInnerHTML={{ __html: descripcion }}
 							/>
@@ -101,7 +101,7 @@ const CardsMasonry = ({ data }) => {
 											<p className="heading--40 color--white">{cantidad}</p>
 										)}
 										{detalle && (
-											<p
+											<div
 												className="heading--13 color--white"
 												dangerouslySetInnerHTML={{ __html: detalle }}
 											/>

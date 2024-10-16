@@ -23,7 +23,7 @@ const CardsPlan = ({data, detail}) => {
 						<h2 className={cx(["heading", "heading--40", "color--primary"])}>
 							{detail?.titulo}
 						</h2>
-						<p
+						<div
 							className="heading--16 color--gray"
 							dangerouslySetInnerHTML={{ __html: detail?.descripcion }}
 						/>
@@ -47,7 +47,7 @@ const CardsPlan = ({data, detail}) => {
 										<h3 className="heading--24 color--white">
 											{targeta?.title}
 										</h3>
-										<p
+										<div
 											className="heading--16 color--white"
 											dangerouslySetInnerHTML={{
 												__html: sanitize(targeta?.excerpt),

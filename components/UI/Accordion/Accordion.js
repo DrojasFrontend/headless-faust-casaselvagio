@@ -41,7 +41,7 @@ const Accordion = ({ data }) => {
 										</span>
 									</div>
 									{activeIndex === index && (
-										<p
+										<div
 											className="heading--16 color--gray"
 											dangerouslySetInnerHTML={{ __html: item.respuesta }}
 										/>

@@ -56,7 +56,7 @@ const CardGrid = ({ data, className }) => {
 						<h2 className={cx(["heading", "heading--40", "color--primary"])}>
 							{titulo}
 						</h2>
-						<p
+						<div
 							className="heading--16 color--gray"
 							dangerouslySetInnerHTML={{ __html: descripcion }}
 						/>
@@ -79,7 +79,7 @@ const CardGrid = ({ data, className }) => {
 									<h3 className="heading--24 color--white">
 										{targeta?.titulo}
 									</h3>
-									<p
+									<div
 										className="heading--16 color--white"
 										dangerouslySetInnerHTML={{ __html: targeta?.detalle }}
 									/>
