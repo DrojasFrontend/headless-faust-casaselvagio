@@ -48,7 +48,6 @@ const TextImage = ({ data }) => {
           {items?.map((item, index) => (
             <div
               key={index}
-              onClick={() => openLightbox(index, item.imagen)}
               className={cx(["grid", item?.estilo])}
             >
               <div className={cx("content")}>
@@ -72,10 +71,10 @@ const TextImage = ({ data }) => {
                   </Link>
                 )}
               </div>
-              <div className={cx("img")}>
+              <div className={cx("img")} onClick={() => openLightbox(index, item.imagen)}>
                 <Slider {...settings}>
                   {item?.imagen.map((img, idx) => (
-                    <div key={idx} className={cx("slide")}>
+                    <div key={idx} className={cx("slide")} >
                       <Image
                         src={img?.mediaItemUrl}
                         layout="fill"
