@@ -145,7 +145,13 @@ export default function BlogPage(props) {
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
-			<HeaderWhite isNavShown={isNavShown} setIsNavShown={setIsNavShown} menuItems={primaryMenu} menuHeaderItems={headerMenu} />
+			<HeaderWhite
+				title={siteSeo?.title}
+				isNavShown={isNavShown}
+				setIsNavShown={setIsNavShown}
+				menuItems={primaryMenu}
+				menuHeaderItems={headerMenu}
+			/>
 			<Main
 				menuItems={primaryMenu}
 				isNavShown={isNavShown}
@@ -176,7 +182,7 @@ export default function BlogPage(props) {
 								))}
 						</ul>
 					</div>
-					<CardsGridThreeCaruselBlog data={posts}/>
+					<CardsGridThreeCaruselBlog data={posts} />
 					<Container>
 						<h2 className="heading--40 color--primary">Descubrir artículos</h2>
 						<div className="CardsPost__grid">

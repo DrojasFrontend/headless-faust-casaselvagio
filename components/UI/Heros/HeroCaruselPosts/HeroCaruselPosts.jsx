@@ -16,10 +16,6 @@ import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 const HeroCarusel = ({ data }) => {
 	// const { slides } = data;
 
-	if (!data.length === 0) {
-		return <p>No hay slides disponibles.</p>;
-	}
-
 	var settings = {
 		dots: true,
 		arrows: false,

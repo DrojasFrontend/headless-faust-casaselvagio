@@ -41,7 +41,6 @@ const Carusel = ({ data }) => {
 			},
 		],
 	};
-	console.log(cta);
 
 	if (!galeria.length === 0) {
 		return <p>No hay galeria disponibles.</p>;

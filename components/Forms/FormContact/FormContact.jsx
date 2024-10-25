@@ -118,12 +118,12 @@ const FormContact = () => {
 							</form>
 						</div>
 						<div className={cx("info")}>
-							<Link href="mailto:info@yourdomain.com">
+							<Link href="mailto:info@casaselvaggio.com">
 								<a className={cx("link")}>
 									<span>
 										<IconEnvelope />
 									</span>
-									info@yourdomain.com
+									info@casaselvaggio.com
 								</a>
 							</Link>
 							<Link href="tel:+13784001234">
@@ -134,12 +134,12 @@ const FormContact = () => {
 									+1 (378) 400-1234
 								</a>
 							</Link>
-							<Link href="www.yourdomain.com">
+							<Link href="https://www.casaselvaggio.com/">
 								<a className={cx("link")}>
 									<span>
 										<IconWorld />
 									</span>
-									www.yourdomain.com
+									casaselvaggio.com
 								</a>
 							</Link>
 							<div className={cx("social")}>

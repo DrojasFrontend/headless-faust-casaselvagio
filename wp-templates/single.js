@@ -167,6 +167,7 @@ export default function Component(props) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderGreen
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}

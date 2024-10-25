@@ -13,10 +13,6 @@ import { Container } from "../../../Layout/Container";
 const HeroCarusel = ({ data }) => {
 	const { slides } = data;
 
-	if (!slides.length === 0) {
-		return <p>No hay slides disponibles.</p>;
-	}
-
 	var settings = {
 		dots: true,
 		arrows: false,

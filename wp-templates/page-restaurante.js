@@ -16,16 +16,18 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
-	
+	const siteSeo = props.data.pageBy.seo;
+
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
-	const grupoGaleria = props?.data?.pageBy?.paginaGatronomia?.grupoGaleria ?? [];
-	const grupoGaleriaCtaTop = props?.data?.pageBy?.paginaGatronomia?.grupoGaleria?.grupoctatop ?? [];
+	const grupoGaleria =
+		props?.data?.pageBy?.paginaGatronomia?.grupoGaleria ?? [];
+	const grupoGaleriaCtaTop =
+		props?.data?.pageBy?.paginaGatronomia?.grupoGaleria?.grupoctatop ?? [];
 	const grupoTexto = props?.data?.pageBy?.paginaGatronomia?.grupotexto ?? [];
 	const grupoPlatos = props?.data?.pageBy?.paginaGatronomia?.grupoPlatos ?? [];
 	const grupoCta = props?.data?.pageBy?.paginaGatronomia?.grupocta ?? [];
@@ -34,6 +36,7 @@ export default function Component(props) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderGreen
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -45,13 +48,17 @@ export default function Component(props) {
 				setIsNavShown={setIsNavShown}
 			>
 				<TitleCopy data={grupoGaleria} />
-				<Carusel data={grupoGaleria}/>
+				<Carusel data={grupoGaleria} />
 				<BannerTextCta data={grupoGaleriaCtaTop} />
 				<TextImage data={grupoTexto} />
 				<CardsGrid data={grupoPlatos} className="text--center" />
 				<BannerTextCta data={grupoCta} />
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }

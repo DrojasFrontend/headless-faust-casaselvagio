@@ -1,9 +1,7 @@
 import { gql } from "@apollo/client";
 import { useState } from "react";
 import * as MENUS from "../../../constants/menus";
-import {
-	BlogInfoFragment,
-} from "../../../fragments/GeneralSettings";
+import { BlogInfoFragment } from "../../../fragments/GeneralSettings";
 import { SEO, NavigationMenu, Main, Footer } from "../../../components";
 
 import { HeaderWhite } from "../../../components/UI/Header/HeaderWhite";
@@ -37,6 +35,7 @@ export default function Component(props, pageProps) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -52,7 +51,11 @@ export default function Component(props, pageProps) {
 				<CardsGridThree data={postInternas} heading="Planes mas destacados" />
 				<BannerTextCta data={grupoCta} />
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }

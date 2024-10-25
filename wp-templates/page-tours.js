@@ -15,7 +15,7 @@ export default function Component(props) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props.data.pageBy.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
@@ -34,6 +34,7 @@ export default function Component(props) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -45,11 +46,18 @@ export default function Component(props) {
 				setIsNavShown={setIsNavShown}
 			>
 				<HeroCarusel data={grupoCarusel} />
-				<CardsGridThree data={postInternas} heading="Experiencias más populares" />
+				<CardsGridThree
+					data={postInternas}
+					heading="Experiencias más populares"
+				/>
 				<CardsMasonry data={grupoSitios} />
 				<BannerTextCta data={grupoCta} />
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }

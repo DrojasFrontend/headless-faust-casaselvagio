@@ -13,7 +13,7 @@ export default function Component(props, pageProps) {
 		variables: Component.variables(),
 	});
 
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props.data.pageBy.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
@@ -33,6 +33,7 @@ export default function Component(props, pageProps) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -46,7 +47,11 @@ export default function Component(props, pageProps) {
 				{mostrarCarusel && <HeroCarusel data={grupoCarusel} />}
 				{mostrarGaleria && <Gallery data={grupoGaleria} />}
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }

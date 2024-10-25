@@ -17,10 +17,6 @@ import { Container } from "../../../Layout/Container";
 const TextImage = ({ data }) => {
   const { items } = data;
 
-  if (!items?.length) {
-    return <p>No hay slides disponibles.</p>;
-  }
-
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);

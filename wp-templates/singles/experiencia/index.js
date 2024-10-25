@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { gql } from "@apollo/client";
 import * as MENUS from "../../../constants/menus";
-import {
-	BlogInfoFragment,
-} from "../../../fragments/GeneralSettings";
+import { BlogInfoFragment } from "../../../fragments/GeneralSettings";
 import { SEO, NavigationMenu, Main, Footer } from "../../../components";
 
 import { HeaderWhite } from "../../../components/UI/Header/HeaderWhite";
@@ -19,11 +17,11 @@ export default function Component(props, pageProps) {
 
 	const siteSeo = props?.data?.experiencia?.seo;
 
+	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 	const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
+	const headerMenu = props?.data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
 	const footerMenuMain = props?.data?.footerMenuItemsMain?.nodes ?? [];
-	const themeGeneralSettings = props?.data?.themeGeneralSettings ?? [];
 
 	const experiencia = props?.data?.experiencia ?? [];
 	const grupoTexto = props?.data?.experiencia?.postInterna?.grupotexto ?? [];
@@ -34,6 +32,7 @@ export default function Component(props, pageProps) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -51,7 +50,11 @@ export default function Component(props, pageProps) {
 					heading="Experiencias más populares"
 				/>
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }

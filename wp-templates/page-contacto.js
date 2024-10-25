@@ -12,7 +12,7 @@ export default function Component(props) {
 	const { data } = useQuery(Component.query, {
 		variables: Component.variables(),
 	});
-	const siteSeo = props.data.pageBy.seo
+	const siteSeo = props.data.pageBy.seo;
 
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
@@ -27,6 +27,7 @@ export default function Component(props) {
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
 			<HeaderWhite
+				title={siteSeo?.title}
 				isNavShown={isNavShown}
 				setIsNavShown={setIsNavShown}
 				menuItems={primaryMenu}
@@ -42,7 +43,11 @@ export default function Component(props) {
 					<FormContact />
 				</Container>
 			</Main>
-			<Footer themeGeneralSettings={themeGeneralSettings} menuItemsMain={footerMenuMain} menuItems={footerMenu} />
+			<Footer
+				themeGeneralSettings={themeGeneralSettings}
+				menuItemsMain={footerMenuMain}
+				menuItems={footerMenu}
+			/>
 		</>
 	);
 }
