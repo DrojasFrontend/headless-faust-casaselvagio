@@ -17,7 +17,6 @@ export default function Component(props) {
 	});
 
 	const siteSeo = props?.data?.pageBy?.seo;
-
 	const themeGeneralSettings = data?.themeGeneralSettings ?? [];
 	const primaryMenu = data?.headerMenuItems?.nodes ?? [];
 	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
