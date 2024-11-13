@@ -66,6 +66,7 @@ export default function Footer({
 									</Link>
 								))}
 							</div>
+							{/* Social */}
 							{redes && (
 								<div className={cx("social")}>
 									{redes.map((social, index) => (

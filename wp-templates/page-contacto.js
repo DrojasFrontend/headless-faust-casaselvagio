@@ -19,10 +19,13 @@ export default function Component(props) {
 	const headerMenu = data?.menuHeaderMenuItems?.nodes ?? [];
 	const footerMenuMain = data?.footerMenuItemsMain?.nodes ?? [];
 	const footerMenu = data?.footerMenuItems?.nodes ?? [];
+	const redesContact = themeGeneralSettings?.options?.gruposocialcontacto?.redes ?? [];
 
 	const grupoHero = props?.data?.pageBy?.paginaContacto?.grupohero ?? [];
 
 	const [isNavShown, setIsNavShown] = useState(false);
+
+	console.log();
 	return (
 		<>
 			<SEO data={siteSeo} themeGeneralSettings={themeGeneralSettings} />
@@ -40,7 +43,7 @@ export default function Component(props) {
 			>
 				<HeroImageMedium data={grupoHero} />
 				<Container>
-					<FormContact />
+					<FormContact redesContact={redesContact} />
 				</Container>
 			</Main>
 			<Footer
@@ -80,6 +83,18 @@ Component.query = gql`
 					}
 				}
 				grupoFooter {
+					redes {
+						link {
+							target
+							title
+							url
+						}
+						icon {
+							mediaItemUrl
+						}
+					}
+				}
+				gruposocialcontacto {
 					redes {
 						link {
 							target

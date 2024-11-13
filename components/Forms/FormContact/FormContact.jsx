@@ -12,7 +12,7 @@ import IconEnvelope from "../../SVG/IconEnvelope";
 import IconPhone from "../../SVG/IconPhone";
 import IconWorld from "../../SVG/IconWorld";
 
-const FormContact = () => {
+const FormContact = ({ redesContact }) => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -35,6 +35,8 @@ const FormContact = () => {
 		// Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a una API
 		console.log("Form Data Submitted: ", formData);
 	};
+
+	console.log(redesContact);
 
 	return (
 		<section className="FormContact">
@@ -126,7 +128,7 @@ const FormContact = () => {
 									info@casaselvaggio.com
 								</a>
 							</Link>
-							<Link href="tel:+13784001234">
+							<Link href="tel:+(+57) 3142619508">
 								<a className={cx("link")}>
 									<span>
 										<IconPhone />
@@ -143,7 +145,29 @@ const FormContact = () => {
 								</a>
 							</Link>
 							<div className={cx("social")}>
-								<SocialMedia />
+								{/* <SocialMedia /> */}
+								{redesContact && (
+									<div className={cx("social")}>
+										{redesContact.map((social, index) => (
+											<Link
+												key={index}
+												href={social?.link?.url}
+												target={social?.link?.target}
+											>
+												<a aria-label="Enlace a Instagram de Casaselvaggio">
+													<Image
+														priority
+														src={social?.icon?.mediaItemUrl}
+														width={24}
+														height={24}
+														alt={social?.link?.title}
+														title={`visitar ${social?.link?.title}`}
+													/>
+												</a>
+											</Link>
+										))}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
