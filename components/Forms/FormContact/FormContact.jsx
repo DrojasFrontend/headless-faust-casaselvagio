@@ -36,8 +36,6 @@ const FormContact = ({ redesContact }) => {
 		console.log("Form Data Submitted: ", formData);
 	};
 
-	console.log(redesContact);
-
 	return (
 		<section className="FormContact">
 			<div className={cx("component")}>
