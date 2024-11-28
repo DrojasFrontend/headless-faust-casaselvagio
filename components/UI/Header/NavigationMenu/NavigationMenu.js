@@ -69,11 +69,17 @@ export default function NavigationMenu({
 					);
 				})}
 
-				<li>
-					<button onClick={navigateToSelvaggio} className={cx("location")}>
+				<li className={cx("location")}>
+					<Link href="/ubicacion">
+						<a className={cx("location")}>
+							<IconLocation />
+							Hoteles Casa Selvaggio
+						</a>
+					</Link>
+					{/* <button onClick={navigateToSelvaggio} className={cx("location")}>
 						<IconLocation />
 						<span>Hoteles Casa Selvaggio</span>
-					</button>
+					</button> */}
 				</li>
 			</ul>
 		);

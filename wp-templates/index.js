@@ -13,6 +13,7 @@ import contacto from './page-contacto';
 import planes from './page-planes';
 import single from './single';
 import test from './page-test';
+import ubicacion from './page-ubicacion';
 import { experiencia, singlePlan } from "./singles";
 
 export default {
@@ -29,6 +30,7 @@ export default {
   'page-contacto': contacto,
   'page-planes': planes,
   'page-test': test,
+  'page-ubicacion': ubicacion,
   page,
   single,
   "single-experiencia": experiencia,

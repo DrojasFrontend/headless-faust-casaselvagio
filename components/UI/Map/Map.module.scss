@@ -1,9 +1,39 @@
 @import "../../../styles/mixin";
 
 .component {
-  padding: rem(30) 0 rem(40);
+	padding: rem(30) 0 rem(40);
+
+	@media only screen and (min-width: 1024px) {
+		padding: rem(40) 0 rem(80);
+	}
+}
+
+.map {
+	width: 100%;
+	height: rem(400);
 
   @media only screen and (min-width: 1024px) {
-    padding: rem(40) 0 rem(80);
+    height: rem(500);
+  }
+
+	&__wrapper {
+		position: relative;
+		padding: rem(30) 0 0;
+
+		@media only screen and (min-width: 1024px) {
+			padding: rem(40) 0 0;
+		}
+	}
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: rem(20);
+  padding: rem(50) 0 0;
+
+  @media only screen and (min-width: 1024px) {
+    flex-direction: row;
   }
 }

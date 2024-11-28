@@ -40,6 +40,7 @@ export { FormContact } from "./Forms/FormContact";
 
 //Map
 export { Map } from "./UI/Map";
+export { RouteMap } from "./UI/Map/RouteMap";
 
 //Social
 export { SocialMedia } from "./UI/SocialMedia";
