@@ -114,13 +114,13 @@ export default function RouteMap() {
 							{isLoading ? "Cargando..." : "Abrir en Google Maps"}
 						</button>
 
-						<button
+						{/* <button
 							class="button button--primary"
 							onClick={() => handleNavigation("waze")}
 							disabled={isLoading}
 						>
 							{isLoading ? "Cargando..." : "Abrir en Waze"}
-						</button>
+						</button> */}
 					</div>
 				</Container>
 			</div>
