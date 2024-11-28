@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import { gql } from "@apollo/client";
 import Link from "next/link";
@@ -23,6 +23,30 @@ export default function NavigationMenu({
 		return null;
 	}
 
+	const [currentPosition, setCurrentPosition] = useState(null);
+	const DESTINATION = "Selvaggio, Ráquira, Boyacá, Colombia";
+	const waypoints = [
+		"Puente de Boyacá, Boyacá, Colombia",
+		"Samacá, Boyacá, Colombia",
+		"Sutamarchán, Boyacá, Colombia",
+		"Tinjacá, Boyacá, Colombia",
+		"Ráquira, Boyacá, Colombia",
+	];
+	const navigateToSelvaggio = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				const origin = `${position.coords.latitude},${position.coords.longitude}`;
+				const destination = encodeURIComponent(DESTINATION);
+				const waypointsStr = waypoints
+					.map((wp) => encodeURIComponent(wp))
+					.join("|");
+
+				const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypointsStr}&travelmode=driving`;
+				window.open(url, "_blank");
+			});
+		}
+	};
+
 	// Basado en https://www.wpgraphql.com/docs/menus/#hierarchical-data
 	const hierarchicalMenuItems = flatListToHierarchical(menuItems);
 
@@ -46,12 +70,10 @@ export default function NavigationMenu({
 				})}
 
 				<li>
-					<Link href="#">
-						<a className={cx("location")}>
-							<IconLocation />
-							Hoteles Casa Selvaggio
-						</a>
-					</Link>
+					<button onClick={navigateToSelvaggio} className={cx("location")}>
+						<IconLocation />
+						<span>Hoteles Casa Selvaggio</span>
+					</button>
 				</li>
 			</ul>
 		);

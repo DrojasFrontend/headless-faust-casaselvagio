@@ -34,12 +34,16 @@
 }
 
 .location {
+  font-family: inherit;
   display: flex;
   align-items: center;
   column-gap: rem(10);
-  padding-top: rem(40);
   color: var(--color-white);
-  font-size: rem(20);
+  font-size: rem(30);
+  font-weight: 100;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .nav-close {
