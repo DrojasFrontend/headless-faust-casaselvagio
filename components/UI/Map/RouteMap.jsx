@@ -107,7 +107,7 @@ export default function RouteMap() {
 					<div id="map" className={cx("map")}></div>
 					<div className={cx("grid")}>
 						<button
-							class="button button--primary"
+							className="button button--primary"
 							onClick={() => handleNavigation("google")}
 							disabled={isLoading}
 						>
@@ -115,7 +115,7 @@ export default function RouteMap() {
 						</button>
 
 						{/* <button
-							class="button button--primary"
+							className="button button--primary"
 							onClick={() => handleNavigation("waze")}
 							disabled={isLoading}
 						>
