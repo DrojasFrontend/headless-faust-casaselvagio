@@ -14,14 +14,14 @@ export default function RouteMap() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const ORIGIN = "Bogotá, Colombia";
-	const DESTINATION = "Selvaggio, Ráquira, Boyacá, Colombia";
+	const DESTINATION = "5.531775171873888, -73.66150807522493";
 
 	const waypoints = [
 		"Puente de Boyacá, Boyacá, Colombia",
 		"Samacá, Boyacá, Colombia",
 		"Sutamarchán, Boyacá, Colombia",
 		"Tinjacá, Boyacá, Colombia",
-		"Ráquira, Boyacá, Colombia",
+		"5.538401792005162, -73.6330853982385",
 	];
 
 	useEffect(() => {
