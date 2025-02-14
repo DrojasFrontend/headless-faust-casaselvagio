@@ -32,14 +32,14 @@ const HeroCarusel = ({ data }) => {
 					{data.slice(0, 5).map((slide, index) => (
 						<div key={index}>
 							<div className={cx("bckg")}>
-								{slide?.node?.internaBlog?.imgen?.mediaItemUrl ? (
+								{slide?.node?.featuredImage?.node?.mediaItemUrl ? (
 									<Image
-										src={slide?.node?.internaBlog?.imgen?.mediaItemUrl}
+										src={slide?.node?.featuredImage?.node?.mediaItemUrl}
 										layout="fill"
 										quality={100}
 										priority
-										alt={slide?.node?.internaBlog?.imgen?.altText}
-										title={slide?.node?.internaBlog?.imgen?.title}
+										alt={slide?.node?.featuredImage?.node?.altText}
+										title={slide?.node?.featuredImage?.node?.title}
 									/>
 								) : (
 									<Image
