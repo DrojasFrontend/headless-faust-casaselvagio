@@ -31,6 +31,14 @@
 			color: var(--color-gray);
 		}
 
+		ul {
+			padding-left: 30px;
+		}
+
+		li {
+			list-style: disc;
+		}
+
 		p {
 			margin-bottom: rem(20);
 		}
