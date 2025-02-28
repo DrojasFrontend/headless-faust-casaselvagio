@@ -12,7 +12,8 @@ import { Container } from "../../../Layout/Container";
 import ImageNotAvailable from "/public/img/image-not-available-desktop.svg";
 
 const HeroImageText = ({ data }) => {
-	const { title, excerpt, postInterna, titulo, descripcion, cta, imagen } = data;
+	const { title, excerpt, postInterna, titulo, descripcion, cta, imagen } =
+		data;
 	return (
 		<section className="HeroImageText">
 			<div className={cx(["component"])}>
@@ -26,7 +27,7 @@ const HeroImageText = ({ data }) => {
 							alt={postInterna?.grupobanner?.imagen?.altText}
 							title={postInterna?.grupobanner?.imagen?.title}
 						/>
-					) :  imagen?.mediaItemUrl ? (
+					) : imagen?.mediaItemUrl ? (
 						<Image
 							src={imagen?.mediaItemUrl}
 							layout="fill"
@@ -77,20 +78,24 @@ const HeroImageText = ({ data }) => {
 
 								<span className="space space--10"></span>
 
-								{postInterna?.grupobanner?.cta ? (
-									<Link
-										href={postInterna?.grupobanner?.cta?.url}
-										target={postInterna?.grupobanner?.cta?.target}
-									>
-										<a className="button button--white">
-											{postInterna?.grupobanner?.cta?.title}
-										</a>
-									</Link>
-								) : (
-									<Link href={cta?.url} target={cta?.target}>
-										<a className="button button--white">{cta?.title}</a>
-									</Link>
-								)}
+								{postInterna?.grupobanner?.cta?.url || cta?.url ? (
+									postInterna?.grupobanner?.cta?.url ? (
+										<Link
+											href={postInterna.grupobanner.cta.url}
+											target={postInterna.grupobanner.cta.target || "_self"}
+										>
+											<a className="button button--white">
+												{postInterna.grupobanner.cta.title || "Más información"}
+											</a>
+										</Link>
+									) : cta?.url ? (
+										<Link href={cta.url} target={cta.target || "_self"}>
+											<a className="button button--white">
+												{cta.title || "Más información"}
+											</a>
+										</Link>
+									) : null
+								) : null}
 							</div>
 						</Container>
 					</div>
