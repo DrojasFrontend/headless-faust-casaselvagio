@@ -37,6 +37,7 @@ export { CardsPlan } from "./UI/Cards/CardsPlan";
 
 //Forms
 export { FormContact } from "./Forms/FormContact";
+export { MultiStepForm } from "./Forms/MultiStepForm";
 
 //Map
 export { Map } from "./UI/Map";

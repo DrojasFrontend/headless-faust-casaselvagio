@@ -66,3 +66,128 @@
   display: flex;
   column-gap: rem(20);
 }
+
+// Estilos para el input de teléfono con banderas
+.phone-input-container {
+  width: 100%;
+  position: relative;
+
+  :global(.react-tel-input) {
+    width: 100%;
+    font-family: inherit;
+  }
+
+  .phone-input {
+    width: 100%;
+  }
+
+  .phone-input-field {
+    width: 100% !important;
+    height: rem(55) !important;
+    font-size: rem(16) !important;
+    padding-left: rem(52) !important;
+    border-radius: rem(8) !important;
+    border: 1px solid var(--color-gray-300) !important;
+    background-color: var(--color-white) !important;
+
+    &:focus {
+      border-color: var(--color-primary) !important;
+      box-shadow: 0 0 0 1px var(--color-primary-50) !important;
+    }
+  }
+
+  .phone-input-button {
+    background-color: var(--color-white) !important;
+    border: none !important;
+    border-radius: rem(8) 0 0 rem(8) !important;
+  }
+
+  :global(.flag-dropdown) {
+    border: none !important;
+    background-color: transparent !important;
+  }
+  
+  :global(.selected-flag) {
+    padding: 0 rem(16) 0 rem(8) !important;
+    width: rem(60) !important;
+    display: flex !important;
+    align-items: center !important;
+    
+    &:hover, &:focus {
+      background-color: rgba(0, 0, 0, 0.03) !important;
+    }
+  }
+  
+  :global(.arrow) {
+    right: rem(4) !important;
+    border-top: 4px solid #555 !important;
+  }
+  
+  :global(.country-list) {
+    margin: rem(10) 0 0 !important;
+    width: rem(300) !important;
+    max-height: rem(300) !important;
+    border-radius: rem(8) !important;
+    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.15) !important;
+    overflow-y: auto !important;
+    scrollbar-width: thin !important;
+    
+    :global(.search) {
+      padding: rem(10) rem(10) !important;
+      
+      :global(input) {
+        width: 100% !important;
+        padding: rem(8) rem(10) !important;
+        font-size: rem(14) !important;
+        border-radius: rem(4) !important;
+      }
+    }
+    
+    :global(.country) {
+      padding: rem(10) rem(9) !important;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.03) !important;
+      }
+      
+      :global(.dial-code) {
+        color: var(--color-primary) !important;
+      }
+    }
+    
+    :global(.highlight) {
+      background-color: rgba(0, 0, 0, 0.03) !important;
+    }
+    
+    :global(.divider) {
+      margin: rem(5) 0 !important;
+      border-bottom: 1px solid #eee !important;
+    }
+  }
+  
+  // Ajusta la posición del dropdown cuando se abre hacia arriba
+  :global(.react-tel-input .flag-dropdown.up .country-list) {
+    bottom: rem(55) !important;
+  }
+}
+
+// Estilos para los mensajes de estado del formulario
+.status-message {
+  margin-top: rem(20);
+  padding: rem(12) rem(16);
+  border-radius: rem(8);
+  font-size: rem(16);
+  text-align: center;
+  
+  &.success {
+    background-color: rgba(0, 200, 81, 0.1);
+    color: #00c851;
+    border: 1px solid #00c851;
+  }
+  
+  &.error {
+    background-color: rgba(255, 65, 54, 0.1);
+    color: #ff4136;
+    border: 1px solid #ff4136;
+  }
+}

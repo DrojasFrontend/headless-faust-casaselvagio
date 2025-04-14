@@ -1,7 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 import className from "classnames/bind";
 import styles from "./FormContact.module.scss";
@@ -14,13 +16,17 @@ import IconWorld from "../../SVG/IconWorld";
 
 const FormContact = ({ redesContact }) => {
 	const [formData, setFormData] = useState({
-		name: "",
+		nombre: "",
 		email: "",
-		occupation: "",
-		phone: "",
-		service: "",
-		message: "",
+		ocupacion: "",
+		telefono: "",
+		servicios: "",
+		mensaje: "",
 	});
+
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitStatus, setSubmitStatus] = useState(null);
+	const phoneInputRef = useRef(null);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -30,10 +36,76 @@ const FormContact = ({ redesContact }) => {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handlePhoneChange = (value) => {
+		setFormData({
+			...formData,
+			telefono: value,
+		});
+	};
+
+	// Efecto para cerrar el dropdown al hacer clic fuera
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (phoneInputRef.current && !phoneInputRef.current.contains(event.target)) {
+				// Buscar el elemento dropdown y cerrarlo si está abierto
+				const dropdown = document.querySelector('.react-tel-input .flag-dropdown.open');
+				if (dropdown) {
+					const flagButton = dropdown.querySelector('.selected-flag');
+					if (flagButton) {
+						flagButton.click();
+					}
+				}
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a una API
-		console.log("Form Data Submitted: ", formData);
+		setIsSubmitting(true);
+		setSubmitStatus(null);
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					nombre: formData.nombre,
+					email: formData.email,
+					ocupacion: formData.ocupacion || 'No especificado',
+					celular: formData.telefono,
+					servicios: formData.servicios || 'No especificado',
+					mensaje: formData.mensaje
+				}),
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				setSubmitStatus({ success: true, message: 'Mensaje enviado correctamente' });
+				setFormData({
+					nombre: "",
+					email: "",
+					ocupacion: "",
+					telefono: "",
+					servicios: "",
+					mensaje: "",
+				});
+			} else {
+				setSubmitStatus({ success: false, message: result.error || 'Error al enviar el mensaje' });
+			}
+		} catch (error) {
+			console.error('Error al enviar el formulario:', error);
+			setSubmitStatus({ success: false, message: 'Error al enviar el mensaje. Intente nuevamente más tarde.' });
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -52,9 +124,9 @@ const FormContact = ({ redesContact }) => {
 								<div className="contact__form-group">
 									<input
 										type="text"
-										name="name"
+										name="nombre"
 										placeholder="Nombre"
-										value={formData.name}
+										value={formData.nombre}
 										onChange={handleChange}
 										required
 									/>
@@ -70,23 +142,40 @@ const FormContact = ({ redesContact }) => {
 								<div className="contact__form-group">
 									<input
 										type="text"
-										name="occupation"
+										name="ocupacion"
 										placeholder="Ocupación"
-										value={formData.occupation}
+										value={formData.ocupacion}
 										onChange={handleChange}
 									/>
-									<input
-										type="tel"
-										name="phone"
-										placeholder="Teléfono"
-										value={formData.phone}
-										onChange={handleChange}
-									/>
+									<div className={cx("phone-input-container")} ref={phoneInputRef}>
+										<PhoneInput
+											country={'co'}
+											value={formData.telefono}
+											onChange={handlePhoneChange}
+											placeholder="Teléfono"
+											inputProps={{
+												name: 'telefono',
+												required: true,
+											}}
+											containerClass={cx("phone-input")}
+											inputClass={cx("phone-input-field")}
+											buttonClass={cx("phone-input-button")}
+											dropdownClass={cx("phone-input-dropdown")}
+											searchClass={cx("phone-input-search")}
+											enableSearch={true}
+											disableSearchIcon={false}
+											searchPlaceholder="Buscar país..."
+											preferredCountries={['co', 'es', 'us', 'mx']}
+											enableAreaCodes={true}
+											autoFormat={true}
+											countryCodeEditable={false}
+										/>
+									</div>
 								</div>
 								<div className="contact__form-full">
 									<select
-										name="service"
-										value={formData.service}
+										name="servicios"
+										value={formData.servicios}
 										onChange={handleChange}
 									>
 										<option value="" disabled>
@@ -99,10 +188,10 @@ const FormContact = ({ redesContact }) => {
 								</div>
 								<div className="contact__form-full">
 									<textarea
-										name="message"
+										name="mensaje"
 										rows={6}
 										placeholder="Escribir mensaje..."
-										value={formData.message}
+										value={formData.mensaje}
 										onChange={handleChange}
 									></textarea>
 								</div>
@@ -112,9 +201,15 @@ const FormContact = ({ redesContact }) => {
 										"button",
 										"button button--primary button--right",
 									])}
+									disabled={isSubmitting}
 								>
-									Enviar
+									{isSubmitting ? 'Enviando...' : 'Enviar'}
 								</button>
+								{submitStatus && (
+									<div className={cx("status-message", submitStatus.success ? "success" : "error")}>
+										{submitStatus.message}
+									</div>
+								)}
 							</form>
 						</div>
 						<div className={cx("info")}>
@@ -143,7 +238,6 @@ const FormContact = ({ redesContact }) => {
 								</a>
 							</Link>
 							<div className={cx("social")}>
-								{/* <SocialMedia /> */}
 								{redesContact && (
 									<div className={cx("social")}>
 										{redesContact.map((social, index) => (

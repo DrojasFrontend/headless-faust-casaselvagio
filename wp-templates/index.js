@@ -14,6 +14,7 @@ import planes from './page-planes';
 import single from './single';
 import test from './page-test';
 import ubicacion from './page-ubicacion';
+import password from './page-password';
 import { experiencia, singlePlan } from "./singles";
 
 export default {
@@ -31,6 +32,7 @@ export default {
   'page-planes': planes,
   'page-test': test,
   'page-ubicacion': ubicacion,
+  'page-password': password,
   page,
   single,
   "single-experiencia": experiencia,
