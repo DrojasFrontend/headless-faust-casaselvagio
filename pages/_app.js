@@ -9,7 +9,7 @@ import "../styles/global.scss";
 import Script from "next/script";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
-import { ProtectedRoute } from "../components/ProtectedRoute";
+import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
 // import { AuthReset } from "../components/AuthReset";
 
 export default function MyApp({ Component, pageProps }) {

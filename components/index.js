@@ -73,3 +73,5 @@ export { Heading } from "./Heading";
 export { Main } from "./Main";
 
 export { SEO } from "./SEO";
+
+export { ProtectedRoute } from './ProtectedRoute';

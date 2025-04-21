@@ -115,7 +115,6 @@
 }
 
 @keyframes shake {
-
     10%,
     90% {
         transform: translate3d(-1px, 0, 0);
@@ -145,4 +144,4 @@
     min-height: 100vh;
     font-size: 1.2rem;
     color: #666;
-}
+} 

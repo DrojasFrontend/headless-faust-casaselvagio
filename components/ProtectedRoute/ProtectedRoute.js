@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../styles/ProtectedRoute.module.css';
+import styles from './ProtectedRoute.module.scss';
 
 export function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,9 +43,6 @@ export function ProtectedRoute({ children }) {
       // La raíz '/' tendrá firstSegment como string vacío
       const requiresAuth = restrictedPaths.includes(firstSegment);
       
-      // console.log('Ruta actual:', path || 'raíz /');
-      // console.log('¿Requiere autenticación?:', requiresAuth);
-      
       if (!requiresAuth) {
         // No requiere autenticación
         setIsAuthenticated(true);
@@ -55,7 +52,6 @@ export function ProtectedRoute({ children }) {
       
       // Verificar autenticación guardada
       const isAuth = sessionStorage.getItem('auth_global') === 'true';
-      // console.log('¿Está autenticado?:', isAuth);
       setIsAuthenticated(isAuth);
       setLoading(false);
     } catch (err) {
@@ -70,7 +66,6 @@ export function ProtectedRoute({ children }) {
 
     // Añadir event listener para detectar cambios de URL directos
     const handleUrlChange = () => {
-      // console.log('URL cambiada, verificando autenticación...');
       checkAuth();
     };
 
@@ -100,17 +95,14 @@ export function ProtectedRoute({ children }) {
       }
       
       const passwordData = await response.json();
-      // console.log('Verificando contraseña...');
       
       // Pequeña demora para mejor UX
       await new Promise(resolve => setTimeout(resolve, 500));
       
       if (passwordData.global && passwordData.global.includes(password)) {
-        // console.log('Contraseña correcta');
         sessionStorage.setItem('auth_global', 'true');
         setIsAuthenticated(true);
       } else {
-        // console.log('Contraseña incorrecta');
         setError('Contraseña incorrecta. Por favor intente nuevamente.');
       }
       setIsSubmitting(false);
