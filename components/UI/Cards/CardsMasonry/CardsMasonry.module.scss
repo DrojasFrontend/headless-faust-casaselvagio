@@ -52,7 +52,6 @@
 
 .card {
 	position: relative;
-	border-radius: rem(24) rem(6);
 	overflow: hidden;
 	margin: 0 rem(20) 0 0;
 
@@ -119,7 +118,6 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: rem(24) rem(40);
-	border-radius: rem(20) rem(6);
 	background-color: var(--color-primary);
 
 	div {

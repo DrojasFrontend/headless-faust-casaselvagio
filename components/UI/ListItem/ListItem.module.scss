@@ -8,7 +8,6 @@
   width: 100%;
   height: rem(74);
   padding: rem(5) rem(14);
-  border-radius: rem(20) rem(6);
   background-color: var(--color-white);
 
   @media only screen and (min-width: 1024px) {
@@ -25,6 +24,5 @@
   place-content: center;
   width: rem(40);
   height: rem(40);
-  border-radius: rem(40);
   background-color: var(--color-secondary-50);
 }

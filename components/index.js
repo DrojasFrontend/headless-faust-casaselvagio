@@ -61,6 +61,9 @@ export { Carusel } from "./UI/Caruseles/Carusel";
 /* Galleries */
 export { Gallery } from "./UI/Galleries/Gallery";
 
+/* Video */
+export { Video } from "./UI/Video";
+
 export { ContentWrapper } from "./ContentWrapper";
 export { FeaturedImage } from "./FeaturedImage";
 export { Footer } from "./UI/Footer";

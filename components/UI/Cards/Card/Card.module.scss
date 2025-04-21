@@ -10,7 +10,6 @@
 }
 
 .item {
-	border-radius: rem(20) rem(6);
 	background-color: var(--color-white);
 	box-shadow: 0 rem(4) rem(12) 0 rgba(26, 60, 52, 0.1);
 
@@ -25,7 +24,6 @@
 .img {
 	position: relative;
 	height: rem(200);
-	border-radius: rem(20) rem(6);
 	overflow: hidden;
 
 	&:before {
@@ -98,7 +96,6 @@
 	.icon {
 		display: grid;
 		place-content: center;
-		border-radius: rem(30);
 		padding: rem(5);
 		background-color: var(--color-secondary-50);
 	}

@@ -113,7 +113,7 @@ const FormContact = ({ redesContact }) => {
 			<div className={cx("component")}>
 				<div className="container">
 					<div className={cx("title")}>
-						<h2 className="heading--44">
+						<h2 className="heading--40">
 							¿Tienes alguna pregunta o deseas hacer una reserva?
 						</h2>
 						<span className="space space--20"></span>

@@ -1,7 +1,6 @@
 @import "/styles/mixin";
 
 .component {
-	border-radius: rem(20) rem(6);
 	background-color: var(--color-white);
 	box-shadow: 0 rem(4) rem(12) 0 rgba(26, 60, 52, 0.1);
 
@@ -16,7 +15,6 @@
 .img {
 	position: relative;
   display: block;
-	border-radius: rem(20) rem(6);
 	overflow: hidden;
 
 	&:before {

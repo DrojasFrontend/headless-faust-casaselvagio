@@ -37,7 +37,6 @@
 
 .card {
 	position: relative;
-	border-radius: rem(24) rem(6);
 	overflow: hidden;
 
 	&:before {
@@ -92,7 +91,6 @@
 	justify-content: center;
 	width: 100%;
 	padding: rem(40) rem(20);
-	border-radius: rem(24) rem(6);
 	transform: translateY(100%);
 	transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 	background-color: var(--color-primary);

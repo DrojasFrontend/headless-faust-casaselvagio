@@ -7,7 +7,7 @@ import { FaustProvider } from "@faustwp/core";
 import "@faustwp/core/dist/css/toolbar.css";
 import "../styles/global.scss";
 import Script from "next/script";
-
+import Head from "next/head";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 
@@ -24,6 +24,12 @@ export default function MyApp({ Component, pageProps }) {
 
 	return (
 		<ApolloProvider client={client}>
+			<Head>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+					rel="stylesheet"
+				/>
+			</Head>
 			<FaustProvider pageProps={pageProps}>
 				<Script id="gtm" strategy="afterInteractive">
 					{`
@@ -34,7 +40,9 @@ export default function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-TK8L5CML');
       `}
 				</Script>
-				<Component {...pageProps} key={router.asPath} />
+				<div className="cormorant-font">
+					<Component {...pageProps} key={router.asPath} />
+				</div>
 			</FaustProvider>
 		</ApolloProvider>
 	);
