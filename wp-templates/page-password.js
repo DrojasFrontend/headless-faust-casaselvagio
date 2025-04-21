@@ -1,5 +1,5 @@
 import React from 'react';
-import { MultiStepForm, Video } from '../components';
+import { Video } from '../components';
 
 export default function PagePassword() {
   // Datos para el componente Video utilizando un archivo local
@@ -15,10 +15,7 @@ export default function PagePassword() {
     <div>
       <Video data={videoData} />
       <div>
-        <MultiStepForm 
-          title="Formulario de Contacto" 
-          subtitle="Complete los siguientes campos para enviar su información" 
-        />
+        {/* El formulario de múltiples pasos ha sido eliminado */}
       </div>
     </div>
   );

@@ -39,9 +39,9 @@ export default function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-TK8L5CML');
       `}
 				</Script>
-				<ProtectedRoute>
+				{/* <ProtectedRoute> */}
 					<Component {...pageProps} key={router.asPath} />
-				</ProtectedRoute>
+				{/* </ProtectedRoute> */}
 				{/* {isDev && <AuthReset />} */}
 			</FaustProvider>
 		</ApolloProvider>
