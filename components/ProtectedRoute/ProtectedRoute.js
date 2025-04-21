@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from './ProtectedRoute.module.scss';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,6 +30,11 @@ export function ProtectedRoute({ children }) {
     'planes'
   ];
 
+  // Rutas que tienen su propio sistema de autenticación
+  const excludedPaths = [
+    'founders'
+  ];
+
   // Función para verificar autenticación
   const checkAuth = () => {
     try {
@@ -39,6 +46,13 @@ export function ProtectedRoute({ children }) {
       
       // Verificar si la primera parte de la ruta coincide con alguna ruta restringida
       const firstSegment = path.split('/')[0];
+      
+      // Verificar si está en una ruta excluida (con su propia autenticación)
+      if (excludedPaths.includes(firstSegment)) {
+        setIsAuthenticated(true);
+        setLoading(false);
+        return;
+      }
       
       // La raíz '/' tendrá firstSegment como string vacío
       const requiresAuth = restrictedPaths.includes(firstSegment);
@@ -52,7 +66,11 @@ export function ProtectedRoute({ children }) {
       
       // Verificar autenticación guardada
       const isAuth = sessionStorage.getItem('auth_global') === 'true';
-      setIsAuthenticated(isAuth);
+      
+      // También verificar si está autenticado como founder
+      const isFounderAuth = localStorage.getItem('founders_authenticated') === 'true';
+      
+      setIsAuthenticated(isAuth || isFounderAuth);
       setLoading(false);
     } catch (err) {
       logError('Error al verificar autenticación:', err);
@@ -103,7 +121,7 @@ export function ProtectedRoute({ children }) {
         sessionStorage.setItem('auth_global', 'true');
         setIsAuthenticated(true);
       } else {
-        setError('Contraseña incorrecta. Por favor intente nuevamente.');
+        setError('Código incorrecto. Por favor, intenta nuevamente.');
       }
       setIsSubmitting(false);
     } catch (error) {
@@ -118,43 +136,79 @@ export function ProtectedRoute({ children }) {
     return <div className={styles.loading}>Cargando...</div>;
   }
 
-  // Mostrar formulario de login si no está autenticado
-  if (!isAuthenticated) {
-    return (
-      <div className={styles.protectedContainer}>
-        <div className={styles.loginBox}>
-          <h2 className='heading--40'>Acceso Restringido</h2>
-          <p>Por favor, ingrese la contraseña para acceder al sitio.</p>
-          
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div>
-              <label htmlFor="password" className={styles.label}>Contraseña</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder=""
-                className={styles.input}
-                disabled={isSubmitting}
-                autoFocus
+  // Renderizar los children siempre, y mostrar el overlay de login encima si no está autenticado
+  return (
+    <>
+      {children}
+      
+      {!isAuthenticated && (
+        <div className={styles.protectedContainer}>
+          <div className={styles.loginContainer}>
+            <div className={styles.imageSection}>
+              <Image
+                src="/img/imagen-login.png"
+                alt="Casa Selvaggio Founders"
+                width={261}
+                height={393}
+                objectFit="contain"
+                priority
               />
             </div>
-            <button 
-              type="submit" 
-              className={styles.button}
-              disabled={isSubmitting || !password}
-            >
-              {isSubmitting ? 'Verificando...' : 'Ingresar'}
-            </button>
-          </form>
-          
-          {error && <p className={styles.error}>{error}</p>}
-        </div>
-      </div>
-    );
-  }
+            
+            <div className={styles.formSection}>
+              <div className={styles.logo}>
+                <Image
+                  src="/img/logo-founders-blanco.png"
+                  alt="CASA SELVAGGIO FOUNDERS"
+                  width={1200}
+                  height={636}
+                  priority
 
-  // Si está autenticado, mostrar el contenido
-  return children;
+                />
+              </div>
+              
+              <div className={styles.textContent}>
+                <p className={styles.mainText}>
+                  Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                </p>
+                
+                <p className={styles.subText}>
+                  Jorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className={styles.loginForm}>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Ingresa tu código"
+                  className={styles.inputCode}
+                  required
+                  disabled={isSubmitting}
+                  autoFocus
+                />
+                
+                <button 
+                  type="submit" 
+                  className={styles.loginButton}
+                  disabled={isSubmitting || !password}
+                >
+                  {isSubmitting ? 'Verificando...' : 'Entrar'}
+                </button>
+              </form>
+              
+              {error && <p className={styles.errorMessage}>{error}</p>}
+              
+              <div className={styles.signupLink}>
+                <Link href="#">
+                  Quiero ser parte de Founders Casa Selvaggio
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 } 
