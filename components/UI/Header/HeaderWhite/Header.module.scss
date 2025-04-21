@@ -53,7 +53,7 @@
 }
 
 .nav-toggle {
-	font-family: "Montserrat", sans-serif;
+	font-family: inherit;
 	display: flex;
 	align-items: center;
 	column-gap: rem(6);
@@ -94,6 +94,5 @@
 }
 
 .link {
-	font-family: "Montserrat", sans-serif;
 	color: var(--color-white);
 }

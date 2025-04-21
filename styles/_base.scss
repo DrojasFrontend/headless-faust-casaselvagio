@@ -47,12 +47,12 @@
 
 html,
 body {
+	font-family: "Bilo", serif;
 	scroll-behavior: smooth;
 	scroll-padding-top: rem(50);
 }
 
 body {
-	font-family: 'Cormorant', serif;
 	margin: 0;
 	background-color: var(--color-gray-100);
 	-webkit-font-smoothing: antialiased;
@@ -161,7 +161,7 @@ a {
 /****************************************************/
 /****************************************************/
 .button {
-	font-family: "Montserrat", sans-serif;
+	font-family: inherit;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -173,7 +173,7 @@ a {
 	transition: background-color 0.3s ease;
 	cursor: pointer;
 	font-size: rem(16);
-	font-weight: 700;
+	font-weight: 500;
 	line-height: 150%;
 
 	@media only screen and (max-width: 1024px) {
@@ -455,7 +455,6 @@ a {
 			}
 
 			.category {
-				font-family: "Montserrat", sans-serif;
 				display: grid;
 				grid-template-columns: rem(44) 1fr;
 				align-items: center;
@@ -738,7 +737,6 @@ input[type="email"],
 input[type="tel"],
 select,
 textarea {
-	font-family: "Montserrat", sans-serif;
 	width: 100%;
 	height: rem(60);
 	padding: rem(5) rem(24);

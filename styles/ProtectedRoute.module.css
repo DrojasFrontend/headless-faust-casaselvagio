@@ -1,0 +1,148 @@
+.protectedContainer {
+    font-family: 'Bilo', serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+}
+
+.protectedContainer p {
+    font-family: 'Bilo', serif;
+}
+
+.loginBox {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loginBox h2 {
+    margin-bottom: 1.5rem;
+}
+
+.loginBox p {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 16px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.label {
+    font-family: 'Bilo', serif;
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 16px;
+    color: #333;
+}
+
+.input {
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    font-size: 1rem;
+    width: 100%;
+    font-family: 'Bilo', serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #222;
+    box-shadow: 0 0 0 1px #222;
+}
+
+.button {
+    font-family: 'Bilo', serif !important;
+    padding: 0.9rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.button:hover:not(:disabled) {
+    background-color: #000;
+}
+
+.button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #f44336;
+    margin-top: 1rem;
+    font-size: 14px;
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    color: #666;
+}

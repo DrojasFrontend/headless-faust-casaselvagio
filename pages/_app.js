@@ -1,20 +1,25 @@
 import "../faust.config";
 import { ApolloProvider } from "@apollo/client";
 import client from "../lib/apolloClient";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { FaustProvider } from "@faustwp/core";
 import "@faustwp/core/dist/css/toolbar.css";
 import "../styles/global.scss";
 import Script from "next/script";
-import Head from "next/head";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
+import { ProtectedRoute } from "../components/ProtectedRoute";
+// import { AuthReset } from "../components/AuthReset";
 
 export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
+	const [isDev, setIsDev] = useState(false);
 
 	useEffect(() => {
+		// Comprobar si estamos en desarrollo
+		setIsDev(process.env.NODE_ENV === 'development');
+
 		const gtmId = process.env.NEXT_PUBLIC_GTM_ID; // Usamos una variable de entorno para el GTM ID
 
 		if (gtmId) {
@@ -24,12 +29,6 @@ export default function MyApp({ Component, pageProps }) {
 
 	return (
 		<ApolloProvider client={client}>
-			<Head>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-					rel="stylesheet"
-				/>
-			</Head>
 			<FaustProvider pageProps={pageProps}>
 				<Script id="gtm" strategy="afterInteractive">
 					{`
@@ -40,9 +39,10 @@ export default function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-TK8L5CML');
       `}
 				</Script>
-				<div className="cormorant-font">
+				<ProtectedRoute>
 					<Component {...pageProps} key={router.asPath} />
-				</div>
+				</ProtectedRoute>
+				{/* {isDev && <AuthReset />} */}
 			</FaustProvider>
 		</ApolloProvider>
 	);
