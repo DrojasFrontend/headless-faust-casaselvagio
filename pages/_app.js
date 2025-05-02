@@ -10,7 +10,21 @@ import Script from "next/script";
 import { useEffect } from "react";
 import TagManager from "react-gtm-module";
 import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
+import { GET_THEME_SETTINGS } from "../graphql/queries/themeSettings";
+import { useQuery } from "@apollo/client";
 // import { AuthReset } from "../components/AuthReset";
+
+function ThemeSettingsProvider({ children }) {
+	const { data, loading, error } = useQuery(GET_THEME_SETTINGS);
+
+	if (loading) return null;
+	if (error) {
+		console.error('Error fetching theme settings:', error);
+		return children;
+	}
+
+	return children(data?.themeGeneralSettings);
+}
 
 export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
@@ -39,9 +53,13 @@ export default function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-TK8L5CML');
       `}
 				</Script>
-				{/* <ProtectedRoute> */}
-					<Component {...pageProps} key={router.asPath} />
-				{/* </ProtectedRoute> */}
+				<ThemeSettingsProvider>
+					{(themeSettings) => (
+						<ProtectedRoute themeSettings={themeSettings}>
+							<Component {...pageProps} key={router.asPath} />
+						</ProtectedRoute>
+					)}
+				</ThemeSettingsProvider>
 				{/* {isDev && <AuthReset />} */}
 			</FaustProvider>
 		</ApolloProvider>

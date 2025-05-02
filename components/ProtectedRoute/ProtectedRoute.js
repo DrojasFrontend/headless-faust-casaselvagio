@@ -4,13 +4,16 @@ import styles from './ProtectedRoute.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function ProtectedRoute({ children }) {
+export function ProtectedRoute({ children, themeSettings }) {
+  console.log(themeSettings);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+
+  const loginData = themeSettings?.options?.grupoLogin || {};
 
   // Helper para manejo de errores (silencioso en producción)
   const logError = (message, err) => {
@@ -146,7 +149,7 @@ export function ProtectedRoute({ children }) {
           <div className={styles.loginContainer}>
             <div className={styles.imageSection}>
               <Image
-                src="/img/imagen-login.png"
+                src={loginData.imagen?.mediaItemUrl || "/img/imagen-login.png"}
                 alt="Casa Selvaggio Founders"
                 width={261}
                 height={393}
@@ -158,22 +161,21 @@ export function ProtectedRoute({ children }) {
             <div className={styles.formSection}>
               <div className={styles.logo}>
                 <Image
-                  src="/img/logo-founders-blanco.png"
+                  src={loginData.logo?.mediaItemUrl || "/img/logo-founders-blanco.png"}
                   alt="CASA SELVAGGIO FOUNDERS"
                   width={1200}
                   height={636}
                   priority
-
                 />
               </div>
               
               <div className={styles.textContent}>
                 <p className={styles.mainText}>
-                  Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                  {loginData.descripcion1 || "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."}
                 </p>
                 
                 <p className={styles.subText}>
-                  Jorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  {loginData.descripcion2 || "Jorem ipsum dolor sit amet, consectetur adipiscing elit."}
                 </p>
               </div>
               
@@ -201,8 +203,8 @@ export function ProtectedRoute({ children }) {
               {error && <p className={styles.errorMessage}>{error}</p>}
               
               <div className={styles.signupLink}>
-                <Link href="#">
-                  Quiero ser parte de Founders Casa Selvaggio
+                <Link href={loginData.cta?.url || "#"}>
+                  {loginData.cta?.title || "Quiero ser parte de Founders Casa Selvaggio"}
                 </Link>
               </div>
             </div>
