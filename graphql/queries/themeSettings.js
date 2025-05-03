@@ -5,7 +5,7 @@ export const GET_THEME_SETTINGS = gql`
     themeGeneralSettings {
       options {
         grupoLogin {
-          imagen {
+          video {
             mediaItemUrl
           }
           descripcion1

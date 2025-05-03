@@ -148,14 +148,28 @@ export function ProtectedRoute({ children, themeSettings }) {
         <div className={styles.protectedContainer}>
           <div className={styles.loginContainer}>
             <div className={styles.imageSection}>
-              <Image
-                src={loginData.imagen?.mediaItemUrl || "/img/imagen-login.png"}
-                alt="Casa Selvaggio Founders"
-                width={261}
-                height={393}
-                objectFit="contain"
-                priority
-              />
+              {loginData.video?.mediaItemUrl ? (
+                <video
+                  src={loginData.video.mediaItemUrl}
+                  width={261}
+                  height={393}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+                  poster="/img/imagen-login.png" // Opcional: imagen de portada mientras carga el video
+                />
+              ) : (
+                <Image
+                  src="/img/imagen-login.png"
+                  alt="Casa Selvaggio Founders"
+                  width={261}
+                  height={393}
+                  objectFit="contain"
+                  priority
+                />
+              )}
             </div>
             
             <div className={styles.formSection}>
