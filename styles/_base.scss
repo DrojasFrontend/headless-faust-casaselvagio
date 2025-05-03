@@ -39,6 +39,14 @@
 
 @font-face {
 	font-family: "Bilo";
+	src: url("/fonts/Bilo-Bold.woff2") format("woff2"),
+		url("/fonts/Bilo-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "DidotLTStd";
 	src: url("/fonts/DidotLTStd-Bold.woff2") format("woff2"),
 		url("/fonts/DidotLTStd-Bold.woff") format("woff");
 	font-weight: 700;

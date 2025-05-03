@@ -72,6 +72,7 @@
 	}
 
 	&--40 {
+		font-family: "DidotLTStd";
 		font-size: rem(24);
 		@media only screen and (min-width: 1024px) {
 			font-size: rem(40);
@@ -79,6 +80,7 @@
 	}
 
 	&--54 {
+		font-family: "DidotLTStd";
 		font-size: rem(32);
 		font-weight: 700;
 		@media only screen and (min-width: 1024px) {
