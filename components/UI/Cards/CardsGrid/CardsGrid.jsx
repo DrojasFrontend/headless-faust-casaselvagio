@@ -65,26 +65,35 @@ const CardGrid = ({ data, className }) => {
 				<div className="container--slick">
 					<Slider {...settings}>
 						{targetas.map((targeta, index) => (
-							<div key={index} className={cx(["card"])}>
-								<Image
-									src={targeta?.imagen?.mediaItemUrl}
-									width={372}
-									height={440}
-									quality={100}
-									sizes="100vw"
-									alt={targeta?.imagen?.altText}
-									title={targeta?.imagen?.title}
-								/>
-								<div className={cx(["copy"])}>
-									<h3 className="heading--24 color--white">
-										{targeta?.titulo}
-									</h3>
-									<div
-										className="heading--16 color--white"
-										dangerouslySetInnerHTML={{ __html: targeta?.detalle }}
+							<>
+								<div key={index} className={cx(["card"])}>
+									<Image
+										src={targeta?.imagen?.mediaItemUrl}
+										width={372}
+										height={440}
+										quality={100}
+										sizes="100vw"
+										alt={targeta?.imagen?.altText}
+										title={targeta?.imagen?.title}
 									/>
+									<div className={cx(["copy"])}>
+										<h3 className="heading--24 color--white">
+											{targeta?.titulo}
+										</h3>
+										<div
+											className="heading--16 color--white"
+											dangerouslySetInnerHTML={{ __html: targeta?.detalle }}
+										/>
+									</div>
 								</div>
-							</div>
+								{targeta.cta && (
+									<Link href={targeta.cta?.url}>
+										<a className="button button--primary button--center" target={targeta.cta?.target}>
+											{targeta.cta?.title}
+										</a>
+									</Link>
+								)}
+							</>
 						))}
 					</Slider>
 

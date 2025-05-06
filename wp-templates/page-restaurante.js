@@ -190,6 +190,11 @@ Component.query = gql`
 						}
 						detalle
 						titulo
+						cta {
+							url
+							title
+							target
+						}
 					}
 					cta {
 						url

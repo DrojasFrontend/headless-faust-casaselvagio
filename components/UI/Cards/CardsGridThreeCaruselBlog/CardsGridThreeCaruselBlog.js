@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -67,6 +68,8 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 	// Ordenar los posts de manera aleatoria
 	const shuffledData = [...data].sort(() => 0.5 - Math.random());
 
+	console.log(shuffledData);
+
 	return (
 		<section className="CardsGridThreeCaruselBlog">
 			<div className={cx(["component"])}>
@@ -90,33 +93,37 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 						</div>
 						<Slider {...settings} ref={(slider) => (sliderRef1 = slider)}>
 							{shuffledData.map((targeta, index) => (
-								<div key={index} className={cx("card")}>
-									{targeta?.node?.featuredImage?.node?.mediaItemUrl ? (
-										<>
-											<Image
-												src={targeta.node.featuredImage.node.mediaItemUrl}
-												layout="fill"
-												objectFit="cover"
-												quality={100}
-												priority={true}
-												alt={targeta?.node?.featuredImage?.node?.altText || ""}
-												title={targeta?.node?.featuredImage?.node?.title || ""}
-											/>
-											<h3 className={cx(["title", "heading--20 color--white"])}>
-												{targeta.node.title}
-											</h3>
-										</>
-									) : (
-										<Image
-											src={ImageNotAvailable}
-											width={372}
-											height={230}
-											sizes="100vw"
-											alt="Imagen no disponible"
-											title="no disponible"
-										/>
-									)}
-								</div>
+								<Link href={targeta?.node?.uri}>
+									<a>
+										<div key={index} className={cx("card")}>
+											{targeta?.node?.featuredImage?.node?.mediaItemUrl ? (
+												<>
+													<Image
+														src={targeta.node.featuredImage.node.mediaItemUrl}
+														layout="fill"
+														objectFit="cover"
+														quality={100}
+														priority={true}
+														alt={targeta?.node?.featuredImage?.node?.altText || ""}
+														title={targeta?.node?.featuredImage?.node?.title || ""}
+													/>
+													<h3 className={cx(["title", "heading--20 color--white"])}>
+														{targeta.node.title}
+													</h3>
+												</>
+											) : (
+												<Image
+													src={ImageNotAvailable}
+													width={372}
+													height={230}
+													sizes="100vw"
+													alt="Imagen no disponible"
+													title="no disponible"
+												/>
+											)}
+										</div>
+									</a>
+								</Link>
 							))}
 						</Slider>
 					</div>
