@@ -4,7 +4,6 @@ export function AuthReset() {
   const resetAuth = () => {
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('auth_global');
-      console.log('Autenticación eliminada');
       // Refrescar la página
       window.location.reload();
     }

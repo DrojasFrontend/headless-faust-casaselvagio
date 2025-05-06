@@ -68,8 +68,6 @@ const CardsGridThreeCaruselBlog = ({ data }) => {
 	// Ordenar los posts de manera aleatoria
 	const shuffledData = [...data].sort(() => 0.5 - Math.random());
 
-	console.log(shuffledData);
-
 	return (
 		<section className="CardsGridThreeCaruselBlog">
 			<div className={cx(["component"])}>

@@ -124,7 +124,7 @@ Component.query = gql`
 				...NavigationMenuItemFragment
 			}
 		}
-		pageBy(uri: "/tours") {
+		pageBy(uri: "/experiencias") {
 			seo {
 				title
 				metaDesc

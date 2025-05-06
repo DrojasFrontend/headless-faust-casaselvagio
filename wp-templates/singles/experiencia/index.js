@@ -10,7 +10,6 @@ import { TextImage } from "../../../components/UI/TextImages";
 import { CardsGridThree } from "../../../components/UI/Cards/CardsGridThree";
 
 export default function Component(props, pageProps) {
-	console.log("data");
 	// Loading state for previews
 	if (props.loading) {
 		return <>Loading...</>;

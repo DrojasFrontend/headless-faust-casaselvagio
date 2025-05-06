@@ -6,7 +6,7 @@ import ecoVillas from './page-eco-villas';
 import restaurante from './page-restaurante';
 import diarioSelvaggio from './page-diario-selvaggio';
 import galeria from './page-galeria';
-import tours from './page-tours';
+import experiencias from './page-experiencias';
 import preguntasFrecuentes from './page-preguntas-frecuentes';
 import blog from './page-blog';
 import contacto from './page-contacto';
@@ -24,7 +24,7 @@ export default {
   'page-eco-villas': ecoVillas,
   'page-restaurante': restaurante,
   'page-diario-selvaggio': diarioSelvaggio,
-  'page-tours': tours,
+  'page-experiencias': experiencias,
   'page-galeria': galeria,
   'page-preguntas-frecuentes': preguntasFrecuentes,
   'page-blog': blog,

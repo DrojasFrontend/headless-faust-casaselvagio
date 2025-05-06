@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function ProtectedRoute({ children, themeSettings }) {
-  console.log(themeSettings);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
