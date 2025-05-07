@@ -21,6 +21,8 @@ const TextImage = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
 
+  console.log(items);
+
   var settings = {
     dots: true,
     arrows: false,
@@ -47,11 +49,13 @@ const TextImage = ({ data }) => {
               className={cx(["grid", item?.estilo])}
             >
               <div className={cx("content")}>
-                <h2 className="heading--40 color--primary">{item?.titulo}</h2>
-                <div
-                  className="heading--16 color--gray"
-                  dangerouslySetInnerHTML={{ __html: item?.descripcion }}
-                />
+                <div>
+                  <h2 className="heading--40 color--primary">{item?.titulo}</h2>
+                  <div
+                    className="heading--16 color--gray"
+                    dangerouslySetInnerHTML={{ __html: item?.descripcion }}
+                  />
+                </div>
                 <div className={cx("listitems")}>
                   {item?.items &&
                     item?.items?.length > 0 &&
@@ -62,9 +66,11 @@ const TextImage = ({ data }) => {
                     ))}
                 </div>
                 {item?.cta && (
-                  <Link href={item?.cta?.url}>
-                    <a className="button button--primary">{item?.cta.title}</a>
-                  </Link>
+                  <div className={cx("button")}>
+                    <Link href={item?.cta?.url}>
+                      <a className="button button--primary">{item?.cta.title}</a>
+                    </Link>
+                  </div>
                 )}
               </div>
               <div className={cx("img")} onClick={() => openLightbox(index, item?.imagen)}>
