@@ -10,6 +10,7 @@ import { CardsGrid } from "../components/UI/Cards/CardsGrid";
 import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
 import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
 import { Footer } from "../components/UI/Footer";
+import { Calendar } from "../components/UI/Calendar";
 
 export default function Component(props) {
 	const { data } = useQuery(Component.query, {
@@ -59,6 +60,12 @@ export default function Component(props) {
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
+				{/* <section className="calendar-section">
+					<div className="container">
+						<h2>Calendario de Eventos</h2>
+						<Calendar />
+					</div>
+				</section> */}
 			</Main>
 			<Footer
 				themeGeneralSettings={themeGeneralSettings}

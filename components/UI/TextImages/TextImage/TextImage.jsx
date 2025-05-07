@@ -50,7 +50,7 @@ const TextImage = ({ data }) => {
             >
               <div className={cx("content")}>
                 <div>
-                  <h2 className="heading--40 color--primary">{item?.titulo}</h2>
+                  <h2 className={cx("title", "heading--40 color--primary")}>{item?.titulo}</h2>
                   <div
                     className="heading--16 color--gray"
                     dangerouslySetInnerHTML={{ __html: item?.descripcion }}
