@@ -69,28 +69,57 @@ const CardsMasonry = ({ data }) => {
 										(targeta, index) =>
 											(index === 0 || index === 1) && (
 												<div key={index} className={cx("card")}>
-													<Image
-														src={targeta?.imagen?.mediaItemUrl}
-														width={372}
-														height={500}
-														quality={100}
-														priority
-														sizes="100vw"
-														objectFit="cover"
-														alt={targeta?.imagen?.altText}
-														title={targeta?.imagen?.title}
-													/>
-													{targeta.titulo && (
-														<h3
-															className={cx([
-																"card-title",
-																"heading--20 color--white",
-															])}
-														>
-															{targeta.titulo}
-														</h3>
+													{targeta.cta?.url ? (
+														<Link href={targeta.cta.url}>
+															<a target={targeta.cta?.target}>
+																<Image
+																	src={targeta?.imagen?.mediaItemUrl}
+																	width={372}
+																	height={500}
+																	quality={100}
+																	priority
+																	sizes="100vw"
+																	objectFit="cover"
+																	alt={targeta?.imagen?.altText}
+																	title={targeta?.imagen?.title}
+																/>
+																{targeta.titulo && (
+																	<h3
+																		className={cx([
+																			"card-title",
+																			"heading--20 color--white",
+																		])}
+																	>
+																		{targeta.titulo}
+																	</h3>
+																)}
+															</a>
+														</Link>
+													) : (
+														<>
+															<Image
+																src={targeta?.imagen?.mediaItemUrl}
+																width={372}
+																height={500}
+																quality={100}
+																priority
+																sizes="100vw"
+																objectFit="cover"
+																alt={targeta?.imagen?.altText}
+																title={targeta?.imagen?.title}
+															/>
+															{targeta.titulo && (
+																<h3
+																	className={cx([
+																		"card-title",
+																		"heading--20 color--white",
+																	])}
+																>
+																	{targeta.titulo}
+																</h3>
+															)}
+														</>
 													)}
-													<p>Here</p>
 												</div>
 											)
 									)}
@@ -123,25 +152,53 @@ const CardsMasonry = ({ data }) => {
 									(targeta, index) =>
 										(index === 2 || index === 3) && (
 											<div key={index} className={cx(["card", "card--medium"])}>
-												<Image
-													src={targeta?.imagen?.mediaItemUrl}
-													width={350}
-													height={350}
-													quality={100}
-													priority
-													sizes="100vw"
-													objectFit="cover"
-													alt={targeta?.imagen?.altText}
-													title={targeta?.imagen?.title}
-												/>
-												<h3
-													className={cx([
-														"card-title",
-														"heading--20 color--white",
-													])}
-												>
-													{titulo && targeta.titulo}
-												</h3>
+												{targeta.cta?.url ? (
+													<Link href={targeta.cta.url}>
+														<a target={targeta.cta?.target}>
+															<Image
+																src={targeta?.imagen?.mediaItemUrl}
+																width={350}
+																height={350}
+																quality={100}
+																priority
+																sizes="100vw"
+																objectFit="cover"
+																alt={targeta?.imagen?.altText}
+																title={targeta?.imagen?.title}
+															/>
+															<h3
+																className={cx([
+																	"card-title",
+																	"heading--20 color--white",
+																])}
+															>
+																{targeta.titulo}
+															</h3>
+														</a>
+													</Link>
+												) : (
+													<>
+														<Image
+															src={targeta?.imagen?.mediaItemUrl}
+															width={350}
+															height={350}
+															quality={100}
+															priority
+															sizes="100vw"
+															objectFit="cover"
+															alt={targeta?.imagen?.altText}
+															title={targeta?.imagen?.title}
+														/>
+														<h3
+															className={cx([
+																"card-title",
+																"heading--20 color--white",
+															])}
+														>
+															{targeta.titulo}
+														</h3>
+													</>
+												)}
 											</div>
 										)
 								)}
@@ -156,22 +213,47 @@ const CardsMasonry = ({ data }) => {
 							{targetas.map((targeta, index) => (
 								<div key={index}>
 									<div className={cx("card")}>
-										<Image
-											src={targeta?.imagen?.mediaItemUrl}
-											width={350}
-											height={350}
-											quality={100}
-											priority
-											sizes="100vw"
-											objectFit="cover"
-											alt={targeta?.imagen?.altText}
-											title={targeta?.imagen?.title}
-										/>
-										<h3
-											className={cx(["card-title", "heading--20 color--white"])}
-										>
-											Sitio de interes 01
-										</h3>
+										{targeta.cta?.url ? (
+											<Link href={targeta.cta.url}>
+												<a target={targeta.cta?.target}>
+													<Image
+														src={targeta?.imagen?.mediaItemUrl}
+														width={350}
+														height={350}
+														quality={100}
+														priority
+														sizes="100vw"
+														objectFit="cover"
+														alt={targeta?.imagen?.altText}
+														title={targeta?.imagen?.title}
+													/>
+													<h3
+														className={cx(["card-title", "heading--20 color--white"])}
+													>
+														{targeta.titulo}
+													</h3>
+												</a>
+											</Link>
+										) : (
+											<>
+												<Image
+													src={targeta?.imagen?.mediaItemUrl}
+													width={350}
+													height={350}
+													quality={100}
+													priority
+													sizes="100vw"
+													objectFit="cover"
+													alt={targeta?.imagen?.altText}
+													title={targeta?.imagen?.title}
+												/>
+												<h3
+													className={cx(["card-title", "heading--20 color--white"])}
+												>
+													{targeta.titulo}
+												</h3>
+											</>
+										)}
 									</div>
 								</div>
 							))}

@@ -178,13 +178,22 @@
 }
 
 .imageSection {
-    display: none;
+    display: block;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
     img {
         display: block;
     }
 
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
+
     @media only screen and (min-width: 1024px) {
-        display: block;
+        // display: block;
     }
 }
 
@@ -196,6 +205,28 @@
     align-items: center;
     text-align: center;
     color: var(--color-white);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
 }
 
 .logo {

@@ -7,6 +7,7 @@ import { Main, NavigationMenu, SEO } from "../components";
 import { HeaderWhite } from "../components/UI/Header/HeaderWhite";
 import { HeroImage } from "../components/UI/Heros/HeroImage";
 import { CardsGrid } from "../components/UI/Cards/CardsGrid";
+import { BannerTextCta } from "../components/UI/Banners/BannerTextCta";
 import { CardsBigSmall } from "../components/UI/Cards/CardsBigSmall";
 import { CardsGridThreeCarusel } from "../components/UI/Cards/CardsGridThreeCarusel";
 import { Footer } from "../components/UI/Footer";
@@ -26,6 +27,7 @@ export default function Component(props) {
 
 	const grupoHero = props?.data?.pageBy?.paginaInicio?.grupoHero ?? [];
 	const grupoRefugio = props?.data?.pageBy?.paginaInicio?.gruporefugio ?? [];
+	const grupoCta = props?.data?.pageBy?.paginaInicio?.grupocta ?? [];
 	const grupohabitaciones =
 		props?.data?.pageBy?.paginaInicio?.grupohabitaciones ?? [];
 	const grupoexperiencias =
@@ -56,6 +58,7 @@ export default function Component(props) {
 			>
 				{mostrarHero && <HeroImage data={grupoHero} />}
 				{mostrarRefigio && <CardsGrid data={grupoRefugio} />}
+				<BannerTextCta data={grupoCta} />
 				{mostrarHabitaciones && <CardsBigSmall data={grupohabitaciones} />}
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
@@ -166,11 +169,27 @@ Component.query = gql`
 					targetas {
 						detalle
 						titulo
+						video {
+							mediaItemUrl
+						}
 						imagen {
 							mediaItemUrl
 							altText
 							title
 						}
+					}
+				}
+				grupocta {
+					imagen {
+						mediaItemUrl
+						altText
+						title
+					}
+					titulo
+					cta {
+						url
+						title
+						target
 					}
 				}
 				grupohabitaciones {

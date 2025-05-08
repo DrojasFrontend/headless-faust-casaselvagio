@@ -67,15 +67,31 @@ const CardGrid = ({ data, className }) => {
 						{targetas.map((targeta, index) => (
 							<>
 								<div key={index} className={cx(["card"])}>
-									<Image
-										src={targeta?.imagen?.mediaItemUrl}
-										width={372}
-										height={440}
-										quality={100}
-										sizes="100vw"
-										alt={targeta?.imagen?.altText}
-										title={targeta?.imagen?.title}
-									/>
+									{targeta?.video?.mediaItemUrl ? (
+										<video
+											src={targeta?.video?.mediaItemUrl}
+											width={372}
+											height={440}
+											quality={100}
+											sizes="100vw"
+											poster={targeta?.imagen?.mediaItemUrl}
+											autoPlay
+											muted
+											loop
+											playsInline
+											className={cx("video")}
+										/>
+									) : targeta?.imagen?.mediaItemUrl ? (
+										<Image
+											src={targeta?.imagen?.mediaItemUrl}
+											width={372}
+											height={440}
+											quality={100}
+											sizes="100vw"
+											alt={targeta?.imagen?.altText}
+											title={targeta?.imagen?.title}
+										/>
+									) : null}
 									<div className={cx(["copy"])}>
 										<h3 className="heading--24 color--white">
 											{targeta?.titulo}

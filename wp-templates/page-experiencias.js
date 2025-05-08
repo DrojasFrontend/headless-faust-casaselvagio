@@ -163,6 +163,11 @@ Component.query = gql`
 						items {
 							titulo
 						}
+						cta {
+							target
+							title
+							url
+						}
 					}
 					cantidad
 					detalle
