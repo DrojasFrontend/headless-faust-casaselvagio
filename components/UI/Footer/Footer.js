@@ -42,11 +42,6 @@ export default function Footer({
 						</div>
 
 						<div className={cx(["menu", "desktop"])}>
-							<Link href="/contacto">
-								<a className="heading--20 font-weight--100 color--white">
-									Contacto
-								</a>
-							</Link>
 							{menuItems?.map((link, index) => (
 								<Link key={index} href={link?.path}>
 									<a className="heading--20 font-weight--100 color--white">
@@ -94,11 +89,6 @@ export default function Footer({
 
 					<div className={cx("mobile")}>
 						<div className={cx(["menu", "mobile"])}>
-							<Link href="/contacto">
-								<a className="heading--20 font-weight--100 color--white">
-									Contacto
-								</a>
-							</Link>
 							{menuItems?.map((link, index) => (
 								<Link key={index} href={link?.path}>
 									<a className="heading--20 font-weight--100 color--white">
