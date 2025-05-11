@@ -92,6 +92,20 @@ const TextImage = ({ data }) => {
                     </div>
                   ))}
                 </Slider>
+                <div className={cx(["copy"])}>
+                  <h3
+                    className={cx(["heading", "heading--24", "color--white"])}
+                  >
+                    {item?.tituloImagen1}
+                  </h3>
+                  {item?.ctaImagen1?.url && (
+                    <Link href={item?.ctaImagen1?.url}>
+                      <a className="button button--white">
+                        {item?.ctaImagen1?.title}
+                      </a>
+                    </Link>
+                  )}
+                </div>
               </div>
               <div className={cx("img", "img--2")}>
                 <Slider {...settings}>
@@ -109,6 +123,20 @@ const TextImage = ({ data }) => {
                     </div>
                   ))}
                 </Slider>
+                <div className={cx(["copy"])}>
+                  <h3
+                    className={cx(["heading", "heading--24", "color--white"])}
+                  >
+                    {item?.tituloImagen2}
+                  </h3>
+                  {item?.ctaImagen2?.url && (
+                    <Link href={item?.ctaImagen2?.url}>
+                      <a className="button button--white">
+                        {item?.ctaImagen2?.title}
+                      </a>
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           ))}

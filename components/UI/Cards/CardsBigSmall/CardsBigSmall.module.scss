@@ -80,9 +80,16 @@
 	left: 0;
 	width: 100%;
 	padding: 0 rem(24) rem(24);
+	text-align: center;
 	z-index: 2;
+
+	@media only screen and (min-width: 1024px) {
+		text-align: left;
+	}
 }
 
 .heading {
-	max-width: rem(215);
+	@media only screen and (min-width: 1024px) {
+		max-width: rem(215);
+	}
 }

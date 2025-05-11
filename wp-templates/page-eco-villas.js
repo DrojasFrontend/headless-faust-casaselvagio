@@ -143,10 +143,22 @@ Component.query = gql`
 						estilo
 						titulo
 						descripcion
+						tituloImagen1
+						ctaImagen1 {
+							url
+							title
+							target
+						}
 						imagen {
 							mediaItemUrl
 							altText
 							title
+						}
+						tituloImagen2
+						ctaImagen2 {
+							url
+							title
+							target
 						}
 						imagen2 {
 							mediaItemUrl
