@@ -148,6 +148,11 @@ Component.query = gql`
 							altText
 							title
 						}
+						imagen2 {
+							mediaItemUrl
+							altText
+							title
+						}
 						cta {
 							target
 							title

@@ -17,7 +17,7 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: 1fr;
 	align-items: center;
 	height: 100%;
 	text-align: center;

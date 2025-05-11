@@ -63,6 +63,13 @@
 	img {
 		transition: transform 0.4s ease-in-out;
 	}
+
+	&__img {
+		position: relative;
+		display: flex !important;
+		width: 100%;
+		height: rem(480);
+	}
 }
 
 .copy {

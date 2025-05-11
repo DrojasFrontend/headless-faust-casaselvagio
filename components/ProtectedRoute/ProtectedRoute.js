@@ -11,7 +11,6 @@ export function ProtectedRoute({ children, themeSettings }) {
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
   const router = useRouter();
 
   const loginData = themeSettings?.options?.grupoLogin || {};
@@ -119,10 +118,6 @@ export function ProtectedRoute({ children, themeSettings }) {
     };
   }, []);
 
-  const handleVideoEnd = () => {
-    setVideoEnded(true);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -166,7 +161,7 @@ export function ProtectedRoute({ children, themeSettings }) {
       {!isAuthenticated && (
         <div className={styles.protectedContainer}>
           <div className={styles.loginContainer}>
-            <div className={`${styles.imageSection} ${isMobile && videoEnded ? styles.hidden : ''}`}>
+            <div className={styles.imageSection}>
               {loginData.video?.mediaItemUrl ? (
                 <video
                   src={loginData.video.mediaItemUrl}
@@ -178,7 +173,6 @@ export function ProtectedRoute({ children, themeSettings }) {
                   loop={!isMobile}
                   style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                   poster="/img/imagen-login.png"
-                  onEnded={handleVideoEnd}
                 />
               ) : (
                 <Image
@@ -192,7 +186,7 @@ export function ProtectedRoute({ children, themeSettings }) {
               )}
             </div>
             
-            <div className={`${styles.formSection} ${isMobile && videoEnded ? styles.visible : ''}`}>
+            <div className={styles.formSection}>
               <div className={styles.logo}>
                 <Image
                   src={loginData.logo?.mediaItemUrl || "/img/logo-founders-blanco.png"}

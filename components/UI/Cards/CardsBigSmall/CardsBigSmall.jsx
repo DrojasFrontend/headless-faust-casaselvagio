@@ -6,14 +6,31 @@ import className from "classnames/bind";
 import styles from "./CardsBigSmall.module.scss";
 let cx = className.bind(styles);
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+
 import { Container } from "../../../Layout/Container";
 
 const CardsBigSmall = ({ data }) => {
 	const { titulo, descripcion, targetas } = data;
 
+	console.log(targetas);
+
 	if (!targetas.length === 0) {
 		return <p>No hay tarjetas disponibles.</p>;
 	}
+
+	var settings = {
+		dots: false,
+		arrows: false,
+		infinite: true,
+		speed: 500,
+		fade: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 5000,
+	};
 
 	return (
 		<section className="CardsBigSmall">
@@ -32,15 +49,21 @@ const CardsBigSmall = ({ data }) => {
 						<div className={cx("grid")}>
 							{targetas.map((targeta, index) => (
 								<div key={index} className={cx("card", { "gridColumn": targeta.columnas === 2 })} >
-									<Image
-										layout="fill"
-										src={targeta?.imagen?.mediaItemUrl}
-										quality={100}
-										sizes="100vw"
-										objectFit="cover"
-										alt={targeta?.imagen?.altText}
-										title={targeta?.imagen?.title}
-									/>
+									<Slider {...settings}>
+										{targeta.imagen.map((imagen, index) => (
+											<div className={cx(["card__img"])} style={{ position: 'relative', width: '100%', height: '100%' }}>
+												<Image
+													layout="fill"
+													src={imagen?.mediaItemUrl}
+													quality={100}
+													priority
+													objectFit="cover"
+													alt={imagen?.altText}
+													title={imagen?.title}
+												/>
+											</div>
+										))}
+									</Slider>
 
 									<div className={cx(["copy"])}>
 										<h3

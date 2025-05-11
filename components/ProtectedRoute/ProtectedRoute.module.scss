@@ -148,7 +148,7 @@
 
 .loginContainer {
     display: grid;
-    column-gap: rem(20);
+    gap: rem(20);
     align-items: center;
     max-width: rem(630);
     width: calc(100% - rem(40));
@@ -203,30 +203,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
     text-align: center;
     color: var(--color-white);
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    width: 0;
-    height: 0;
-
-    &.visible {
-        opacity: 1;
-        visibility: visible;
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    @media only screen and (min-width: 1024px) {
-        opacity: 1;
-        visibility: visible;
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
+    width: 100%;
+    height: auto;
 }
 
 .logo {

@@ -24,13 +24,15 @@ const TextImage = ({ data }) => {
   console.log(items);
 
   var settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 500,
     fade: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
   const openLightbox = (index, images) => {
@@ -73,9 +75,27 @@ const TextImage = ({ data }) => {
                   </div>
                 )}
               </div>
-              <div className={cx("img")} onClick={() => openLightbox(index, item?.imagen)}>
+              {/* <div className={cx("img")} onClick={() => openLightbox(index, item?.imagen)}> */}
+              <div className={cx("img")}>
                 <Slider {...settings}>
                   {item?.imagen?.map((img, idx) => (
+                    <div key={idx} className={cx("slide")}>
+                      <Image
+                        src={img?.mediaItemUrl}
+                        layout="fill"
+                        quality={100}
+                        priority
+                        objectFit="cover"
+                        alt={img?.altText}
+                        title={img?.title}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+              <div className={cx("img")}>
+                <Slider {...settings}>
+                  {item?.imagen2?.map((img, idx) => (
                     <div key={idx} className={cx("slide")}>
                       <Image
                         src={img?.mediaItemUrl}

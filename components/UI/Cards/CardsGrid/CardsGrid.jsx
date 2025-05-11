@@ -15,11 +15,12 @@ const CardGrid = ({ data, className }) => {
 	var settings = {
 		dots: false,
 		arrows: false,
-		touchMove: false,
-		infinite: true,
+		touchMove: true,
+		infinite: false,
 		speed: 500,
-		slidesToShow: 3,
+		slidesToShow: 3.4,
 		slidesToScroll: 1,
+		centerMode: false,
 		responsive: [
 			{
 				breakpoint: 1024,

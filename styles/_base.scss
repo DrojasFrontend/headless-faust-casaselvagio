@@ -350,6 +350,14 @@ a {
 		}
 	}
 
+	&Grid {
+		.slick {
+			&-slide {
+				padding: 0 rem(5);
+			}
+		}
+	}
+
 	&GridThreeCarusel {
 		.slick {
 			&-slide {
@@ -492,6 +500,14 @@ a {
 				@media only screen and (min-width: 1024px) {
 					padding: 0 rem(5);
 				}
+			}
+		}
+	}
+
+	&BigSmall {
+		.slick {
+			&-track {
+				padding: 0;
 			}
 		}
 	}

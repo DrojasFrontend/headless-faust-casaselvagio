@@ -82,6 +82,38 @@
 			margin-bottom: rem(40);
 		}
 	}
+
+	&-4 { 
+
+		&.grid {
+			flex-direction: column;
+		}
+
+		.content {
+			display: flex;
+			align-items: center;
+			grid-column: 3 / 1;
+			row-gap: rem(40);
+			
+			@media only screen and (min-width: 1024px) {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: rem(30);
+			}
+		}
+
+		.listitems {
+			height: min-content;
+		}
+
+		.button {
+			display: flex;
+			justify-content: center;
+			grid-column: span 2;
+			text-align: center;
+			margin-bottom: rem(40);
+		}
+	}
 }
 
 .content {
