@@ -93,7 +93,7 @@ const TextImage = ({ data }) => {
                   ))}
                 </Slider>
               </div>
-              <div className={cx("img")}>
+              <div className={cx("img", "img--2")}>
                 <Slider {...settings}>
                   {item?.imagen2?.map((img, idx) => (
                     <div key={idx} className={cx("slide")}>
