@@ -177,11 +177,12 @@ export function ProtectedRoute({ children, themeSettings }) {
                 />
               ) : (
                 <Image
-                  src="/img/imagen-login.png"
-                  alt="Casa Selvaggio Founders"
-                  width={261}
-                  height={393}
-                  objectFit="contain"
+                  src={loginData.imagen?.mediaItemUrl || "/img/imagen-login.png"}
+                  alt={loginData.imagen?.altText || "Casa Selvaggio Founders"}
+                  width={1080}
+                  height={608}
+                  layout="fill"
+                  objectFit="cover"
                   priority
                 />
               )}

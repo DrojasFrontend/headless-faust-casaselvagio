@@ -8,6 +8,11 @@ export const GET_THEME_SETTINGS = gql`
           video {
             mediaItemUrl
           }
+          imagen {
+            mediaItemUrl
+            altText
+            title
+          }
           descripcion1
           descripcion2
           cta {

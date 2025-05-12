@@ -178,7 +178,11 @@
 }
 
 .imageSection {
+    position: relative;
     display: block;
+    width: 100%;
+    height: rem(420);
+    overflow: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     img {
         display: block;
