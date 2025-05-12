@@ -75,9 +75,8 @@ const HeroCarusel = ({ data }) => {
 											{slide?.cta && (
 												<Link
 													href={slide?.cta?.url}
-													target={slide?.cta?.target}
 												>
-													<a className="button button--white">
+													<a className="button button--white" target={slide?.cta?.target}>
 														{slide?.cta?.title}
 													</a>
 												</Link>

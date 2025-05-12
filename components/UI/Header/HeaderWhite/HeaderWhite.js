@@ -79,7 +79,7 @@ export default function Header({
 						{menuHeaderItems?.slice(4, 7).map((m, idx) => {
 							return (
 								<Link href={m?.path} key={idx}>
-									<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+									<a className={cx("link", m?.cssClasses )} target="_blank">{m?.label}</a>
 								</Link>
 							);
 						})}

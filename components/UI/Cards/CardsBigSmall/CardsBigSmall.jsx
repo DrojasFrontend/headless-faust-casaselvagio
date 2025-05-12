@@ -25,11 +25,11 @@ const CardsBigSmall = ({ data }) => {
 		arrows: false,
 		infinite: true,
 		speed: 500,
-		fade: true,
+		fade: false,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 5000,
+		autoplaySpeed: 3000,
 	};
 
 	return (
@@ -73,7 +73,7 @@ const CardsBigSmall = ({ data }) => {
 										</h3>
 										{targeta?.cta?.url && (
 											<Link href={targeta?.cta?.url}>
-												<a className="button button--white">
+												<a className="button button--white" target={targeta?.cta?.target}>
 													{targeta?.cta?.title}
 												</a>
 											</Link>
