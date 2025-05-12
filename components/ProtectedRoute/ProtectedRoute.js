@@ -167,12 +167,13 @@ export function ProtectedRoute({ children, themeSettings }) {
                   src={loginData.video.mediaItemUrl}
                   width={261}
                   height={393}
-                  controls
                   autoPlay
                   muted
                   loop={!isMobile}
+                  playsInline
                   style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                   poster="/img/imagen-login.png"
+                  controls={!isMobile}
                 />
               ) : (
                 <Image

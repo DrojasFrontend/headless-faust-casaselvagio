@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -12,6 +12,15 @@ import { Container } from "../../../Layout/Container";
 
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+		checkMobile();
+		window.addEventListener('resize', checkMobile);
+		return () => window.removeEventListener('resize', checkMobile);
+	}, []);
+
 	var settings = {
 		dots: false,
 		arrows: false,
@@ -81,6 +90,7 @@ const CardGrid = ({ data, className }) => {
 											loop
 											playsInline
 											className={cx("video")}
+											controls={!isMobile}
 										/>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
