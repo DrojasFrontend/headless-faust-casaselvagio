@@ -216,6 +216,10 @@ a {
 		background-position: center;
 		background-color: var(--color-secondary);
 	}
+
+	&--auto {
+		margin: 0 auto;
+	}
 }
 
 /********************** Colors **********************/
@@ -565,6 +569,34 @@ a {
 	}
 }
 
+.CardsBigSmall {
+	.slick {
+		&-dots {
+			bottom: rem(20);
+
+			button {
+				&:before {
+					font-size: rem(12);
+					opacity: 1;
+					color: var(--color-white);
+				}
+			}
+		}
+
+		&-active {
+			button {
+				&:before {
+					color: var(--color-secondary) !important;
+				}
+			}
+		}
+
+		&-track {
+			padding-bottom: 0;
+		}
+	}
+}
+
 .sectionDetailPost {
 	padding: rem(40) 0 0;
 
@@ -602,7 +634,7 @@ a {
 		&:hover {
 			img {
 				transform-origin: center;
-				
+
 			}
 		}
 	}

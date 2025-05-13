@@ -21,7 +21,7 @@ const CardsBigSmall = ({ data }) => {
 	}
 
 	var settings = {
-		dots: false,
+		dots: true,
 		arrows: false,
 		infinite: true,
 		speed: 500,
@@ -67,13 +67,13 @@ const CardsBigSmall = ({ data }) => {
 
 									<div className={cx(["copy"])}>
 										<h3
-											className={cx(["heading", "heading--24", "color--white"])}
+											className={cx(["heading", "heading--24", "color--primary"])}
 										>
 											{targeta?.titulo}
 										</h3>
 										{targeta?.cta?.url && (
 											<Link href={targeta?.cta?.url}>
-												<a className="button button--white" target={targeta?.cta?.target}>
+												<a className="button button--primary button--auto" target={targeta?.cta?.target}>
 													{targeta?.cta?.title}
 												</a>
 											</Link>

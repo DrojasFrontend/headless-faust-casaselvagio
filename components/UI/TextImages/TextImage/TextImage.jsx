@@ -24,7 +24,7 @@ const TextImage = ({ data }) => {
   console.log(items);
 
   var settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 500,
@@ -94,13 +94,13 @@ const TextImage = ({ data }) => {
                 </Slider>
                 <div className={cx(["copy"])}>
                   <h3
-                    className={cx(["heading", "heading--24", "color--white"])}
+                    className={cx(["heading", "heading--24", "color--primary"])}
                   >
                     {item?.tituloImagen1}
                   </h3>
                   {item?.ctaImagen1?.url && (
                     <Link href={item?.ctaImagen1?.url}>
-                      <a className="button button--white">
+                      <a className="button button--primary button--auto">
                         {item?.ctaImagen1?.title}
                       </a>
                     </Link>
@@ -125,13 +125,13 @@ const TextImage = ({ data }) => {
                 </Slider>
                 <div className={cx(["copy"])}>
                   <h3
-                    className={cx(["heading", "heading--24", "color--white"])}
+                    className={cx(["heading", "heading--24", "color--primary"])}
                   >
                     {item?.tituloImagen2}
                   </h3>
                   {item?.ctaImagen2?.url && (
                     <Link href={item?.ctaImagen2?.url}>
-                      <a className="button button--white">
+                      <a className="button button--primary button--auto">
                         {item?.ctaImagen2?.title}
                       </a>
                     </Link>
