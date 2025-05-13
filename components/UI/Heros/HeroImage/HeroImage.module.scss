@@ -24,6 +24,21 @@
     aspect-ratio: 2 / 1;
     object-fit: cover;
   }
+
+  button {
+    position: absolute;
+    display: grid;
+    place-content: center;
+    top: rem(100);
+    right: rem(20);
+    width: rem(50);
+    height: rem(50);
+    border: none;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    z-index: 2;
+    cursor: pointer;
+  }
 }
 
 .heading {
