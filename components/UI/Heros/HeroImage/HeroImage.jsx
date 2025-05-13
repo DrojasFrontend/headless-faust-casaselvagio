@@ -5,19 +5,31 @@ import styles from "./HeroImage.module.scss";
 let cx = className.bind(styles);
 
 const HeroImage = ({data}) => {
-	const {titulo, imagen } = data;
+	const {titulo, imagen, video } = data;
 
 	return (
 		<section className={cx(["component"])}>
 			<div className={cx(["bckg"])}>
-				<Image
-					src={imagen.mediaItemUrl}
-					layout="fill"
-					priority
-					quality={100}
-					alt={imagen.altText}
-					title={imagen.title}
-				/>
+				{video ? (
+					<video
+						autoPlay
+						muted
+						loop
+						playsInline
+						className={cx(["video"])}
+					>
+						<source src={video.mediaItemUrl} type="video/mp4" />
+					</video>
+				) : (
+					<Image
+						src={imagen.mediaItemUrl}
+						layout="fill"
+						priority
+						quality={100}
+						alt={imagen.altText}
+						title={imagen.title}
+					/>
+				)}
 				<h1 className={cx(["heading", "heading--54", "color--white"])}>
 					{titulo}
 				</h1>

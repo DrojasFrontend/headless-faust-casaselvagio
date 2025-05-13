@@ -157,6 +157,9 @@ Component.query = gql`
 
 				grupoHero {
 					titulo
+					video {
+						mediaItemUrl
+					}
 					imagen {
 						mediaItemUrl
 						altText
