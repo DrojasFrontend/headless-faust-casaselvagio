@@ -190,11 +190,6 @@
   font-size: 1.1rem;
 }
 
-.descripcion {
-  margin-bottom: rem(24);
-}
-
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -244,5 +239,17 @@
     &:hover {
       background-color: #0056b3;
     }
+  }
+}
+
+.descripcion-item {
+  margin-bottom: rem(24);
+
+  a {
+    margin-top: rem(20);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }

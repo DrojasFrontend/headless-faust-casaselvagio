@@ -63,7 +63,6 @@ export default function Component(props) {
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
-				<Calendar />
 			</Main>
 			<Footer
 				themeGeneralSettings={themeGeneralSettings}

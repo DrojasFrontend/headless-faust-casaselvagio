@@ -115,178 +115,786 @@ const Calendar = () => {
       fecha: '2025-06-06',
       hora: '17:30',
       nombre: 'Saxofón Sunset',
-      descripcion: '<strong>Saxofón Sunset</strong> 5:30 pm a 6:30 pm (La casa Invita)\nAtardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Saxofón Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Atardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-07',
       hora: '09:00',
       nombre: 'Sábado',
-      descripcion: `<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita)\nEsta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n<strong>Almuerzo Forestia</strong> 1:30 pm a 2:30 pm (No Incluido)\n<strong>Cabalgata Por Senderos Andinos</strong> 3:30 pm a 6:00 pm (No incluido)\nSí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)`,
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm a 2:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Cabalgata Por Senderos Andinos</strong>',
+          hora: '3:30 pm a 6:00 pm',
+          detalle: 'Sí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-08',
       hora: '08:00',
       nombre: 'Meditación y Yoga',
-      descripcion: '<strong>Meditación y Yoga</strong> 8:00 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro propone una pausa consciente para reconectar.\nNota: ¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)\n<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Check out</strong> 1:00 pm\n<strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Meditación y Yoga</strong>',
+          hora: '8:00 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro propone una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Nota</strong>',
+          hora: '',
+          detalle: '¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
+    },
+    {
+      fecha: '2025-06-13',
+      hora: '17:30',
+      nombre: 'Bossa Nova Sunset',
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Bossa Nova Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Bossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab',
+          enlace: '#',
+        }
+      }
+    },
+    {
+      fecha: '2025-06-14',
+      hora: '08:30',
+      nombre: 'Clase de Yoga',
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Clase de Yoga</strong>',
+          hora: '8:30 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro sugiere una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:30 am a 10:30 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Alma Samurái</strong>',
+          hora: '10:45 am a 11:45 am',
+          detalle: 'Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Tour de Artesanos</strong>',
+          hora: '2:30 pm a 6:00 pm',
+          detalle: 'Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm a 12:00 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
+    },
+    {
+      fecha: '2025-06-15',
+      hora: '10:30',
+      nombre: 'Senderismo',
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     // Segundo fin de semana - Junio
     {
       fecha: '2025-06-13',
       hora: '17:30',
       nombre: 'Bossa Nova Sunset',
-      descripcion: 'Bossa Nova Sunset 5:30 pm a 6:30 pm (La Casa Invita)\nBossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.\n<strong>Cena en Forestia</strong> 7:00 pm (No Incluido)\n(Acá tendremos una playlist especial x The Music Lab)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Bossa Nova Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Bossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-14',
       hora: '08:30',
       nombre: 'Clase de Yoga',
-      descripcion: '<strong>Clase de Yoga</strong> 8:30 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro sugiere una pausa consciente para reconectar.\n<strong>Desayuno Forestia</strong> 9:30 am a 10:30 am (La Casa Invita)\n<strong>Alma Samurái</strong> 10:45 am a 11:45 am (La Casa Invita) Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles\n<strong>Tour de Artesanos</strong> 2:30 pm a 6:00 pm ( No Incluido ) Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.\n<strong>Cena en Forestia</strong> 7:00 pm a 12:00 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Clase de Yoga</strong>',
+          hora: '8:30 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro sugiere una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:30 am a 10:30 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Alma Samurái</strong>',
+          hora: '10:45 am a 11:45 am',
+          detalle: 'Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Tour de Artesanos</strong>',
+          hora: '2:30 pm a 6:00 pm',
+          detalle: 'Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm a 12:00 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-15',
       hora: '10:30',
       nombre: 'Senderismo',
-      descripcion: '<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita) Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n <strong>Check out</strong> 1:00 pm\n <strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
      // Tercero fin de semana - Junio
      {
       fecha: '2025-06-20',
       hora: '17:30',
       nombre: 'Saxofón Sunset',
-      descripcion: '<strong>Saxofón Sunset</strong> 5:30 pm a 6:30 pm (La casa Invita)\nAtardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Saxofón Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Atardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-21',
       hora: '09:00',
       nombre: 'Sábado',
-      descripcion: `<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita)\nEsta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n<strong>Almuerzo Forestia</strong> 1:30 pm a 2:30 pm (No Incluido)\n<strong>Cabalgata Por Senderos Andinos</strong> 3:30 pm a 6:00 pm (No incluido)\nSí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)`,
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm a 2:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Cabalgata Por Senderos Andinos</strong>',
+          hora: '3:30 pm a 6:00 pm',
+          detalle: 'Sí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-22',
       hora: '08:00',
       nombre: 'Meditación y Yoga',
-      descripcion: '<strong>Meditación y Yoga</strong> 8:00 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro propone una pausa consciente para reconectar.\nNota: ¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)\n<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Check out</strong> 1:00 pm\n<strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Meditación y Yoga</strong>',
+          hora: '8:00 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro propone una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Nota</strong>',
+          hora: '',
+          detalle: '¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     // Cuarto fin de semana - Junio
     {
       fecha: '2025-06-27',
       hora: '17:30',
       nombre: 'Bossa Nova Sunset',
-      descripcion: 'Bossa Nova Sunset 5:30 pm a 6:30 pm (La Casa Invita)\nBossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.\n<strong>Cena en Forestia</strong> 7:00 pm (No Incluido)\n(Acá tendremos una playlist especial x The Music Lab)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Bossa Nova Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Bossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-28',
       hora: '08:30',
       nombre: 'Clase de Yoga',
-      descripcion: '<strong>Clase de Yoga</strong> 8:30 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro sugiere una pausa consciente para reconectar.\n<strong>Desayuno Forestia</strong> 9:30 am a 10:30 am (La Casa Invita)\n<strong>Alma Samurái</strong> 10:45 am a 11:45 am (La Casa Invita) Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles\n<strong>Tour de Artesanos</strong> 2:30 pm a 6:00 pm ( No Incluido ) Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.\n<strong>Cena en Forestia</strong> 7:00 pm a 12:00 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Clase de Yoga</strong>',
+          hora: '8:30 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro sugiere una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:30 am a 10:30 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Alma Samurái</strong>',
+          hora: '10:45 am a 11:45 am',
+          detalle: 'Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Tour de Artesanos</strong>',
+          hora: '2:30 pm a 6:00 pm',
+          detalle: 'Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm a 12:00 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-06-29',
       hora: '10:30',
       nombre: 'Senderismo',
-      descripcion: '<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita) Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n <strong>Check out</strong> 1:00 pm\n <strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
      // Quinto fin de semana - Junio
      {
       fecha: '2025-07-04',
       hora: '17:30',
       nombre: 'Saxofón Sunset',
-      descripcion: '<strong>Saxofón Sunset</strong> 5:30 pm a 6:30 pm (La casa Invita)\nAtardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Saxofón Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Atardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-05',
       hora: '09:00',
       nombre: 'Sábado',
-      descripcion: `<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita)\nEsta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n<strong>Almuerzo Forestia</strong> 1:30 pm a 2:30 pm (No Incluido)\n<strong>Cabalgata Por Senderos Andinos</strong> 3:30 pm a 6:00 pm (No incluido)\nSí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)`,
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm a 2:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Cabalgata Por Senderos Andinos</strong>',
+          hora: '3:30 pm a 6:00 pm',
+          detalle: 'Sí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-06',
       hora: '08:00',
       nombre: 'Meditación y Yoga',
-      descripcion: '<strong>Meditación y Yoga</strong> 8:00 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro propone una pausa consciente para reconectar.\nNota: ¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)\n<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Check out</strong> 1:00 pm\n<strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Meditación y Yoga</strong>',
+          hora: '8:00 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro propone una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Nota</strong>',
+          hora: '',
+          detalle: '¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     // sexto fin de semana - Junio
     {
       fecha: '2025-07-11',
       hora: '17:30',
       nombre: 'Bossa Nova Sunset',
-      descripcion: 'Bossa Nova Sunset 5:30 pm a 6:30 pm (La Casa Invita)\nBossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.\n<strong>Cena en Forestia</strong> 7:00 pm (No Incluido)\n(Acá tendremos una playlist especial x The Music Lab)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Bossa Nova Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Bossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-12',
       hora: '08:30',
       nombre: 'Clase de Yoga',
-      descripcion: '<strong>Clase de Yoga</strong> 8:30 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro sugiere una pausa consciente para reconectar.\n<strong>Desayuno Forestia</strong> 9:30 am a 10:30 am (La Casa Invita)\n<strong>Alma Samurái</strong> 10:45 am a 11:45 am (La Casa Invita) Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles\n<strong>Tour de Artesanos</strong> 2:30 pm a 6:00 pm ( No Incluido ) Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.\n<strong>Cena en Forestia</strong> 7:00 pm a 12:00 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Clase de Yoga</strong>',
+          hora: '8:30 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro sugiere una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:30 am a 10:30 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Alma Samurái</strong>',
+          hora: '10:45 am a 11:45 am',
+          detalle: 'Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Tour de Artesanos</strong>',
+          hora: '2:30 pm a 6:00 pm',
+          detalle: 'Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm a 12:00 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-13',
       hora: '10:30',
       nombre: 'Senderismo',
-      descripcion: '<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita) Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n <strong>Check out</strong> 1:00 pm\n <strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     // Septimo fin de semana - Junio
     {
       fecha: '2025-07-18',
       hora: '17:30',
       nombre: 'Saxofón Sunset',
-      descripcion: '<strong>Saxofón Sunset</strong> 5:30 pm a 6:30 pm (La casa Invita)\nAtardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Saxofón Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Atardecer en la terraza con saxofón en vivo: música suave para despedir el día y dar la bienvenida a la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-19',
       hora: '09:00',
       nombre: 'Sábado',
-      descripcion: `<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita)\nEsta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n<strong>Almuerzo Forestia</strong> 1:30 pm a 2:30 pm (No Incluido)\n<strong>Cabalgata Por Senderos Andinos</strong> 3:30 pm a 6:00 pm (No incluido)\nSí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.\n<strong>Cena en Forestia</strong> 7:30 pm (No incluido)\n(Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta)`,
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm a 2:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Cabalgata Por Senderos Andinos</strong>',
+          hora: '3:30 pm a 6:00 pm',
+          detalle: 'Sí te gusta la naturaleza y los planes diferentes, este recorrido a caballo es para ti. Durante dos horas y media, recorrerán antiguos Caminos Reales y senderos rurales, cruzando bosques de robles, quebradas y paisajes.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:30 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab, música con ambiente de fiesta',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-20',
       hora: '08:00',
       nombre: 'Meditación y Yoga',
-      descripcion: '<strong>Meditación y Yoga</strong> 8:00 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro propone una pausa consciente para reconectar.\nNota: ¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)\n<strong>Desayuno Forestia</strong> 9:00 am a 10:00 am (La Casa Invita)\n<strong>Check out</strong> 1:00 pm\n<strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Meditación y Yoga</strong>',
+          hora: '8:00 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro propone una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Nota</strong>',
+          hora: '',
+          detalle: '¿Te antojaste de un masaje? ¡Este es el momento perfecto! Espacio para reservar masajes o diferentes clases con nuestros facilitadores (No incluido)',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:00 am a 10:00 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     // Octavo fin de semana - Junio
     {
       fecha: '2025-07-25',
       hora: '17:30',
       nombre: 'Bossa Nova Sunset',
-      descripcion: 'Bossa Nova Sunset 5:30 pm a 6:30 pm (La Casa Invita)\nBossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.\n<strong>Cena en Forestia</strong> 7:00 pm (No Incluido)\n(Acá tendremos una playlist especial x The Music Lab)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Bossa Nova Sunset</strong>',
+          hora: '5:30 pm a 6:30 pm',
+          detalle: 'Bossa Nova en vivo en la terraza: ritmos ligeros para cerrar el día y abrir la noche.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm',
+          detalle: 'Acá tendremos una playlist especial x The Music Lab',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-26',
       hora: '08:30',
       nombre: 'Clase de Yoga',
-      descripcion: '<strong>Clase de Yoga</strong> 8:30 am a 9:30 am (La Casa Invita)\nUna experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia.\nEste encuentro sugiere una pausa consciente para reconectar.\n<strong>Desayuno Forestia</strong> 9:30 am a 10:30 am (La Casa Invita)\n<strong>Alma Samurái</strong> 10:45 am a 11:45 am (La Casa Invita) Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles\n<strong>Tour de Artesanos</strong> 2:30 pm a 6:00 pm ( No Incluido ) Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.\n<strong>Cena en Forestia</strong> 7:00 pm a 12:00 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Clase de Yoga</strong>',
+          hora: '8:30 am a 9:30 am',
+          detalle: 'Una experiencia íntima para volver a lo esencial. Respirar juntos, moverse con intención, abrir el corazón y sostenerse mutuamente desde la presencia. Este encuentro sugiere una pausa consciente para reconectar.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Desayuno Forestia</strong>',
+          hora: '9:30 am a 10:30 am',
+          detalle: 'La Casa Invita',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Alma Samurái</strong>',
+          hora: '10:45 am a 11:45 am',
+          detalle: 'Experiencia de Artes Marciales Japonesas En esta experiencia vivirás las prácticas de los guerreros Samurái, a través de: las artes marciales, el manejo de la katana (espada japonesa), la meditación Bushidō, la caligrafía y la poesía haiku; y conocerás su filosofía de vida y a cómo aplicarla en tu vida diaria para lograr tus metas y superar tus límites. Una experiencia para todas las edades y niveles',
+          enlace: '#',
+        },
+        descripcion4: {
+          titulo: '<strong>Tour de Artesanos</strong>',
+          hora: '2:30 pm a 6:00 pm',
+          detalle: 'Descubre las tradiciones artesanales y gastronómicas de Tinjacá y San Miguel de Sema en este recorrido que te llevará por las veredas, donde conocerás de cerca dos oficios tradicionales que han dado identidad a la región: la cestería en esparto y la Producción artesanal de quesos.',
+          enlace: '#',
+        },
+        descripcion5: {
+          titulo: '<strong>Cena en Forestia</strong>',
+          hora: '7:00 pm a 12:00 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
     {
       fecha: '2025-07-27',
       hora: '10:30',
       nombre: 'Senderismo',
-      descripcion: '<strong>Senderismo</strong> 10:30 am a 12:30 pm (La casa Invita) Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.\n <strong>Check out</strong> 1:00 pm\n <strong>Almuerzo Forestia</strong> 1:30 pm (No Incluido)',
-      enlace: '#'
+      descripciones: {
+        descripcion1: {
+          titulo: '<strong>Senderismo</strong>',
+          hora: '10:30 am a 12:30 pm',
+          detalle: 'Esta experiencia te invita a explorar algunos de los rincones naturales más cautivadores de la región. Desde senderos que conducen a quebradas escondidas, hasta caminos que ascienden cerros con vistas panorámicas, podrás elegir entre varias rutas según tu nivel de energía y tu conexión con el entorno.',
+          enlace: '#',
+        },
+        descripcion2: {
+          titulo: '<strong>Check out</strong>',
+          hora: '1:00 pm',
+          detalle: '',
+          enlace: '#',
+        },
+        descripcion3: {
+          titulo: '<strong>Almuerzo Forestia</strong>',
+          hora: '1:30 pm',
+          detalle: 'No Incluido',
+          enlace: '#',
+        }
+      }
     },
-
   ];
 
   useEffect(() => {
@@ -356,13 +964,19 @@ const Calendar = () => {
                 <h3>{eventoSeleccionado.nombre}</h3>
                 <p><strong>Hora:</strong> {eventoSeleccionado.hora}</p>
                 <div className={cx('descripcion')}>
-                  {eventoSeleccionado.descripcion.split('\n').map((linea, index) => (
-                    <p key={index} dangerouslySetInnerHTML={{ __html: linea }} />
+                  {eventoSeleccionado.descripciones && Object.entries(eventoSeleccionado.descripciones).map(([key, descripcion]) => (
+                    <div key={key} className={cx('descripcion-item')}>
+                      <div dangerouslySetInnerHTML={{ __html: descripcion.titulo }} />
+                      {descripcion.hora && <p><strong>Hora:</strong> {descripcion.hora}</p>}
+                      {descripcion.detalle && <p>{descripcion.detalle}</p>}
+                      {descripcion.enlace && (
+                        <a href={descripcion.enlace} className={cx('button button--primary')}>
+                          Reservar
+                        </a>
+                      )}
+                    </div>
                   ))}
                 </div>
-                <a href={eventoSeleccionado.enlace} className={cx('button button--primary')}>
-                  Reservar
-                </a>
               </div>
             )}
           </div>
