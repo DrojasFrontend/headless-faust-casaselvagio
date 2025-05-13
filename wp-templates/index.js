@@ -15,6 +15,7 @@ import single from './single';
 import test from './page-test';
 import ubicacion from './page-ubicacion';
 import password from './page-password';
+import lanzamiento from './page-lanzamiento';
 import { experiencia, singlePlan } from "./singles";
 
 export default {
@@ -37,4 +38,5 @@ export default {
   single,
   "single-experiencia": experiencia,
   "single-plan": singlePlan,
+  "page-lanzamiento": lanzamiento,
 };

@@ -63,12 +63,7 @@ export default function Component(props) {
 				{mostrarExperiencias && (
 					<CardsGridThreeCarusel data={grupoexperiencias} />
 				)}
-				{/* <section className="calendar-section">
-					<div className="container">
-						<h2>Calendario de Eventos</h2>
-						<Calendar />
-					</div>
-				</section> */}
+				<Calendar />
 			</Main>
 			<Footer
 				themeGeneralSettings={themeGeneralSettings}

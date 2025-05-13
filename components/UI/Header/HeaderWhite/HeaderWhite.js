@@ -44,7 +44,12 @@ export default function Header({
 						{menuHeaderItems?.slice(0, 4).map((m, idx) => {
 							return (
 								<Link href={m?.path} key={idx}>
-								<a className={cx("link", m?.cssClasses )}>{m?.label}</a>
+									<a
+										className={cx("link", m?.cssClasses)}
+										target={m?.cssClasses?.includes("target") ? "_blank" : undefined}
+									>
+										{m?.label}
+									</a>
 								</Link>
 							);
 						})}
@@ -79,7 +84,12 @@ export default function Header({
 						{menuHeaderItems?.slice(4, 7).map((m, idx) => {
 							return (
 								<Link href={m?.path} key={idx}>
-									<a className={cx("link", m?.cssClasses )} target="_blank">{m?.label}</a>
+									<a
+										className={cx("link", m?.cssClasses)}
+										target={m?.cssClasses?.includes("target") ? "_blank" : undefined}
+									>
+										{m?.label}
+									</a>
 								</Link>
 							);
 						})}
