@@ -57,6 +57,7 @@
       rgba(0, 0, 0, 0.7) 100%
     );
     z-index: 1;
+    pointer-events: none;
   }
 
   img, video {
@@ -88,5 +89,43 @@
   width: 100%;
   padding: 0 rem(24) rem(24);
   z-index: 2;
+}
+
+.video-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	.video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.play-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		transition: all 0.3s ease;
+		z-index: 3;
+
+		&:hover {
+			transform: translate(-50%, -50%) scale(1.1);
+
+			svg circle {
+				fill: rgba(0,0,0,0.7);
+			}
+		}
+
+		svg {
+			display: block;
+			filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+		}
+	}
 }
 

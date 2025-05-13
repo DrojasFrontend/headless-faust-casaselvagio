@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -13,10 +13,42 @@ import { Container } from "../../../Layout/Container";
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
 	const [isMobile, setIsMobile] = useState(false);
+	const [isIOS, setIsIOS] = useState(false);
+	const [playingVideos, setPlayingVideos] = useState({});
+	const videoRefs = useRef({});
+
+	const handlePlay = async (index) => {
+		try {
+			const video = videoRefs.current[index];
+			if (video) {
+				await video.play();
+				setPlayingVideos(prev => ({
+					...prev,
+					[index]: true
+				}));
+			}
+		} catch (error) {
+			console.error('Error al reproducir el video:', error);
+		}
+	};
+
+	const handleVideoEnd = (index) => {
+		setPlayingVideos(prev => ({
+			...prev,
+			[index]: false
+		}));
+	};
 
 	useEffect(() => {
 		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+		const checkIOS = () => {
+			const userAgent = window.navigator.userAgent.toLowerCase();
+			return /iphone|ipad|ipod/.test(userAgent);
+		};
+		
 		checkMobile();
+		setIsIOS(checkIOS());
+		
 		window.addEventListener('resize', checkMobile);
 		return () => window.removeEventListener('resize', checkMobile);
 	}, []);
@@ -75,23 +107,39 @@ const CardGrid = ({ data, className }) => {
 				<div className="container--slick">
 					<Slider {...settings}>
 						{targetas.map((targeta, index) => (
-							<>
+							<div key={index}>
 								<div key={index} className={cx(["card"])}>
 									{targeta?.video?.mediaItemUrl ? (
-										<video
-											src={targeta?.video?.mediaItemUrl}
-											width={372}
-											height={440}
-											quality={100}
-											sizes="100vw"
-											poster={targeta?.imagen?.mediaItemUrl}
-											autoPlay
-											muted
-											loop
-											playsInline
-											className={cx("video")}
-											controls={!isMobile}
-										/>
+										<div className={cx("video-container")}>
+											<video
+												ref={el => videoRefs.current[index] = el}
+												src={targeta?.video?.mediaItemUrl}
+												width={372}
+												height={440}
+												quality={100}
+												sizes="100vw"
+												poster={targeta?.imagen?.mediaItemUrl}
+												muted
+												loop
+												playsInline
+												className={cx("video")}
+												controls={isIOS || !isMobile}
+												onPlay={() => setPlayingVideos(prev => ({ ...prev, [index]: true }))}
+												onPause={() => setPlayingVideos(prev => ({ ...prev, [index]: false }))}
+												onEnded={() => handleVideoEnd(index)}
+											/>
+											{isIOS && !playingVideos[index] && (
+												<button 
+													className={cx("play-button")}
+													onClick={() => handlePlay(index)}
+												>
+													<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)"/>
+														<path d="M13 16H17L21 12V28L17 24H13V16Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
+													</svg>
+												</button>
+											)}
+										</div>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
 											src={targeta?.imagen?.mediaItemUrl}
@@ -120,7 +168,7 @@ const CardGrid = ({ data, className }) => {
 										</a>
 									</Link>
 								)}
-							</>
+							</div>
 						))}
 					</Slider>
 
