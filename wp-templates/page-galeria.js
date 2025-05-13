@@ -153,6 +153,9 @@ Component.query = gql`
 							altText
 							title
 						}
+						video {
+							mediaItemUrl
+						}
 					}
 				}
 			}
