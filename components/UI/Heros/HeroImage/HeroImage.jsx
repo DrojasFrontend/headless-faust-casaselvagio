@@ -18,7 +18,7 @@ const HeroImage = ({data}) => {
 						playsInline
 						className={cx(["video"])}
 					>
-						<source src={video.mediaItemUrl} type="video/mp4" />
+						<source src={video} type="video/mp4" />
 					</video>
 				) : (
 					<Image
