@@ -12,46 +12,54 @@ import { Container } from "../../../Layout/Container";
 
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
-	const videoRef = useRef(null);
-	const [isMuted, setIsMuted] = useState(true);
+	const videoRefs = useRef({});
+	const [playingVideos, setPlayingVideos] = useState({});
+	const [isMobile, setIsMobile] = useState(false);
 
-	const handleUnmute = () => {
-		if (videoRef.current) {
-			videoRef.current.muted = false;
-			videoRef.current.volume = 1;
-			setIsMuted(false);
-			videoRef.current.play();
-		}
-	};
+	useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth <= 1024);
+		};
 
-	const handlePlay = async (index) => {
-		try {
-			const video = videoRefs.current[index];
-			if (video) {
-				video.focus();
-				const playPromise = video.play();
-				if (playPromise !== undefined) {
-					await playPromise;
+		checkMobile();
+		window.addEventListener('resize', checkMobile);
+
+		return () => {
+			window.removeEventListener('resize', checkMobile);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (!isMobile) {
+			// Reproducir automáticamente en desktop
+			Object.keys(videoRefs.current).forEach(key => {
+				if (videoRefs.current[key]) {
+					videoRefs.current[key].play();
 					setPlayingVideos(prev => ({
 						...prev,
-						[index]: true
+						[key]: true
 					}));
 				}
+			});
+		}
+	}, [isMobile]);
+
+	const handlePlay = (index) => {
+		// Detener todos los videos primero
+		Object.keys(videoRefs.current).forEach(key => {
+			if (videoRefs.current[key]) {
+				videoRefs.current[key].pause();
 			}
-		} catch (error) {
-			console.error('No se pudo reproducir el video:', error);
+		});
+
+		// Reproducir el video seleccionado
+		if (videoRefs.current[index]) {
+			videoRefs.current[index].play();
 			setPlayingVideos(prev => ({
 				...prev,
-				[index]: false
+				[index]: true
 			}));
 		}
-	};
-
-	const handleVideoEnd = (index) => {
-		setPlayingVideos(prev => ({
-			...prev,
-			[index]: false
-		}));
 	};
 
 	var settings = {
@@ -113,15 +121,30 @@ const CardGrid = ({ data, className }) => {
 									{targeta?.video?.mediaItemUrl ? (
 										<div className={cx("video-container")}>
 											<video
-												ref={videoRef}
-												autoPlay
-												muted={isMuted}
+												ref={el => videoRefs.current[index] = el}
+												muted={true}
 												loop
 												playsInline
 												className={cx(["video"])}
+												onEnded={() => setPlayingVideos(prev => ({
+													...prev,
+													[index]: false
+												}))}
 											>
 												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
 											</video>
+											{isMobile && !playingVideos[index] && (
+												<button
+													onClick={() => handlePlay(index)}
+													className={cx(["play-btn"])}
+													aria-label="Reproducir video"
+												>
+													<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)" />
+														<polygon points="16,13 28,20 16,27" fill="#fff"/>
+													</svg>
+												</button>
+											)}
 										</div>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
