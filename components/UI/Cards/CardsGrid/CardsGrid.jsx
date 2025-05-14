@@ -12,22 +12,17 @@ import { Container } from "../../../Layout/Container";
 
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
-	const [isMobile, setIsMobile] = useState(false);
-	const [isMobileDevice, setIsMobileDevice] = useState(false);
-	const [playingVideos, setPlayingVideos] = useState({});
-	const videoRefs = useRef({});
+	const videoRef = useRef(null);
+	const [isMuted, setIsMuted] = useState(true);
 
-	useEffect(() => {
-		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-		const checkMobileDevice = () => {
-			const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent.toLowerCase() : '';
-			return /iphone|ipad|ipod|android/.test(userAgent);
-		};
-		checkMobile();
-		setIsMobileDevice(checkMobileDevice());
-		window.addEventListener('resize', checkMobile);
-		return () => window.removeEventListener('resize', checkMobile);
-	}, []);
+	const handleUnmute = () => {
+		if (videoRef.current) {
+			videoRef.current.muted = false;
+			videoRef.current.volume = 1;
+			setIsMuted(false);
+			videoRef.current.play();
+		}
+	};
 
 	const handlePlay = async (index) => {
 		try {
@@ -118,36 +113,15 @@ const CardGrid = ({ data, className }) => {
 									{targeta?.video?.mediaItemUrl ? (
 										<div className={cx("video-container")}>
 											<video
-												ref={el => videoRefs.current[index] = el}
-												src={targeta?.video?.mediaItemUrl}
-												width={372}
-												height={440}
-												quality={100}
-												sizes="100vw"
-												poster={targeta?.imagen?.mediaItemUrl}
-												muted
+												ref={videoRef}
+												autoPlay
+												muted={isMuted}
 												loop
 												playsInline
-												className={cx("video")}
-												tabIndex="0"
-												onPlay={() => setPlayingVideos(prev => ({ ...prev, [index]: true }))}
-												onPause={() => setPlayingVideos(prev => ({ ...prev, [index]: false }))}
-												onEnded={() => handleVideoEnd(index)}
-												controls={false}
-												{...(!isMobileDevice && { autoPlay: true })}
-											/>
-											{isMobileDevice && !playingVideos[index] && (
-												<button 
-													className={cx("play-button")}
-													style={{zIndex: 4, pointerEvents: 'auto'}}
-													onClick={() => handlePlay(index)}
-												>
-													<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)"/>
-														<path d="M13 16H17L21 12V28L17 24H13V16Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
-													</svg>
-												</button>
-											)}
+												className={cx(["video"])}
+											>
+												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
+											</video>
 										</div>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
