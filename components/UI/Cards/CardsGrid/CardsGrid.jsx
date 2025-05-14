@@ -13,22 +13,42 @@ import { Container } from "../../../Layout/Container";
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
 	const [isMobile, setIsMobile] = useState(false);
-	const [isIOS, setIsIOS] = useState(false);
+	const [isMobileDevice, setIsMobileDevice] = useState(false);
 	const [playingVideos, setPlayingVideos] = useState({});
 	const videoRefs = useRef({});
+
+	useEffect(() => {
+		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+		const checkMobileDevice = () => {
+			const userAgent = typeof window !== 'undefined' ? window.navigator.userAgent.toLowerCase() : '';
+			return /iphone|ipad|ipod|android/.test(userAgent);
+		};
+		checkMobile();
+		setIsMobileDevice(checkMobileDevice());
+		window.addEventListener('resize', checkMobile);
+		return () => window.removeEventListener('resize', checkMobile);
+	}, []);
 
 	const handlePlay = async (index) => {
 		try {
 			const video = videoRefs.current[index];
 			if (video) {
-				await video.play();
-				setPlayingVideos(prev => ({
-					...prev,
-					[index]: true
-				}));
+				video.focus();
+				const playPromise = video.play();
+				if (playPromise !== undefined) {
+					await playPromise;
+					setPlayingVideos(prev => ({
+						...prev,
+						[index]: true
+					}));
+				}
 			}
 		} catch (error) {
-			console.error('Error al reproducir el video:', error);
+			console.error('No se pudo reproducir el video:', error);
+			setPlayingVideos(prev => ({
+				...prev,
+				[index]: false
+			}));
 		}
 	};
 
@@ -38,20 +58,6 @@ const CardGrid = ({ data, className }) => {
 			[index]: false
 		}));
 	};
-
-	useEffect(() => {
-		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-		const checkIOS = () => {
-			const userAgent = window.navigator.userAgent.toLowerCase();
-			return /iphone|ipad|ipod/.test(userAgent);
-		};
-		
-		checkMobile();
-		setIsIOS(checkIOS());
-		
-		window.addEventListener('resize', checkMobile);
-		return () => window.removeEventListener('resize', checkMobile);
-	}, []);
 
 	var settings = {
 		dots: false,
@@ -123,14 +129,16 @@ const CardGrid = ({ data, className }) => {
 												loop
 												playsInline
 												className={cx("video")}
-												controls={isIOS || !isMobile}
+												controls={isMobileDevice || !isMobile}
+												tabIndex="0"
 												onPlay={() => setPlayingVideos(prev => ({ ...prev, [index]: true }))}
 												onPause={() => setPlayingVideos(prev => ({ ...prev, [index]: false }))}
 												onEnded={() => handleVideoEnd(index)}
 											/>
-											{isIOS && !playingVideos[index] && (
+											{isMobileDevice && !playingVideos[index] && (
 												<button 
 													className={cx("play-button")}
+													style={{zIndex: 4, pointerEvents: 'auto'}}
 													onClick={() => handlePlay(index)}
 												>
 													<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
