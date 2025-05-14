@@ -14,7 +14,7 @@ const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
 	const [isMobile, setIsMobile] = useState(false);
 	const [playingVideos, setPlayingVideos] = useState({});
-	const videoRef = useRef(null);
+	const videoRefs = useRef([]);
 	const [isMuted, setIsMuted] = useState(true);
 
 	useEffect(() => {
@@ -33,14 +33,17 @@ const CardGrid = ({ data, className }) => {
 			...prev,
 			[index]: true
 		}));
+		if (videoRefs.current[index]) {
+			videoRefs.current[index].play();
+		}
 	};
 
 	const handleUnmute = () => {
-		if (videoRef.current) {
-			videoRef.current.muted = false;
-			videoRef.current.volume = 1;
+		if (videoRefs.current[0]) {
+			videoRefs.current[0].muted = false;
+			videoRefs.current[0].volume = 1;
 			setIsMuted(false);
-			videoRef.current.play();
+			videoRefs.current[0].play();
 		}
 	};
 
@@ -111,12 +114,13 @@ const CardGrid = ({ data, className }) => {
 												</button>
 											)}
 											<video
+												ref={el => videoRefs.current[index] = el}
 												autoPlay={!isMobile}
 												muted={true}
 												loop
 												playsInline
 												className={cx(["video"])}
-												style={{ display: isMobile && !playingVideos[index] ? 'none' : 'block' }}
+												controls={false}
 											>
 												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
 											</video>
