@@ -106,20 +106,26 @@ const CardGrid = ({ data, className }) => {
 									{targeta?.video?.mediaItemUrl ? (
 										<div className={cx("video-container")}>
 											{isMobile && !playingVideos[index] && (
-												<button 
+												<button
 													className={cx("play-button")}
-													onClick={() => handlePlayVideo(index)}
+													style={{ zIndex: 3, position: "absolute" }}
+													onClick={() => {
+														if (videoRefs.current[index]) {
+															videoRefs.current[index].play();
+														}
+														setPlayingVideos(prev => ({ ...prev, [index]: true }));
+													}}
 												>
 													▶
 												</button>
 											)}
 											<video
 												ref={el => videoRefs.current[index] = el}
-												autoPlay={!isMobile}
-												muted={true}
+												muted
 												loop
 												playsInline
 												className={cx(["video"])}
+												autoPlay={!isMobile}
 												controls={false}
 											>
 												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
