@@ -90,7 +90,9 @@ const CardGrid = ({ data, className }) => {
 											loop
 											playsInline
 											className={cx("video")}
-											controls={!isMobile}
+											controls={true}
+											controlsList="nodownload"
+											style={{ objectFit: 'cover' }}
 										/>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
