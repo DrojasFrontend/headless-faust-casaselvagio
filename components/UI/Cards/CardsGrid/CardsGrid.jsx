@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -13,39 +13,13 @@ import { Container } from "../../../Layout/Container";
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
 	const [isMobile, setIsMobile] = useState(false);
-	const [playingVideos, setPlayingVideos] = useState({});
-	const videoRefs = useRef([]);
-	const [isMuted, setIsMuted] = useState(true);
 
 	useEffect(() => {
-		const checkMobile = () => {
-			setIsMobile(window.innerWidth <= 680);
-		};
-		
+		const checkMobile = () => setIsMobile(window.innerWidth < 1024);
 		checkMobile();
 		window.addEventListener('resize', checkMobile);
-		
 		return () => window.removeEventListener('resize', checkMobile);
 	}, []);
-
-	const handlePlayVideo = (index) => {
-		setPlayingVideos(prev => ({
-			...prev,
-			[index]: true
-		}));
-		if (videoRefs.current[index]) {
-			videoRefs.current[index].play();
-		}
-	};
-
-	const handleUnmute = () => {
-		if (videoRefs.current[0]) {
-			videoRefs.current[0].muted = false;
-			videoRefs.current[0].volume = 1;
-			setIsMuted(false);
-			videoRefs.current[0].play();
-		}
-	};
 
 	var settings = {
 		dots: false,
@@ -101,36 +75,23 @@ const CardGrid = ({ data, className }) => {
 				<div className="container--slick">
 					<Slider {...settings}>
 						{targetas.map((targeta, index) => (
-							<div key={index}>
+							<>
 								<div key={index} className={cx(["card"])}>
 									{targeta?.video?.mediaItemUrl ? (
-										<div className={cx("video-container")}>
-											{isMobile && !playingVideos[index] && (
-												<button
-													className={cx("play-button")}
-													style={{ zIndex: 3, position: "absolute" }}
-													onClick={() => {
-														if (videoRefs.current[index]) {
-															videoRefs.current[index].play();
-														}
-														setPlayingVideos(prev => ({ ...prev, [index]: true }));
-													}}
-												>
-													▶
-												</button>
-											)}
-											<video
-												ref={el => videoRefs.current[index] = el}
-												muted
-												loop
-												playsInline
-												className={cx(["video"])}
-												autoPlay={!isMobile}
-												controls={false}
-											>
-												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
-											</video>
-										</div>
+										<video
+											src={targeta?.video?.mediaItemUrl}
+											width={372}
+											height={440}
+											quality={100}
+											sizes="100vw"
+											poster={targeta?.imagen?.mediaItemUrl}
+											autoPlay
+											muted
+											loop
+											playsInline
+											className={cx("video")}
+											controls={!isMobile}
+										/>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
 											src={targeta?.imagen?.mediaItemUrl}
@@ -159,7 +120,7 @@ const CardGrid = ({ data, className }) => {
 										</a>
 									</Link>
 								)}
-							</div>
+							</>
 						))}
 					</Slider>
 
