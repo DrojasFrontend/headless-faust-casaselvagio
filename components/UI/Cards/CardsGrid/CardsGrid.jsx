@@ -12,53 +12,35 @@ import { Container } from "../../../Layout/Container";
 
 const CardGrid = ({ data, className }) => {
 	const { titulo, descripcion, targetas, cta } = data;
-	const videoRefs = useRef({});
-	const [playingVideos, setPlayingVideos] = useState({});
 	const [isMobile, setIsMobile] = useState(false);
+	const [playingVideos, setPlayingVideos] = useState({});
+	const videoRef = useRef(null);
+	const [isMuted, setIsMuted] = useState(true);
 
 	useEffect(() => {
 		const checkMobile = () => {
-			setIsMobile(window.innerWidth <= 1024);
+			setIsMobile(window.innerWidth <= 680);
 		};
-
+		
 		checkMobile();
 		window.addEventListener('resize', checkMobile);
-
-		return () => {
-			window.removeEventListener('resize', checkMobile);
-		};
+		
+		return () => window.removeEventListener('resize', checkMobile);
 	}, []);
 
-	useEffect(() => {
-		if (!isMobile) {
-			// Reproducir automáticamente en desktop
-			Object.keys(videoRefs.current).forEach(key => {
-				if (videoRefs.current[key]) {
-					videoRefs.current[key].play();
-					setPlayingVideos(prev => ({
-						...prev,
-						[key]: true
-					}));
-				}
-			});
-		}
-	}, [isMobile]);
+	const handlePlayVideo = (index) => {
+		setPlayingVideos(prev => ({
+			...prev,
+			[index]: true
+		}));
+	};
 
-	const handlePlay = (index) => {
-		// Detener todos los videos primero
-		Object.keys(videoRefs.current).forEach(key => {
-			if (videoRefs.current[key]) {
-				videoRefs.current[key].pause();
-			}
-		});
-
-		// Reproducir el video seleccionado
-		if (videoRefs.current[index]) {
-			videoRefs.current[index].play();
-			setPlayingVideos(prev => ({
-				...prev,
-				[index]: true
-			}));
+	const handleUnmute = () => {
+		if (videoRef.current) {
+			videoRef.current.muted = false;
+			videoRef.current.volume = 1;
+			setIsMuted(false);
+			videoRef.current.play();
 		}
 	};
 
@@ -120,31 +102,24 @@ const CardGrid = ({ data, className }) => {
 								<div key={index} className={cx(["card"])}>
 									{targeta?.video?.mediaItemUrl ? (
 										<div className={cx("video-container")}>
+											{isMobile && !playingVideos[index] && (
+												<button 
+													className={cx("play-button")}
+													onClick={() => handlePlayVideo(index)}
+												>
+													▶
+												</button>
+											)}
 											<video
-												ref={el => videoRefs.current[index] = el}
+												autoPlay={!isMobile}
 												muted={true}
 												loop
 												playsInline
 												className={cx(["video"])}
-												onEnded={() => setPlayingVideos(prev => ({
-													...prev,
-													[index]: false
-												}))}
+												style={{ display: isMobile && !playingVideos[index] ? 'none' : 'block' }}
 											>
 												<source src={targeta?.video?.mediaItemUrl} type="video/mp4" />
 											</video>
-											{isMobile && !playingVideos[index] && (
-												<button
-													onClick={() => handlePlay(index)}
-													className={cx(["play-btn"])}
-													aria-label="Reproducir video"
-												>
-													<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.5)" />
-														<polygon points="16,13 28,20 16,27" fill="#fff"/>
-													</svg>
-												</button>
-											)}
 										</div>
 									) : targeta?.imagen?.mediaItemUrl ? (
 										<Image
