@@ -129,11 +129,12 @@ const CardGrid = ({ data, className }) => {
 												loop
 												playsInline
 												className={cx("video")}
-												controls={isMobileDevice || !isMobile}
 												tabIndex="0"
 												onPlay={() => setPlayingVideos(prev => ({ ...prev, [index]: true }))}
 												onPause={() => setPlayingVideos(prev => ({ ...prev, [index]: false }))}
 												onEnded={() => handleVideoEnd(index)}
+												controls={false}
+												{...(!isMobileDevice && { autoPlay: true })}
 											/>
 											{isMobileDevice && !playingVideos[index] && (
 												<button 
