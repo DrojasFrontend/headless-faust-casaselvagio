@@ -55,9 +55,9 @@ export default function MyApp({ Component, pageProps }) {
 				</Script>
 				<ThemeSettingsProvider>
 					{(themeSettings) => (
-						<ProtectedRoute themeSettings={themeSettings}>
+						// <ProtectedRoute themeSettings={themeSettings}>
 							<Component {...pageProps} key={router.asPath} />
-						</ProtectedRoute>
+						// </ProtectedRoute>
 					)}
 				</ThemeSettingsProvider>
 				{/* {isDev && <AuthReset />} */}
