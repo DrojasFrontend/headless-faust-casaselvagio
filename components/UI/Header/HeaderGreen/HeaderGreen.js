@@ -58,7 +58,14 @@ export default function HeaderGreen({
 					<div className={cx(["logo"])}>
 						<Link href="/">
 							<a>
-								<Image src={LogoGreen} alt={title} title="logo" />
+								<Image 
+									src={LogoGreen} 
+									alt={title} 
+									width={120}
+									height={53}
+									title="logo casaselvaggio"
+									priority
+								/>
 							</a>
 						</Link>
 					</div>

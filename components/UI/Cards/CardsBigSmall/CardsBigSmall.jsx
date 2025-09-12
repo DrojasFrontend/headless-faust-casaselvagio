@@ -14,8 +14,6 @@ import { Container } from "../../../Layout/Container";
 const CardsBigSmall = ({ data }) => {
 	const { titulo, descripcion, targetas } = data;
 
-	console.log(targetas);
-
 	if (!targetas.length === 0) {
 		return <p>No hay tarjetas disponibles.</p>;
 	}
@@ -51,7 +49,7 @@ const CardsBigSmall = ({ data }) => {
 								<div key={index} className={cx("card", { "gridColumn": targeta.columnas === 2 })} >
 									<Slider {...settings}>
 										{targeta.imagen.map((imagen, index) => (
-											<div className={cx(["card__img"])} style={{ position: 'relative', width: '100%', height: '100%' }}>
+											<div key={index} className={cx(["card__img"])} style={{ position: 'relative', width: '100%', height: '100%' }}>
 												<Image
 													layout="fill"
 													src={imagen?.mediaItemUrl}

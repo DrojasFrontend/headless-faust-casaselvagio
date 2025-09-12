@@ -31,11 +31,12 @@ export default function Footer({
 							<Link href="/">
 								<a aria-label="Ir a la página de inicio">
 									<Image
-										src={Logo}
+										src={Logo || LogoDefault}
 										width={242}
 										height={105}
 										alt="Logotipo de Casaselvaggio Hotel Campestre"
 										title="Casaselvaggio Hotel Campestre - Relax y naturaleza en un entorno rural"
+										priority
 									/>
 								</a>
 							</Link>

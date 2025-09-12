@@ -65,6 +65,7 @@ export default function Header({
 										width={120}
 										height={53}
 										title="logo casaselvaggio"
+										priority
 									/>
 								</span>
 								<span className={cx("mobile")}>
@@ -74,6 +75,7 @@ export default function Header({
 										width={120}
 										height={53}
 										title="logo casaselvaggio"
+										priority
 									/>
 								</span>
 							</a>

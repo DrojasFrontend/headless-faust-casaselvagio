@@ -21,8 +21,6 @@ const TextImage = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState([]);
 
-  console.log(items);
-
   var settings = {
     dots: true,
     arrows: false,

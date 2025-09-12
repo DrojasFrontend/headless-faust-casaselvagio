@@ -38,42 +38,11 @@ export function ProtectedRoute({ children, themeSettings }) {
     'founders'
   ];
 
-  // Función para verificar autenticación
+  // Función para verificar autenticación - DESACTIVADA
   const checkAuth = () => {
     try {
-      // Asegurarse de estar en el cliente
-      if (typeof window === 'undefined') return;
-
-      // Obtener la ruta actual sin la barra inicial
-      const path = window.location.pathname.replace(/^\/+/, '');
-      
-      // Verificar si la primera parte de la ruta coincide con alguna ruta restringida
-      const firstSegment = path.split('/')[0];
-      
-      // Verificar si está en una ruta excluida (con su propia autenticación)
-      if (excludedPaths.includes(firstSegment)) {
-        setIsAuthenticated(true);
-        setLoading(false);
-        return;
-      }
-      
-      // La raíz '/' tendrá firstSegment como string vacío
-      const requiresAuth = restrictedPaths.includes(firstSegment);
-      
-      if (!requiresAuth) {
-        // No requiere autenticación
-        setIsAuthenticated(true);
-        setLoading(false);
-        return;
-      }
-      
-      // Verificar autenticación guardada
-      const isAuth = sessionStorage.getItem('auth_global') === 'true';
-      
-      // También verificar si está autenticado como founder
-      const isFounderAuth = localStorage.getItem('founders_authenticated') === 'true';
-      
-      setIsAuthenticated(isAuth || isFounderAuth);
+      // Modal de contraseña desactivado - permitir acceso a todas las rutas
+      setIsAuthenticated(true);
       setLoading(false);
     } catch (err) {
       logError('Error al verificar autenticación:', err);

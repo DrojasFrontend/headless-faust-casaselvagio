@@ -75,8 +75,8 @@ const CardGrid = ({ data, className }) => {
 				<div className="container--slick">
 					<Slider {...settings}>
 						{targetas.map((targeta, index) => (
-							<>
-								<div key={index} className={cx(["card"])}>
+							<div key={index}>
+								<div className={cx(["card"])}>
 									{targeta?.video?.mediaItemUrl ? (
 										<video
 											src={targeta?.video?.mediaItemUrl}
@@ -122,7 +122,7 @@ const CardGrid = ({ data, className }) => {
 										</a>
 									</Link>
 								)}
-							</>
+							</div>
 						))}
 					</Slider>
 

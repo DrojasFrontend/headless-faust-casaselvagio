@@ -4,8 +4,7 @@ export default function Sitemap() {}
 
 export function getServerSideProps(ctx) {
   return getSitemapProps(ctx, {
-    frontendUrl: process.env.FRONTEND_URL,
-		sitemapPathsToIgnore: ['/wp-sitemap-users-*'],
-		sitemapPathsToIgnore: ['/author-sitemap.xml'],
+    frontendUrl: 'https://www.casaselvaggio.com',
+		sitemapPathsToIgnore: ['/wp-sitemap-users-*', '/author-sitemap.xml'],
   });
 }

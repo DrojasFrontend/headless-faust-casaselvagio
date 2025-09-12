@@ -18,13 +18,22 @@ export default function SEO({ data, themeGeneralSettings }) {
   }
 
   const {title, metaDesc, opengraphImage, canonical } = data;
+  
+  // Asegurar que todas las URLs usen el dominio correcto
+  const baseUrl = 'https://www.casaselvaggio.com';
+  const cleanCanonical = canonical ? canonical.replace(/^https?:\/\/[^\/]+/, baseUrl) : baseUrl;
 
   return (
     <>
       <Head>
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
-        <link rel='shortcut icon' href={themeGeneralSettings?.options?.favicon?.mediaItemUrl} />
+        {/* Favicon - múltiples formatos para mejor compatibilidad */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <meta name="google-site-verification" content="kIrRZ8SfE0YMixMItktR8EBfaTmelZVAhWh6TMsAsJk" />
         {title && (
           <>
@@ -53,7 +62,9 @@ export default function SEO({ data, themeGeneralSettings }) {
             <meta property="twitter:url" content={url} />
           </>
         )} */}
-        <link rel="canonical" href={canonical} />
+        <link rel="canonical" href={cleanCanonical} />
+        <meta property="og:url" content={cleanCanonical} />
+        <meta property="twitter:url" content={cleanCanonical} />
       </Head>
     </>
   );

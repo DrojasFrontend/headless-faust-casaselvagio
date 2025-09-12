@@ -10,6 +10,12 @@ export default setConfig({
   apiClientSecret: process.env.FAUST_SECRET_KEY,
   templates,
   experimentalPlugins: [],
-  experimentalToolbar: true,
+  experimentalToolbar: false, // Desactivar toolbar para evitar errores 401
   possibleTypes,
+  basePath: '',
+  usePermalinks: true,
+  // Configuración para dominio personalizado
+  previewUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.casaselvaggio.com',
+  // Desactivar autenticación automática
+  disableAuth: true,
 });
