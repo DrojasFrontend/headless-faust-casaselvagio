@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { getApolloClient } from '../lib/apolloClient';
+import client from '../lib/apolloClient';
 
 // Sitemap específico SOLO para posts - garantiza que se incluyan TODOS los posts
 export default function SitemapPosts() {}
@@ -8,47 +8,38 @@ export async function getServerSideProps({ res }) {
   const baseUrl = 'https://www.casaselvaggio.com';
   
   try {
-    const client = getApolloClient();
+    console.log('🚀 Iniciando sitemap de posts...');
     
-    // Función recursiva para obtener ABSOLUTAMENTE TODOS los posts
-    const getAllPostsRecursive = async () => {
+    // Función para obtener TODOS los posts usando paginación
+    const getAllPosts = async () => {
       let allPosts = [];
       let hasNextPage = true;
       let endCursor = null;
       let page = 1;
-      const maxPages = 100; // Prevención de bucle infinito
 
-      console.log('Iniciando obtención de posts para sitemap...');
+      console.log('🔄 Iniciando obtención paginada de posts...');
 
-      while (hasNextPage && page <= maxPages) {
-        console.log(`Obteniendo página ${page} de posts...`);
+      while (hasNextPage && page <= 20) { // Máximo 20 páginas = 2000 posts
+        console.log(`📄 Obteniendo página ${page}...`);
         
-        try {
-          const { data } = await client.query({
-            query: gql`
-              query GetAllPostsForSitemap($first: Int!, $after: String) {
-                posts(first: $first, after: $after, where: { status: PUBLISH }) {
-                  pageInfo {
-                    hasNextPage
-                    endCursor
-                    hasPreviousPage
-                    startCursor
-                  }
-                  nodes {
+        const { data, error } = await client.query({
+          query: gql`
+            query GetPostsForSitemap($first: Int!, $after: String) {
+              posts(first: $first, after: $after) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                edges {
+                  node {
                     id
-                    uri
-                    modified
-                    slug
-                    status
                     title
+                    uri
+                    slug
                     date
+                    modified
+                    status
                     categories {
-                      nodes {
-                        name
-                        slug
-                      }
-                    }
-                    tags {
                       nodes {
                         name
                         slug
@@ -57,50 +48,51 @@ export async function getServerSideProps({ res }) {
                   }
                 }
               }
-            `,
-            variables: {
-              first: 100, // Obtener de 100 en 100
-              after: endCursor
-            },
-            errorPolicy: 'ignore',
-            fetchPolicy: 'no-cache' // Asegurar datos frescos
-          });
+            }
+          `,
+          variables: {
+            first: 100, // 100 posts por página
+            after: endCursor
+          },
+          errorPolicy: 'all',
+          fetchPolicy: 'no-cache'
+        });
 
-          if (data?.posts?.nodes && data.posts.nodes.length > 0) {
-            console.log(`Página ${page}: ${data.posts.nodes.length} posts encontrados`);
-            allPosts = [...allPosts, ...data.posts.nodes];
-          } else {
-            console.log(`Página ${page}: No se encontraron más posts`);
-            break;
-          }
-
-          hasNextPage = data?.posts?.pageInfo?.hasNextPage || false;
-          const newEndCursor = data?.posts?.pageInfo?.endCursor;
-          
-          // Si no hay nuevo cursor pero hasNextPage es true, salir del bucle
-          if (hasNextPage && (!newEndCursor || newEndCursor === endCursor)) {
-            console.log('Cursor no cambió, finalizando...');
-            break;
-          }
-          
-          endCursor = newEndCursor;
-          page++;
-
-          // Pequeña pausa para no sobrecargar el servidor
-          await new Promise(resolve => setTimeout(resolve, 100));
-
-        } catch (queryError) {
-          console.error(`Error en página ${page}:`, queryError);
+        if (error) {
+          console.error(`❌ Error en página ${page}:`, error);
           break;
         }
+
+        if (!data?.posts?.edges) {
+          console.log(`⚠️ No hay más posts en página ${page}`);
+          break;
+        }
+
+        const postsInPage = data.posts.edges.map(edge => edge.node);
+        allPosts = [...allPosts, ...postsInPage];
+        
+        console.log(`✅ Página ${page}: ${postsInPage.length} posts obtenidos (Total: ${allPosts.length})`);
+
+        hasNextPage = data.posts.pageInfo?.hasNextPage || false;
+        endCursor = data.posts.pageInfo?.endCursor;
+
+        if (!hasNextPage || !endCursor) {
+          console.log('🏁 Fin de la paginación alcanzado');
+          break;
+        }
+
+        page++;
+        
+        // Pequeña pausa para no sobrecargar el servidor
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
 
-      console.log(`Total de posts obtenidos: ${allPosts.length}`);
       return allPosts;
     };
 
-    // Obtener todos los posts
-    const allPosts = await getAllPostsRecursive();
+    // Obtener TODOS los posts
+    const allPosts = await getAllPosts();
+    console.log(`🎯 TOTAL de posts obtenidos: ${allPosts.length}`);
     const postsForSitemap = [];
 
     // Procesar cada post

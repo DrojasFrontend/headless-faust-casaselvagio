@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { getApolloClient } from '../lib/apolloClient';
+import client from '../lib/apolloClient';
 
 export default function SitemapDynamic() {}
 
@@ -7,7 +7,7 @@ export async function getServerSideProps({ res }) {
   const baseUrl = 'https://www.casaselvaggio.com';
   
   try {
-    const client = getApolloClient();
+    console.log('🚀 Iniciando sitemap dinámico...');
     
     // Función para obtener TODOS los posts usando paginación
     const getAllPosts = async () => {
