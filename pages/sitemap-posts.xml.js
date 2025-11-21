@@ -9,6 +9,7 @@ export async function getServerSideProps({ res }) {
   
   try {
     console.log('🚀 Iniciando sitemap de posts...');
+    console.log('📡 WordPress URL:', process.env.NEXT_PUBLIC_WORDPRESS_URL);
     
     // Función para obtener TODOS los posts usando paginación
     const getAllPosts = async () => {
@@ -22,10 +23,10 @@ export async function getServerSideProps({ res }) {
       while (hasNextPage && page <= 20) { // Máximo 20 páginas = 2000 posts
         console.log(`📄 Obteniendo página ${page}...`);
         
-        const { data, error } = await client.query({
+        const { data, error, errors } = await client.query({
           query: gql`
             query GetPostsForSitemap($first: Int!, $after: String) {
-              posts(first: $first, after: $after) {
+              posts(first: $first, after: $after, where: { status: PUBLISH }) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -54,16 +55,20 @@ export async function getServerSideProps({ res }) {
             first: 100, // 100 posts por página
             after: endCursor
           },
-          errorPolicy: 'all',
-          fetchPolicy: 'no-cache'
+          context: {
+            fetchOptions: {
+              next: { revalidate: 3600 }
+            }
+          }
         });
 
-        if (error) {
-          console.error(`❌ Error en página ${page}:`, error);
-          break;
+        if (error || errors) {
+          console.error(`❌ Error en página ${page}:`, error || errors);
+          console.error('Error completo:', JSON.stringify(error || errors, null, 2));
+          // No romper, intentar continuar
         }
 
-        if (!data?.posts?.edges) {
+        if (!data?.posts?.edges || data.posts.edges.length === 0) {
           console.log(`⚠️ No hay más posts en página ${page}`);
           break;
         }
@@ -169,9 +174,12 @@ export async function getServerSideProps({ res }) {
     return { props: {} };
 
   } catch (error) {
-    console.error('Error generando sitemap de posts:', error);
+    console.error('❌❌❌ Error generando sitemap de posts:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error message:', error.message);
+    console.error('NEXT_PUBLIC_WORDPRESS_URL:', process.env.NEXT_PUBLIC_WORDPRESS_URL);
     
-    // Sitemap básico de fallback
+    // Sitemap básico de fallback con mensaje de error
     const fallbackSitemap = `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>

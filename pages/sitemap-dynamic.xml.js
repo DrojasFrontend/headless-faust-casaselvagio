@@ -8,6 +8,7 @@ export async function getServerSideProps({ res }) {
   
   try {
     console.log('🚀 Iniciando sitemap dinámico...');
+    console.log('📡 WordPress URL:', process.env.NEXT_PUBLIC_WORDPRESS_URL);
     
     // Función para obtener TODOS los posts usando paginación
     const getAllPosts = async () => {
@@ -19,7 +20,7 @@ export async function getServerSideProps({ res }) {
         const { data } = await client.query({
           query: gql`
             query GetAllPosts($first: Int!, $after: String) {
-              posts(first: $first, after: $after) {
+              posts(first: $first, after: $after, where: { status: PUBLISH }) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -44,7 +45,11 @@ export async function getServerSideProps({ res }) {
             first: 100,
             after: endCursor
           },
-          errorPolicy: 'ignore',
+          context: {
+            fetchOptions: {
+              next: { revalidate: 3600 }
+            }
+          }
         });
 
         if (data?.posts?.nodes) {
@@ -73,7 +78,7 @@ export async function getServerSideProps({ res }) {
         const { data } = await client.query({
           query: gql`
             query GetAllPages($first: Int!, $after: String) {
-              pages(first: $first, after: $after) {
+              pages(first: $first, after: $after, where: { status: PUBLISH }) {
                 pageInfo {
                   hasNextPage
                   endCursor
@@ -92,7 +97,11 @@ export async function getServerSideProps({ res }) {
             first: 100,
             after: endCursor
           },
-          errorPolicy: 'ignore',
+          context: {
+            fetchOptions: {
+              next: { revalidate: 3600 }
+            }
+          }
         });
 
         if (data?.pages?.nodes) {
@@ -116,7 +125,7 @@ export async function getServerSideProps({ res }) {
       const { data } = await client.query({
         query: gql`
           query GetCategories {
-            categories(first: 100) {
+            categories(first: 100, where: { hideEmpty: true }) {
               nodes {
                 uri
                 slug
@@ -126,7 +135,11 @@ export async function getServerSideProps({ res }) {
             }
           }
         `,
-        errorPolicy: 'ignore',
+        context: {
+          fetchOptions: {
+            next: { revalidate: 3600 }
+          }
+        }
       });
       return data?.categories?.nodes || [];
     };

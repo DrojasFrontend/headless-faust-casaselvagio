@@ -32,6 +32,19 @@ module.exports = withFaust({
   async headers() {
     return [
       {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
         source: '/sitemap.xml',
         headers: [
           {
