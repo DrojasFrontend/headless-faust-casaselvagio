@@ -49,11 +49,15 @@ module.exports = withFaust({
         headers: [
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
           },
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },
@@ -62,11 +66,15 @@ module.exports = withFaust({
         headers: [
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
           },
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },
@@ -75,11 +83,15 @@ module.exports = withFaust({
         headers: [
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
           },
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },
@@ -88,11 +100,15 @@ module.exports = withFaust({
         headers: [
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
           },
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },
@@ -101,11 +117,15 @@ module.exports = withFaust({
         headers: [
           {
             key: 'Content-Type',
-            value: 'application/xml',
+            value: 'application/xml; charset=utf-8',
           },
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate',
+            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },

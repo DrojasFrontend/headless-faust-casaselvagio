@@ -165,8 +165,9 @@ export async function getServerSideProps({ res }) {
     // Generar sitemap XML
     const sitemap = generateSiteMap(postsForSitemap, baseUrl);
 
-    res.setHeader('Content-Type', 'text/xml');
-    res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400');
+    res.setHeader('X-Robots-Tag', 'noindex');
     
     res.write(sitemap);
     res.end();
@@ -190,7 +191,9 @@ export async function getServerSideProps({ res }) {
         </url>
       </urlset>`;
 
-    res.setHeader('Content-Type', 'text/xml');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400');
+    res.setHeader('X-Robots-Tag', 'noindex');
     res.write(fallbackSitemap);
     res.end();
 

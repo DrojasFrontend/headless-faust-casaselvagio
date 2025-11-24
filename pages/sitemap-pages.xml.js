@@ -83,8 +83,9 @@ export async function getServerSideProps({ res }) {
   // Generar el XML del sitemap
   const sitemap = generateSiteMap(staticPages, baseUrl);
 
-  res.setHeader('Content-Type', 'text/xml');
-  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate');
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400');
+  res.setHeader('X-Robots-Tag', 'noindex');
   
   // Escribir el sitemap al response
   res.write(sitemap);
